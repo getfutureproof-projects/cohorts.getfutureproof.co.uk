@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&family=Work+Sans:wght@300&display=swap');
+/* font-family: 'Quicksand', sans-serif; */
+
+/* Variables */
+:root {
+    --squareSizeLarge: 192px;
+    --squareSizeSmall: 160px;
+    --fp-main-aubergine: #35205c;
+    --fp-accent-plum: #7d4098;
+    --fp-dark-petrol: #0b3954;
+    --fp-dark-steel: #181d2c;
+    --fp-dark-steel-op: rgba(24, 29, 44, 0.8);
+    --fp-grey-light: #e9e3e6;
+    --fp-grey-medium: #959193;
+    --fp-accent-cherry: #cc2936;
+    --fp-accent-apple: #0bbc62;
+    --fp-opacity: rgba(255, 255, 255, 0.3);
+}
+
+/* Primary layout sections */
+body {
+    font-family: 'Quicksand', sans-serif;
+    color: var(--fp-main-aubergine);
+    display: flex;
+    justify-content: center;
+}
+
+
