@@ -1,32 +1,34 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import fakeRoster from './test/fakeRoster.json';
-import { Header, Footer, Contact } from './layout';
-import { Landing, Cohort, NotFound } from './pages';
+import * as Layout from './layout';
+import * as Pages from './pages';
 
 const App = () => {
+
     return (
         <>
-            <Header />
+            <Layout.Header />
 
             <main>
             <Switch>
                 <Route exact path="/">
-                    <Landing />
+                    <Pages.Landing />
                 </Route>
 
                 <Route exact path="/:cohortName">
-                    <Cohort />
+                    <Pages.Cohort />
                 </Route>
 
                 <Route>
-                    <NotFound />
+                    <Pages.NotFound />
                 </Route> 
             </Switch>
             </main>
 
-            <Contact />
-            <Footer />
+            <Layout.Modal />
+            <Layout.Contact />
+            <Layout.Footer />
         </>
     );
 }
