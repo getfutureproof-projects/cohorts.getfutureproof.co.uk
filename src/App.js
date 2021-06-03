@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import fakeRoster from './test/fakeRoster.json';
 import { Header, Footer, Contact } from './layout';
 import { Landing, Cohort, NotFound } from './pages';
 
 const App = () => {
-    const [ cohort, setCohort ] = useState()
-    const [ roster, setRoster ] = useState()
-
     return (
         <div>
-            <Header roster={roster}/>
+            <Header />
 
             <main>
             <Switch>
@@ -18,7 +15,7 @@ const App = () => {
                     <Landing />
                 </Route>
 
-                <Route path="/:cohort">
+                <Route path="/:cohortName">
                     <Cohort />
                 </Route>
 
@@ -28,7 +25,7 @@ const App = () => {
             </Switch>
             </main>
 
-            <Contact cohort={cohort} />
+            <Contact />
             <Footer />
         </div>
     );

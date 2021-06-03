@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import { useCohort } from '../../contexts/cohort'
 import './style.css'
 
-export default function Contact({ cohort }) {
+export default function Contact() {
     const [ subject, setSubject ] = useState("futureproof Associates")
+    const cohort = useCohort()
 
     useEffect(() => {
-        cohort ? 
-            setSubject(`futureproof%3A%20${cohort.name}%20Cohort`) 
-            : setSubject("futureproof Associates")
+        cohort.current ? 
+            setSubject(`futureproof%3A%20${cohort.current.name}%20Cohort`) 
+            : setSubject("futureproof%20Associates")
     }, [cohort])
 
     return (
