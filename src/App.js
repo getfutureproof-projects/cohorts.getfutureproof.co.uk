@@ -1,10 +1,14 @@
 import React from 'react';
+import fakeRoster from './test/fakeRoster.json';
+import { Header } from './layout';
 
 const App = () => {
+
     return (
         <div>
-            <h1>Coming Soon!</h1>
-            <p>To a screen near you</p>
+            <Header namesake={fakeRoster.namesake}/>
+            
+            {/* <Footer /> */}
         </div>
     );
 }
