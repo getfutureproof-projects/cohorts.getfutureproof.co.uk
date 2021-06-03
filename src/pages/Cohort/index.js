@@ -31,11 +31,10 @@ export default function Cohort() {
     }, [cohortName])
 
     return (
-        <section id="headshots">
+        <article id="headshots">
             { loading && <h2>Loading cohort data...</h2> }
             { error && <h2>{error}</h2> }
-            { cohort.current && <h2>Hello! We are the {cohort.current.name} cohort.</h2> }
             { cohort.current && <HeadshotsIndex />}
-        </section>
+        </article>
     )
 }

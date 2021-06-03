@@ -6,7 +6,7 @@ import { Landing, Cohort, NotFound } from './pages';
 
 const App = () => {
     return (
-        <div>
+        <>
             <Header />
 
             <main>
@@ -27,7 +27,7 @@ const App = () => {
 
             <Contact />
             <Footer />
-        </div>
+        </>
     );
 }
 
