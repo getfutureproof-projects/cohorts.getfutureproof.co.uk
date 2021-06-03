@@ -9,6 +9,9 @@ const App = () => {
     return (
         <div>
             <Header namesake={roster.namesake}/>
+            <main>
+                
+            </main>
             <Contact cohort={cohort} />
             <Footer />
         </div>
