@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import fakeRoster from './test/fakeRoster.json';
 import { Header, Footer, Contact } from './layout';
-import { Landing } from './pages';
+import { Landing, NotFound } from './pages';
 
 const App = () => {
     const [ cohort, setCohort ] = useState()
@@ -20,11 +20,11 @@ const App = () => {
 {/* 
                 <Route path="/:cohort">
                     <Cohort />
-                </Route>
+                </Route>*/}
 
                 <Route>
                     <NotFound />
-                </Route> */}
+                </Route> 
             </Switch>
             </main>
 
