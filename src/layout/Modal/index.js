@@ -20,7 +20,7 @@ export default function Modal() {
                 </section>
 
                 <section id="content">
-                    <iframe src="" frameborder="0"></iframe>
+                    <iframe src="" frameBorder="0"></iframe>
                 </section>
             </section>
         </div>

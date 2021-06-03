@@ -8,7 +8,7 @@ export function useCohort(){
 
 export function CohortProvider({ children }){
     const [ current, setCurrent ] = useState();
-    const [ featured, setFeatured ] = useState({ name: 'Test Feature' });
+    const [ featured, setFeatured ] = useState();
 
     const set = (cohort) => setCurrent(cohort);
 
