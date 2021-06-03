@@ -15,7 +15,7 @@ const App = () => {
                     <Landing />
                 </Route>
 
-                <Route path="/:cohortName">
+                <Route exact path="/:cohortName">
                     <Cohort />
                 </Route>
 
