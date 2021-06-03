@@ -3,8 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 import fakeRoster from './test/fakeRoster.json';
 import * as Layout from './layout';
 import * as Pages from './pages';
+import { useCohort } from './contexts/cohort';
 
 const App = () => {
+    const { featured } = useCohort()
 
     return (
         <>
@@ -26,7 +28,7 @@ const App = () => {
             </Switch>
             </main>
 
-            <Layout.Modal />
+            { featured && <Layout.Modal /> }
             <Layout.Contact />
             <Layout.Footer />
         </>

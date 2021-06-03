@@ -3,12 +3,12 @@ import { useCohort } from '../../contexts/cohort'
 import './style.css'
 
 export default function Modal() {
-    const cohort = useCohort()
+    const { clearFeatured, featured } = useCohort()
 
     return (
-        <div id="overlay">
+        <div id="overlay" onClick={clearFeatured}>
             <section id="modal">
-                <h1 id="st-name">Name</h1>
+                <h1 id="st-name">{featured.name}</h1>
                 <div id="icons">
                     <a id="pop-out" href="https://getfutureproof.co.uk" target="_blank" rel="noreferrer">Open in a new tab</a>
                 </div>

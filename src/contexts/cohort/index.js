@@ -8,11 +8,16 @@ export function useCohort(){
 
 export function CohortProvider({ children }){
     const [ current, setCurrent ] = useState();
+    const [ featured, setFeatured ] = useState({ name: 'Test Feature' });
 
     const set = (cohort) => setCurrent(cohort);
 
+    const feature = (feature) => setFeatured(feature)
+
+    const clearFeatured = () => setFeatured(null)
+
     return (
-        <CohortContext.Provider value={{ set, current }}>
+        <CohortContext.Provider value={{ set, current, feature, featured, clearFeatured }}>
             { children }
         </CohortContext.Provider>
     )
