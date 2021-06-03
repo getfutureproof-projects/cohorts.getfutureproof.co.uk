@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useCohort } from '../../contexts/cohort'
-import axios from 'axios';
+import axios from 'axios'
+import { HeadshotsIndex } from '../../components'
 
 export default function Cohort() {
     const { cohortName } = useParams()
@@ -34,6 +35,7 @@ export default function Cohort() {
             { loading && <h2>Loading cohort data...</h2> }
             { error && <h2>{error}</h2> }
             { cohort.current && <h2>Hello! We are the {cohort.current.name} cohort.</h2> }
+            { cohort.current && <HeadshotsIndex />}
         </section>
     )
 }
