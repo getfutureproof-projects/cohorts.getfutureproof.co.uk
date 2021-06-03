@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import fakeRoster from './test/fakeRoster.json';
-import { Header, Footer } from './layout';
+import { Header, Footer, Contact } from './layout';
 
 const App = () => {
+    const [ cohort, setCohort ] = useState({ name: "Morris"})
+    const [ roster, setRoster ] = useState(fakeRoster)
 
     return (
         <div>
-            <Header namesake={fakeRoster.namesake}/>
-
+            <Header namesake={roster.namesake}/>
+            <Contact cohort={cohort} />
             <Footer />
         </div>
     );
