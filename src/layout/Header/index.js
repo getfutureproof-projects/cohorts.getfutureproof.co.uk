@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './style.css'
 
-export default function Header({ namesake }) {
+export default function Header({ roster }) {
+    const [ namesake, setNamesake ] = useState({ name: 'futureproof Cohorts', imageUrl: 'https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/favicon.ico'})
+
+    useEffect(() => {
+        roster ? 
+            setNamesake({ name: roster.namesake.name, imageUrl: roster.namesake.imageUrl }) 
+            : setNamesake({ name: 'futureproof Cohorts', imageUrl: 'https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/favicon.ico'})
+    }, [roster])
+
     return (
         <header>
             <img id="namesake" src={namesake.imageUrl} alt={namesake.name} />

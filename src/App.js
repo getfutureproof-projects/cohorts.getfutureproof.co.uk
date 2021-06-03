@@ -8,9 +8,9 @@ const App = () => {
 
     return (
         <div>
-            <Header namesake={roster.namesake}/>
+            <Header roster={roster}/>
             <main>
-                
+
             </main>
             <Contact cohort={cohort} />
             <Footer />
