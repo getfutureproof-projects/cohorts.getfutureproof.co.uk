@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './style.css'
 
 export default function Contact({ cohort }) {
     const [ subject, setSubject ] = useState("futureproof Associates")

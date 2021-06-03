@@ -26,8 +26,7 @@
 body {
     font-family: var(--fp-body-font);
     color: var(--fp-main-aubergine);
-    display: flex;
-    justify-content: center;
+    display: block;
     margin: 0;
     text-align: center;
 }
