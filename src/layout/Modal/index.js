@@ -4,14 +4,20 @@ import './style.css'
 
 export default function Modal() {
     const { clearFeatured, featured } = useCohort()
-    console.log('opening modal');
+
+    // const renderMaterials = featured.materials.map(m => {
+    //     <button id={`st-${m.type.toLowerCase()}`} className="linkout">
+    //         {m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
+    //     </button>
+    // })
 
     return (
         <div id="overlay" onClick={clearFeatured}>
             <section id="modal">
                 <h1 id="st-name">{featured.name}</h1>
                 <div id="icons">
-                    <a id="pop-out" href="https://getfutureproof.co.uk" target="_blank" rel="noreferrer">Open in a new tab</a>
+                    <span onClick={clearFeatured} style={{ cursor: "pointer" }}>✖</span>
+                    <a id="pop-out" href="https://getfutureproof.co.uk" target="_blank" rel="noreferrer">Open in a new tab ➭</a>
                 </div>
 
                 <section className="btn-group" id="materials">
