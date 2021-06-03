@@ -10,7 +10,13 @@ export default function Header() {
     useEffect(() => {
         current ? 
             setNamesake(current.namesake) 
-            : setNamesake({ name: 'futureproof', imageUrl: 'https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/favicon.ico'})
+            : setNamesake({ 
+                name: 'futureproof',
+                imageUrl: 'https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/favicon.ico',
+                materials: [
+                    { type: 'video', url: 'https://youtu.be/ZseHn7q0_DM' }
+                ]
+            })
     }, [current])
 
     return (

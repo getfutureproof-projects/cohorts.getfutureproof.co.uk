@@ -5,11 +5,11 @@ import './style.css'
 export default function Modal() {
     const { clearFeatured, featured } = useCohort()
 
-    // const renderMaterials = featured.materials.map(m => {
-    //     <button id={`st-${m.type.toLowerCase()}`} className="linkout">
-    //         {m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
-    //     </button>
-    // })
+    const renderMaterials = () => featured.materials.map(m => (
+        <button id={`st-${m.type.toLowerCase()}`} className="linkout">
+            {m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
+        </button>
+    ))
 
     return (
         <div id="overlay" onClick={clearFeatured}>
@@ -21,9 +21,7 @@ export default function Modal() {
                 </div>
 
                 <section className="btn-group" id="materials">
-                    <button id="st-video" className="linkout">Video</button>
-                    <button id="st-cv" className="linkout">CV</button>
-                    <button id="st-portfolio" className="linkout">Portfolio</button>
+                    { featured.materials && featured.materials.length > 1 && renderMaterials() }
                 </section>
 
                 <section id="content">
