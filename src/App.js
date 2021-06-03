@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import fakeRoster from './test/fakeRoster.json';
 import { Header, Footer, Contact } from './layout';
+import { Landing } from './pages';
 
 const App = () => {
-    const [ cohort, setCohort ] = useState({ name: "Morris"})
-    const [ roster, setRoster ] = useState(fakeRoster)
+    const [ cohort, setCohort ] = useState()
+    const [ roster, setRoster ] = useState()
 
     return (
         <div>
@@ -16,14 +17,14 @@ const App = () => {
                 <Route exact path="/">
                     <Landing />
                 </Route>
-
+{/* 
                 <Route path="/:cohort">
                     <Cohort />
                 </Route>
 
                 <Route>
                     <NotFound />
-                </Route>
+                </Route> */}
             </Switch>
             </main>
 
