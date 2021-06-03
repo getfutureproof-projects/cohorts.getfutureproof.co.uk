@@ -15,14 +15,24 @@
     --fp-accent-cherry: #cc2936;
     --fp-accent-apple: #0bbc62;
     --fp-opacity: rgba(255, 255, 255, 0.3);
+    --fp-header-font: 'Quicksand', sans-serif;
+    --fp-body-font: 'Work Sans', sans-serif;
 }
 
-/* Primary layout sections */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Quicksand', sans-serif;
+    font-family: var(--fp-body-font);
     color: var(--fp-main-aubergine);
     display: flex;
     justify-content: center;
+    margin: 0;
+    text-align: center;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fp-header-font);
+}
 
