@@ -4,6 +4,7 @@ import './style.css'
 
 export default function Modal() {
     const { clearFeatured, featured } = useCohort()
+    console.log('opening modal');
 
     return (
         <div id="overlay" onClick={clearFeatured}>
