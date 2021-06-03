@@ -1,0 +1,22 @@
+footer {
+    text-align: center;
+    position: fixed;
+    font-size: 0.8rem;
+    margin: auto;
+    bottom: 0%;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 6;
+}
+
+footer a,
+footer a:visited,
+footer a:focus {
+    color: var(--fp-main-aubergine);
+    text-decoration: none;
+    text-align: center;
+}
+
+footer a:hover {
+    color: var(--fp-accent-plum);
+}
