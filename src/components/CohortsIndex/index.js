@@ -26,7 +26,7 @@ export default function CohortsIndex() {
                     legacy: data.legacy
                 })
             } catch (e) {
-                setError("Oops! There's been a problem fetching our CohortsIndex, please try again later!")
+                setError("Oops! There's been a problem fetching our cohorts, please try again later!")
                 console.error(e);
             }
         }
