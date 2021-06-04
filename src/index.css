@@ -42,3 +42,17 @@ main {
     background-size: cover;
     color: white;
 }
+
+main a {
+    color: white;
+    text-shadow: 0.5px 0.5px var(--fp-accent-cherry);
+    text-decoration: none;
+}
+
+main a:hover {
+   text-decoration: dotted;
+}
+
+.name {
+    text-transform: capitalize;
+}
