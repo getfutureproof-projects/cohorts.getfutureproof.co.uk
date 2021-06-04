@@ -43,6 +43,10 @@
     height: 10%;
 }
 
+#st-cv {
+    text-transform: uppercase;
+}
+
 #content {
     height: calc(80% - 20px);
     margin-top: 20px;
