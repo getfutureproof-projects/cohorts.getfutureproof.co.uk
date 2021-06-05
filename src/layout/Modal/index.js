@@ -10,7 +10,7 @@ export default function Modal() {
         if(featured.materials){
             let video = featured.materials.find(m => m.type === "video")
             video && setMedia(`https://www.youtube-nocookie.com/embed/${video.url}?start=0&controls=1&autoplay=1`)
-        } else if (featured.projectLogo) {
+        } else if (current.projects) {
             setMedia(`https://www.youtube-nocookie.com/embed/${current.projects.videoId}?start=${featured.startPoint}&controls=1&autoplay=1`)
         }
     }, [ featured ])

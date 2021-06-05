@@ -15,9 +15,11 @@ export default function Cohort() {
             try {
                 setLoading(true)
                 let { data } = await axios.get(`https://raw.githubusercontent.com/getfutureproof/fp_study_notes_hello_github/main/${cohortName.toLowerCase()}/roster.json`)
-                for(let student of data.students) {
-                    let project = data.projects[student.project]
-                    student.project = project
+                if(data.projects){
+                    for(let student of data.students) {
+                        let project = data.projects[student.project]
+                        student.project = project
+                    }
                 }
                 cohort.set({
                     name: cohortName[0].toUpperCase() + cohortName.slice(1).toLowerCase(),
