@@ -16,7 +16,7 @@ export default function Contact() {
         <section id="contact">
             <a href={`mailto:krikor@getfutureproof.co.uk,claudia@getfutureproof.co.uk?cc=marcus@getfutureproof.co.uk,ella@getfutureproof.co.uk&subject=${subject}`}>
                 <button>
-                    Get in touch with futureproof, we can't wait to get started!
+                    {"Get in touch with futureproof,\nwe can't wait to get started!"}
                 </button>
             </a>
         </section>
