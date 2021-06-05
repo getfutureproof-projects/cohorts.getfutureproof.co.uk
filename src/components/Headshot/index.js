@@ -13,7 +13,7 @@ export default function Headshot({ person }) {
         <div className="img_container" onClick={e => handleSelect(e, person)}>
             { person.project && 
                 <img className="project_logo"
-                    src={person.project.logo}
+                    src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/hamilton/projectLogos/${person.project.name.replace(' ', '')}.png`}
                     alt={person.project.name}
                     onClick={e => handleSelect(e, person.project)}
                 /> }

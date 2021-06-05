@@ -3,7 +3,7 @@ import { useCohort } from '../../contexts/cohort'
 import './style.css'
 
 export default function Modal() {
-    const { clearFeatured, featured } = useCohort()
+    const { clearFeatured, featured, current, feature } = useCohort()
     const [ media, setMedia ] = useState()
 
     useEffect(() => {
@@ -22,9 +22,21 @@ export default function Modal() {
         }
     }
 
+    const handleSelectStudent = (e, st) => {
+        e.stopPropagation()
+        let student = current.students.find(s => s.name === st)
+        feature(student)
+    }
+
     const renderMaterials = () => featured.materials.map((m, i)=> (
         <button key={i} id={`st-${m.type.toLowerCase()}`} className="linkout" onClick={(e) => handleSelectMedia(e, m)}>
             {m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
+        </button>
+    ))
+
+    const renderStudents = () => featured.students.map((s, i)=> (
+        <button key={i} className="linkout" onClick={(e) => handleSelectStudent(e, s)}>
+            {s}
         </button>
     ))
 
@@ -39,6 +51,7 @@ export default function Modal() {
 
                 <section className="btn-group" id="materials">
                     { featured.materials && featured.materials.length > 1 && renderMaterials() }
+                    { featured.students && renderStudents() }
                 </section>
 
                 <section id="content">

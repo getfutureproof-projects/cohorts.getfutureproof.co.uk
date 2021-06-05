@@ -1,8 +1,8 @@
-h1 {
+#greeting {
     font-size: 4rem;
 }
 
-p {
+#summary p {
     max-width: 80%;
     margin: 20px auto;
     font-size: 1.5rem;
