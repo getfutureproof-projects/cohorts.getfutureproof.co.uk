@@ -30,7 +30,7 @@ export default function Modal() {
         feature(student)
     }
 
-    const renderMaterials = () => featured.materials.map((m, i)=> (
+    const renderMaterials = () => featured.materials.filter(m => m.url).map((m, i)=> (
         <button key={i} id={`st-${m.type.toLowerCase()}`} className="linkout" onClick={(e) => handleSelectMedia(e, m)}>
             {m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
         </button>
