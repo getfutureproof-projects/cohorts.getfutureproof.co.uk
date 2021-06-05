@@ -1,0 +1,49 @@
+#cohorts {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3rem;
+    row-gap: 3rem;
+}
+
+#cohorts h2 {
+    width: 85vw;
+}
+
+.cohort-preview {
+    margin: 0 auto;
+    position: relative;
+    width: 80%;
+    height: 0;
+    padding: 18% 10% 62% 10%;
+    font-size: 1.2rem;
+    background-color: var(--fp-opacity);
+    transition: all 0.3s;
+}
+
+.cohort-preview:hover {
+    transform: translateY(-10px);
+    transition: all 0.3s;
+    box-shadow: 5px 5px var(--fp-dark-steel);
+}
+
+.cohort-preview .date {
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.cohort-preview span {
+    display: block;
+    margin: 10px 0;
+    white-space: pre-line;
+}
+
+@media only screen and (orientation: portrait) {
+    #cohorts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cohort-preview {
+        font-size: 2rem;
+    }
+}

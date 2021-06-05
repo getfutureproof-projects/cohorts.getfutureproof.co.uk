@@ -41,6 +41,7 @@ main {
     background: url('https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/futureproof-stars.jpg');
     background-size: cover;
     color: white;
+    /* min-height: 80vh; */
 }
 
 main a {
