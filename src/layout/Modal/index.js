@@ -7,8 +7,10 @@ export default function Modal() {
     const [ media, setMedia ] = useState()
 
     useEffect(() => {
-        let video = featured.materials.find(m => m.type === "video")
-        video && setMedia(`https://www.youtube-nocookie.com/embed/${video.url}?start=0&controls=1&autoplay=1`)
+        if(featured.materials){
+            let video = featured.materials.find(m => m.type === "video")
+            video && setMedia(`https://www.youtube-nocookie.com/embed/${video.url}?start=0&controls=1&autoplay=1`)
+        }
     }, [ featured ])
 
     const handleSelectMedia = (e, m) => {
