@@ -51,7 +51,7 @@ export default function Modal() {
                     <a id="pop-out" href={media} target="_blank" rel="noreferrer">Open in a new tab ➭</a>
                 </div>
 
-                <section className="btn-group" id="materials">
+                <section className="btn-group" id="modal-btns">
                     { featured.materials && featured.materials.length > 1 && renderMaterials() }
                     { featured.students && renderStudents() }
                 </section>

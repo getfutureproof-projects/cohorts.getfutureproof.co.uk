@@ -25,7 +25,7 @@
     overflow: scroll;
     top:30%; left:50%;
     transform:translate(-50%, -30%);
-    font-size: 1rem;
+    font-size: 1.5em;
     color: white;
     overflow: hidden;
     z-index: 2;
@@ -57,16 +57,17 @@
     display: flex;
     height: 10%;
     bottom: 0;
-    font-size: 1rem;
 }
 
 .linkout {
     width: 50%;
     border: none;
     color: inherit;
-    letter-spacing: 3px;
+    font-size: 0.9em;
+    letter-spacing: 1px;
     outline: none;
     background-color: inherit;
+    font-family: var(--fp-header-font);
 }
 .linkout:hover { background-color: var(--fp-accent-plum); }
 
@@ -85,23 +86,25 @@
 i, #pop-out, .linkout { cursor: pointer; }
 
 /* Media queries */
-@media (max-height: 600px) {
+@media only screen and (max-height: 600px) {
     #modal { font-size: 0.6rem; }
-    #st-name { height: 12%; }
-    .btn-group { font-size: 1rem;}
+    #st-name { font-size: 2em; padding-top: 1em;}
+    .linkout { font-size: 1.5em;}
     #icons { 
-        font-size: 0.65rem;
+        font-size: 1.5em;
+        padding: 5px 10px;
         top: 5px; left: 5px;
         width: calc(100% - 10px);
     }
 }
 
-@media (max-width: 600px) {
+@media only screen and (orientation: portrait) {
     #modal { font-size: 0.6rem; }
-    #st-name { font-size: 1.5rem; padding-top: 1.6rem;}
-    .btn-group { font-size: 1rem;}
+    #st-name { font-size: 4em; padding-top: 1.7em;}
+    .linkout { font-size: 2.5em;}
     #icons { 
-        font-size: 0.65rem;
+        font-size: 2em;
+        padding: 5px 10px;
         top: 5px; left: 5px;
         width: calc(100% - 10px);
     }
