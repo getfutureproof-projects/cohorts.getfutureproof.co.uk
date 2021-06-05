@@ -34,7 +34,7 @@ export default function Modal() {
                 <h1 id="st-name">{featured.name}</h1>
                 <div id="icons">
                     <span onClick={clearFeatured} style={{ cursor: "pointer" }}>✖</span>
-                    <a id="pop-out" href="https://getfutureproof.co.uk" target="_blank" rel="noreferrer">Open in a new tab ➭</a>
+                    <a id="pop-out" href={media} target="_blank" rel="noreferrer">Open in a new tab ➭</a>
                 </div>
 
                 <section className="btn-group" id="materials">
