@@ -20,7 +20,7 @@ export default function HeadshotsIndex() {
             { current && 
                 <>
                 <div id="summary_container">
-                    <h2><BackBtn /> Hello! We are the {current.name} cohort.</h2>
+                    <h2><BackBtn path="/" /> Hello! We are the {current.name} cohort.</h2>
                     <p id="cohort-summary">{ renderSummary() }</p>
                 </div>
                 { renderHeadshots }
