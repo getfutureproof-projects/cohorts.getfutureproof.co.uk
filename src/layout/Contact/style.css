@@ -24,25 +24,25 @@
 }
 
 /* Media queries */
-@media (max-width: 1300px) {
+@media only screen and (max-width: 1300px) {
     #contact {
         width: 1024px;
     }
 }
 
-@media (max-width: 1090px) {
+@media only screen and (max-width: 1090px) {
     #contact {
         width: 816px;
     }
 }
 
-@media (max-width: 880px) {
+@media only screen and (max-width: 880px) {
     #contact {
         width: 608px;
     }
 }
 
-@media (max-width: 650px) {
+@media only screen and (max-width: 650px) {
     #contact {
         width: 336px;
         padding: 5vh 0 15vh 0;

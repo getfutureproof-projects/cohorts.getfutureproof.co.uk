@@ -24,25 +24,25 @@ header #logo {
 }
 
 /* Media queries */
-@media (max-width: 1300px) {
+@media only screen and (max-width: 1300px) {
     header {
         padding: 0 calc((100vw - 1024px) / 2);
     }
 }
 
-@media (max-width: 1090px) {
+@media only screen and (max-width: 1090px) {
     header {
         padding: 0 calc((100vw - 816px) / 2);
     }
 }
 
-@media (max-width: 880px) {
+@media only screen and (max-width: 880px) {
     header {
         padding: 0 calc((100vw - 608px) / 2);
     }
 }
 
-@media (max-width: 650px) {
+@media only screen and (max-width: 650px) {
     header {
         padding: 0 calc((100vw - 336px) / 2);
     }

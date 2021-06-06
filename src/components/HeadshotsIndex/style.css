@@ -77,7 +77,7 @@
 }
 
 /* Media queries */
-@media (max-width: 1300px) {
+@media only screen and (max-width: 1300px) {
     #container {
         width: 1024px;
         grid-template-columns: repeat(5, var(--squareSizeLarge));
@@ -88,7 +88,7 @@
     }
 }
 
-@media (max-width: 1090px) {
+@media only screen and (max-width: 1090px) {
     #container {
         width: 816px;
         grid-template-columns: repeat(4, var(--squareSizeLarge));
@@ -99,7 +99,7 @@
     }
 }
 
-@media (max-width: 880px) {
+@media only screen and (max-width: 880px) {
     #container {
         width: 608px;
         grid-template-columns: repeat(3, var(--squareSizeLarge));
