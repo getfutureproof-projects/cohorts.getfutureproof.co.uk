@@ -1,38 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { useCohort } from '../../contexts/cohort';
 import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
-dayjs.extend(relativeTime)
 dayjs.extend(advancedFormat)
 
 import './style.css'
 
 export default function CohortsIndex() {
-    const [ error, setError ] = useState()
-    const [ cohorts, setCohorts ] = useState()
+    let { list, error } = useCohort();
 
-    useEffect(() => {
-        async function fetchCohorts(){
-            try {
-                const { data } = await axios.get('https://raw.githubusercontent.com/getfutureproof-admin/cohorts/main/db.json')
-                let cohorts = data.cohorts.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
-                setCohorts( cohorts )
-            } catch (e) {
-                setError("Oops! There's been a problem fetching our cohorts, please try again later!")
-                console.error(e);
-            }
-        }
-
-        fetchCohorts()
-    }, [])
-
-    const formatEndDate = (startDate) => {
-        let endDate = dayjs(startDate).add(13, 'weeks')
-        let formatted = endDate.format("MMMM Do YYYY")
-        formatted = endDate.isAfter(dayjs()) ? 
-                        `Graduating ${endDate.fromNow()} on ${formatted}`
+    const formatEndDate = cohort => {
+        let formatted = cohort.endDate.format("MMMM Do YYYY")
+        formatted = cohort.status === 'current' ? 
+                        `Graduating ${cohort.endDate.fromNow()} on ${formatted}`
                         : `Graduated on\n${formatted}`
         return formatted
     }
@@ -41,13 +22,13 @@ export default function CohortsIndex() {
         <article id="cohorts">
             { error && <h2 className="error">{error}</h2> }
 
-            { cohorts && (
+            { list && (
                 <>
-                    { cohorts.map(c => (
-                        <Link to={`/${c.name}`}>
+                    { list.map(c => (
+                        <Link to={`/${c.name}`} key={c.name}>
                             <div className="cohort-preview">
                                 <span className="name">{c.name}</span>
-                                <span className="date">{formatEndDate(c.startDate)}</span>
+                                <span className="date">{formatEndDate(c)}</span>
                             </div>
                         </Link>
                     )) }
