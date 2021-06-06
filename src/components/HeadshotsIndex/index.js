@@ -1,6 +1,6 @@
 import React from 'react'
 import { useCohort } from '../../contexts/cohort'
-import { Headshot } from '../'
+import { Headshot, BackBtn } from '../'
 import './style.css'
 
 export default function HeadshotsIndex() {
@@ -11,7 +11,7 @@ export default function HeadshotsIndex() {
     return (
         <section id="container">
             <div id="summary_container">
-                <h2>Hello! We are the {cohort.current.name} cohort.</h2>
+                <h2><BackBtn /> Hello! We are the {cohort.current.name} cohort.</h2>
                 <p>We're honing our skills on futureproof's 13 week course, click on our picture to find out more about us.</p>
             </div>
             { renderHeadshots }
