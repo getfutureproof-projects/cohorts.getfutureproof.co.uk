@@ -39,8 +39,8 @@ export function CohortProvider({ children }){
 
     const set = async (cohort) => {
         if(cohort){
-            let startDate = list.find(c => c.name === cohort.name)
-            setCurrent({ ...cohort, startDate })
+            let dates = list.find(c => c.name.toLowerCase() === cohort.name.toLowerCase())
+            setCurrent({ ...dates, ...cohort })
         } else {
             setCurrent(null)
         }
