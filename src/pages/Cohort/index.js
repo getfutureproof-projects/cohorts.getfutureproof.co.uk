@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useCohort } from '../../contexts/cohort'
 import axios from 'axios'
-import { HeadshotsIndex } from '../../components'
+import { BackBtn, HeadshotsIndex } from '../../components'
 
 export default function Cohort() {
     const { cohortName } = useParams()
@@ -14,6 +14,7 @@ export default function Cohort() {
         async function fetchCohort(){
             try {
                 setLoading(true)
+                cohort.set(null)
                 let { data } = await axios.get(`https://raw.githubusercontent.com/getfutureproof/fp_study_notes_hello_github/main/${cohortName.toLowerCase()}/roster.json`)
                 if(data.projects){
                     for(let student of data.students) {
@@ -39,7 +40,7 @@ export default function Cohort() {
     return (
         <article id="headshots">
             { loading && <h2>Loading cohort data...</h2> }
-            { error && <h2>{error}</h2> }
+            { error && <h2><BackBtn /> {error}</h2> }
             { cohort.current && <HeadshotsIndex />}
         </article>
     )
