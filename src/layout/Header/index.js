@@ -11,10 +11,10 @@ export default function Header() {
         current ? 
             setNamesake(current.namesake) 
             : setNamesake({ 
-                name: 'futureproof',
+                name: 'What our clients say',
                 imageUrl: 'https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/favicon.ico',
                 materials: [
-                    { type: 'video', url: 'https://youtu.be/ZseHn7q0_DM' }
+                    { type: 'video', url: 'f5RNSRC7NP4' }
                 ]
             })
     }, [current])
