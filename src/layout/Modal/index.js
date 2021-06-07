@@ -17,10 +17,15 @@ export default function Modal() {
 
     const handleSelectMedia = (e, m) => {
         e.stopPropagation()
-        if ( m.type === 'video'){
-            setMedia(`https://www.youtube-nocookie.com/embed/${m.url}?start=0&controls=1&autoplay=1`)
-        } else {
-            setMedia(m.url)
+        switch(m.type) {
+            case "video": 
+                setMedia(`https://www.youtube-nocookie.com/embed/${m.url}?start=0&controls=1&autoplay=1`);
+                break;
+            case "cv":
+                setMedia(`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/cvs/${featured.name.replace(/\s/gu, "_")}.pdf`);
+                break;
+            default:
+                setMedia(m.url)
         }
     }
 
@@ -30,7 +35,7 @@ export default function Modal() {
         feature(student)
     }
 
-    const renderMaterials = () => featured.materials.filter(m => m.url).map((m, i)=> (
+    const renderMaterials = () => featured.materials.map((m, i)=> (
         <button key={i} id={`st-${m.type.toLowerCase()}`} className="linkout" onClick={(e) => handleSelectMedia(e, m)}>
             {m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
         </button>
