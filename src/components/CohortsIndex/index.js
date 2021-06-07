@@ -12,9 +12,9 @@ export default function CohortsIndex() {
 
     const formatEndDate = cohort => {
         let formatted = cohort.endDate.format("MMMM Do YYYY")
-        formatted = cohort.status === 'current' ? 
-                        `Graduating ${cohort.endDate.fromNow()} on ${formatted}`
-                        : `Graduated on\n${formatted}`
+        formatted = cohort.status === 'graduated' ? 
+                        `Graduated on\n${formatted}`
+                        : `Graduating ${cohort.endDate.fromNow()} on ${formatted}`
         return formatted
     }
 

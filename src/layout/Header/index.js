@@ -9,7 +9,10 @@ export default function Header() {
 
     useEffect(() => {
         current ? 
-            setNamesake(current.namesake) 
+            setNamesake({
+                ...current.namesake,
+                imageUrl: `https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/avatar.jpeg`
+            }) 
             : setNamesake({ 
                 name: 'What our clients say',
                 imageUrl: 'https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/favicon.ico',
