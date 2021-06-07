@@ -17,8 +17,15 @@ export default function Headshot({ person }) {
                     alt={person.project.name}
                     onClick={e => handleSelect(e, person.project)}
                 /> }
-            <img className="headshot" src={person.imageUrl || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'} alt={person.name} />
-            <button className="select">{person.name}</button>
+            <img 
+                className="headshot"
+                src={
+                    person.imageUrl ? 
+                        person.imageUrl.normalize("NFD").replace(/\p{Diacritic}/gu, "") 
+                        : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'} 
+                    alt={person.name} 
+                />
+                <button className="select">{person.name}</button>
         </div>
     )
 }
