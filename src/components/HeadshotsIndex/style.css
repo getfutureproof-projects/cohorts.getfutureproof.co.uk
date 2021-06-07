@@ -69,6 +69,7 @@
     grid-column: span 3;
     text-align: left;
     font-size: 1.3rem;
+    white-space: pre-line;
 }
 #summary_container h2 {
     font-size: 1.8rem;

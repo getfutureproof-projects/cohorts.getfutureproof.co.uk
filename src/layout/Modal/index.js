@@ -6,15 +6,22 @@ export default function Modal() {
     const { clearFeatured, featured, current, feature } = useCohort()
     const [ media, setMedia ] = useState()
 
+    
     useEffect(() => {
         if(featured.materials){
             let video = featured.materials.find(m => m.type === "video")
-            video && setMedia(`https://www.youtube-nocookie.com/embed/${video.url}?start=0&controls=1&autoplay=1`)
+            if(video){
+                setMedia(`https://www.youtube-nocookie.com/embed/${video.url}?start=0&controls=1&autoplay=1`)
+            } else {
+                setMedia(`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`)
+            }
         } else if (current.projects) {
             setMedia(`https://www.youtube-nocookie.com/embed/${current.projects.videoId}?start=${featured.startPoint}&controls=1&autoplay=1`)
         }
     }, [ featured ])
-
+    
+    const normalise = str => str.normalize("NFD").replace(/\p{Diacritic}/gu, "") 
+    
     const handleSelectMedia = (e, m) => {
         e.stopPropagation()
         switch(m.type) {
@@ -22,7 +29,7 @@ export default function Modal() {
                 setMedia(`https://www.youtube-nocookie.com/embed/${m.url}?start=0&controls=1&autoplay=1`);
                 break;
             case "cv":
-                setMedia(`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/cvs/${featured.name.replace(/\s/gu, "_")}.pdf`);
+                setMedia(`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`);
                 break;
             default:
                 setMedia(m.url)
