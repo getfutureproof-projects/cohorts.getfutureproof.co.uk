@@ -10,7 +10,11 @@ export default function Modal() {
     useEffect(() => {
         if(featured.materials){
             let video = featured.materials.find(m => m.type === "video")
-            video && setMedia(`https://www.youtube-nocookie.com/embed/${video.url}?start=0&controls=1&autoplay=1`)
+            if(video){
+                setMedia(`https://www.youtube-nocookie.com/embed/${video.url}?start=0&controls=1&autoplay=1`)
+            } else {
+                setMedia(`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`)
+            }
         } else if (current.projects) {
             setMedia(`https://www.youtube-nocookie.com/embed/${current.projects.videoId}?start=${featured.startPoint}&controls=1&autoplay=1`)
         }
