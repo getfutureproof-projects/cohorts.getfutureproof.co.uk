@@ -44,7 +44,7 @@ export default function Cohort() {
 
     return (
         <>
-        <SEO />
+        <SEO topic={current ? 'cohort' : 'index'}/>
         <article id="headshots">
             { loading && <h2>Loading cohort data...</h2> }
             { error && <h2><BackBtn path="/" /> {error}</h2> }
