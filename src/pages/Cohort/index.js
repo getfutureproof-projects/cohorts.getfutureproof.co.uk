@@ -17,7 +17,7 @@ export default function Cohort() {
                 try {
                     setLoading(true)
                     set(null)
-                    let { data } = await axios.get(`https://raw.githubusercontent.com/getfutureproof/fp_study_notes_hello_github/main/${cohortName.toLowerCase()}/roster.json`)
+                    let { data } = await axios.get(`https://raw.githubusercontent.com/getfutureproof/fp_study_notes_hello_github/update/q2-2021/${cohortName.toLowerCase()}/roster.json`)
                     if(data.projects){
                         for(let student of data.students) {
                             let project = data.projects[student.project]
@@ -38,6 +38,8 @@ export default function Cohort() {
         }
 
         fetchCohort()
+
+        return () => set(null)
     }, [cohortName, list])
 
     return (
