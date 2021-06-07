@@ -1,0 +1,60 @@
+#contact {
+    text-align: center;
+    width: 1232px;
+    padding: 0 0 100px 0;
+    margin: auto;
+}
+
+#contact button {
+    width: 100%;
+    cursor: pointer;
+    background-color: var(--fp-accent-plum);
+    border-radius: 25px;
+    color: white;
+    border: 0.5px solid var(--fp-opacity);
+    box-shadow: -1px 7px 18px 1px var(--fp-dark-steel);
+    padding: 10px;
+    margin-top: 0;
+    font-family: var(--fp-header-font);
+}
+
+#contact button:hover {
+    box-shadow: -1px 7px 10px 1px var(--fp-dark-steel);
+    margin-top: -1px;
+}
+
+/* Media queries */
+@media only screen and (max-width: 1300px) {
+    #contact {
+        width: 1024px;
+    }
+}
+
+@media only screen and (max-width: 1090px) {
+    #contact {
+        width: 816px;
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    #contact {
+        width: 608px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    #contact {
+        width: 336px;
+        padding: 5vh 0 15vh 0;
+    }
+    #contact button {
+        font-size: 0.7rem;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    #contact button {
+        font-size: 2.5rem;
+        white-space: pre-line;
+    }
+}

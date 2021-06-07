@@ -1,0 +1,25 @@
+{ 
+    "namesake": {
+        "name": "Robert Tappan Morris",
+        "imageUrl": "https://avatars.githubusercontent.com/t/4840675?s=192&v=4",
+        "videoId": "X-JJ9ksH_jQ"
+    },
+    "students": [
+        {
+            "name": "Beth Schofield",
+            "imageUrl": "https://avatars.githubusercontent.com/u/19947416?s=96&v=4"
+        },
+        {
+            "name": "Sophie Hebdidge",
+            "imageUrl": "https://avatars.githubusercontent.com/u/17166619?s=96&v=4"
+        },
+        {
+            "name": "Claire Cullimore",
+            "imageUrl": "https://avatars.githubusercontent.com/u/71597000?v=4"
+        },
+        {
+            "name": "Michael Laird",
+            "imageUrl": "https://avatars.githubusercontent.com/u/50699520?v=4"
+        }
+    ]
+}
