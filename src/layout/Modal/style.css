@@ -1,0 +1,111 @@
+/* Modal elements */
+#modal, #st-name, .btn-group, #icons { position: absolute; }
+#modal, .btn-group, #icons { display: flex; }
+.linkout, #overlay, iframe { height: 100%; }
+#overlay, #st-name, .btn-group, #content, iframe { width: 100%; }
+#overlay { background-color: var(--fp-opacity); }
+
+#overlay {
+    /* display: none; */
+    position: fixed;
+    top: 0; left: 0;
+    text-align: center;
+    z-index: 1;
+}
+
+#modal {
+    border: 1px solid var(--fp-opacity);
+    border-radius: 5px;
+    box-shadow: -1px 7px 18px 1px var(--fp-dark-petrol);
+    height: 80%; width: 80%; max-width: 1000px;
+    margin: auto; padding: 0;
+    background-color: var(--fp-main-aubergine);
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    overflow: scroll;
+    top:30%; left:50%;
+    transform:translate(-50%, -30%);
+    font-size: 1.5em;
+    color: white;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#modal a { 
+    color: inherit;
+    text-decoration: none;
+}
+
+#st-name { 
+    border: none;
+    top: 0; padding-top: 2%;
+    margin: 0;
+    height: 10%;
+}
+
+#st-cv {
+    text-transform: uppercase;
+}
+
+#content {
+    height: calc(80% - 20px);
+    margin-top: 20px;
+    box-shadow: -1px 7px 28px 1px var(--fp-dark-petrol);
+}
+
+.btn-group {
+    display: flex;
+    height: 10%;
+    bottom: 0;
+}
+
+.linkout {
+    width: 50%;
+    border: none;
+    color: inherit;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    outline: none;
+    background-color: inherit;
+    font-family: var(--fp-header-font);
+}
+.linkout:hover { background-color: var(--fp-accent-plum); }
+
+#icons {
+    color: inherit;
+    top: 10px; left: 10px;
+    height: 10%;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 20px);
+    font-size: 0.9rem;
+}
+#pop-out:hover { font-style: italic; }
+.fa-external-link-alt { padding-left: 5px; }
+i, #pop-out, .linkout { cursor: pointer; }
+
+/* Media queries */
+@media only screen and (max-height: 600px) {
+    #modal { font-size: 0.6rem; }
+    #st-name { font-size: 2em; padding-top: 1em;}
+    .linkout { font-size: 1.5em;}
+    #icons { 
+        font-size: 1.5em;
+        padding: 5px 10px;
+        top: 5px; left: 5px;
+        width: calc(100% - 10px);
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    #modal { font-size: 0.6rem; }
+    #st-name { font-size: 4em; padding-top: 1.7em;}
+    .linkout { font-size: 2.5em;}
+    #icons { 
+        font-size: 2em;
+        padding: 5px 10px;
+        top: 5px; left: 5px;
+        width: calc(100% - 10px);
+    }
+}

@@ -1,8 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css' 
+import { BrowserRouter as Router } from 'react-router-dom'
+import './index.css'
+import App from './App'
+import { CohortProvider } from './contexts/cohort'
 
 ReactDOM.render(
-  <h1>Coming Soon!</h1>,
+  <Router>
+    <CohortProvider>
+     <App />
+    </CohortProvider>
+  </Router>,
   document.getElementById('root')
 )
