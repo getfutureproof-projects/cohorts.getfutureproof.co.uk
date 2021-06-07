@@ -7,7 +7,7 @@ export default function NotFound() {
         <div id="oops">
             <h2>Oops!</h2>
             <p>That page does not exist! Let's go <Link to="/">home.</Link></p>
-            <BackBtn /> 
+            <BackBtn path="/" /> 
         </div>
     )
 }

@@ -45,7 +45,7 @@ export default function Cohort() {
         <SEO />
         <article id="headshots">
             { loading && <h2>Loading cohort data...</h2> }
-            { error && <h2><BackBtn /> {error}</h2> }
+            { error && <h2><BackBtn path="/" /> {error}</h2> }
             { current && <HeadshotsIndex />}
         </article>
         </>
