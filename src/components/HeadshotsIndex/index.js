@@ -26,7 +26,7 @@ export default function HeadshotsIndex() {
                 break;
         }
 
-        summary += current.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${current.previewEndDate.format("MMMM Do")}.`
+        summary += current.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${current.addMaterialsDate.format("MMMM Do")}.`
 
 
         return summary
