@@ -22,28 +22,37 @@ export function CohortProvider({ children }){
 
     async function fetchCohorts(){
         try {
-            let today = dayjs()
+            let today = dayjs().subtract(14, "weeks")
+            console.log(today)
             const { data } = await axios.get('https://raw.githubusercontent.com/getfutureproof-admin/cohorts/main/db.json')
             let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBefore(today.add(3, 'months')))
             let sorted = filtered.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
             let cohorts = sorted.map(c => {
                 let startDate = dayjs(c.startDate)
                 let previewEndDate = dayjs(c.startDate).add(1, 'weeks')
+                let addMaterialsDate = dayjs(c.startDate).add(4, "weeks")
                 let endDate = dayjs(c.startDate).add(13, 'weeks').subtract(3, 'days')
+                 
 
                 let status = 'preview'
                 let isLive = false
+                let showModal = false
                 if (startDate.isAfter(today)){
                     status = 'upcoming'
                 } else if (endDate.isBefore(today)) {
                     status = 'graduated'
                     isLive = true
+                    showModal = true
+                } else if (addMaterialsDate.isBefore(today)) {
+                    status = 'current'
+                    isLive = true
+                    showModal = true
                 } else if (previewEndDate.isBefore(today)) {
                     status = 'current'
                     isLive = true
                 }
                 
-                return { ...c, startDate, endDate, previewEndDate, status, isLive }
+                return { ...c, startDate, endDate, previewEndDate, addMaterialsDate, status, isLive, showModal }
             })
             setList(cohorts)
         } catch (e) {
