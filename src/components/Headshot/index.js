@@ -11,8 +11,14 @@ export default function Headshot({ person }) {
 
     const normalise = str => str.normalize("NFD").replace(/\p{Diacritic}/gu, "") 
 
+    const setClassNames = () => {
+        let classNames = ["img_container"]
+        current.showModal && classNames.push("active")
+        return classNames.join(" ")
+    }
+
     return (
-        <div className="img_container" onClick={current.isLive && (e => handleSelect(e, person))}>
+        <div className={setClassNames()} onClick={current.showModal ? (e => handleSelect(e, person)) : undefined}>
             { person.project && 
                 <img className="project_logo"
                     src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
