@@ -92,6 +92,12 @@
     }
 }
 
+@media only screen and (max-width: 1920px) {
+    #cohort-summary {
+        margin: 3px 0px;
+    }
+}
+
 @media only screen and (max-width: 1090px) {
     #container {
         width: 816px;
@@ -101,6 +107,10 @@
     #summary_container {
         grid-column: span 4;
     }
+
+   #cohort-summary {
+       margin: 3px 0px;
+   }
 }
 
 @media only screen and (max-width: 880px) {
