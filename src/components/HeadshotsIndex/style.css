@@ -77,11 +77,22 @@
 }
 
 /* Media queries */
+@media only screen and (max-width: 1920px) {
+
+    #container {
+        grid-template-columns: repeat(6, var(--squareSizeLarge));
+        grid-template-rows: repeat(5, var(--squareSizeLarge));
+    }
+    #cohort-summary {
+        margin: 3px 0px;
+    } 
+}
+
 @media only screen and (max-width: 1300px) {
     #container {
         width: 1024px;
         grid-template-columns: repeat(5, var(--squareSizeLarge));
-        grid-template-rows: repeat(4, var(--squareSizeLarge));
+        grid-template-rows: repeat(6, var(--squareSizeLarge));
     }
     #summary_container {
         grid-column: span 3;
@@ -92,17 +103,12 @@
     }
 }
 
-@media only screen and (max-width: 1920px) {
-    #cohort-summary {
-        margin: 3px 0px;
-    }
-}
 
 @media only screen and (max-width: 1090px) {
     #container {
         width: 816px;
         grid-template-columns: repeat(4, var(--squareSizeLarge));
-        grid-template-rows: repeat(5, var(--squareSizeLarge));
+        grid-template-rows: repeat(7, var(--squareSizeLarge));
     }
     #summary_container {
         grid-column: span 4;
@@ -117,7 +123,7 @@
     #container {
         width: 608px;
         grid-template-columns: repeat(3, var(--squareSizeLarge));
-        grid-template-rows: repeat(6, var(--squareSizeLarge));
+        grid-template-rows: repeat(7, var(--squareSizeLarge));
     }
     #summary_container {
         padding: 20px;
