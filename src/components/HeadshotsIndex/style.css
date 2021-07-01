@@ -16,7 +16,6 @@
 }
 .select {
     outline: none;
-    /* position: absolute; */
     position: relative;
     bottom: 30px;
     height: 20px;
