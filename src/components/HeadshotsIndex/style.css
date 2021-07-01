@@ -89,7 +89,7 @@
     #container {
         width: 1024px;
         grid-template-columns: repeat(5, var(--squareSizeLarge));
-        grid-template-rows: repeat(6, var(--squareSizeLarge));
+        grid-template-rows: repeat(3, var(--squareSizeLarge));
     }
     #summary_container {
         grid-column: span 3;
