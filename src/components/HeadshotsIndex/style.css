@@ -101,15 +101,11 @@
     #container {
         width: 816px;
         grid-template-columns: repeat(4, var(--squareSizeLarge));
-        grid-template-rows: repeat(7, var(--squareSizeLarge));
-    }
+        grid-template-rows: repeat(3, var(--squareSizeLarge));
+      }
     #summary_container {
         grid-column: span 4;
     }
-
-   #cohort-summary {
-       margin: 3px 0px;
-   }
 }
 
 @media only screen and (max-width: 880px) {
