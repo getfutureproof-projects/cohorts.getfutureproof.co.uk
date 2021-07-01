@@ -94,10 +94,6 @@
     #summary_container {
         grid-column: span 3;
     }
-
-    #cohort-summary {
-        margin: 3px 0px;
-    }
 }
 
 
