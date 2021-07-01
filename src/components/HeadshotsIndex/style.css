@@ -111,8 +111,7 @@
 @media only screen and (max-width: 880px) {
     #container {
         width: 608px;
-        grid-template-columns: repeat(3, var(--squareSizeLarge));
-        grid-template-rows: repeat(7, var(--squareSizeLarge));
+        grid-template-columns: repeat(3, var(--squareSizeLarge));;
     }
     #summary_container {
         padding: 20px;
