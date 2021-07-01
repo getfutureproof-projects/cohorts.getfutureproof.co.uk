@@ -1,9 +1,13 @@
 #cohorts {
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(300px, 380px));
+    /* grid-template-columns: repeat(3, 1fr); */
     padding: 3rem;
-    row-gap: 3rem;
+    grid-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    /* background-color: pink; */
 }
 
 #cohorts h2 {
@@ -11,14 +15,23 @@
 }
 
 .cohort-preview {
-    margin: 0 auto;
+    /* margin: 0 30px; */
+    padding: 0 30px;
     position: relative;
-    width: 80%;
-    height: 0;
-    padding: 18% 10% 62% 10%;
+    /* width: 200px; */
+    height: 200px; 
+    /* padding: 18% 10% 62% 10%; */
+    /* padding: 1rem 2rem; */
     font-size: 1.2rem;
     background-color: var(--fp-opacity);
+    line-height: 1.5;
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s;
+
 }
 
 .cohort-preview:hover {
@@ -30,15 +43,20 @@
 .cohort-preview .date {
     font-style: italic;
     font-size: 0.9em;
+    background-color: red;
 }
 
 .cohort-preview span {
     display: block;
-    margin: 10px 0;
+    margin: 5px 0px;
+    padding: 10px 20px;
+
     white-space: pre-line;
+    transform: translateY(-14px);
+
 }
 
-@media only screen and (orientation: portrait) {
+/* @media only screen and (orientation: portrait) {
     #cohorts {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -46,10 +64,24 @@
     .cohort-preview {
         font-size: 2rem;
     }
-}
+} */
 
 @media only screen and (max-width: 1040px) and (orientation: landscape) {
     .cohort-preview {
         font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #cohorts {
+        /* background-color: yellow; */
+        /* grid-template-columns: repeat(2, minxmax(200px, 1fr)); */
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cohort-preview span {
+        display: block;
+        /* margin: 10px 50px; */
+        padding: 10px 20px;
     }
 }
