@@ -118,6 +118,7 @@
         padding: 20px;
         grid-column: span 3;
         font-size: 1.3rem;
+        transform: translateY(-20px);
     }
     #summary_container h2 {
         font-size: 1.5rem;
@@ -126,14 +127,15 @@
 
 @media only screen and (max-width: 650px) {
     #container {
-        width: 100%;
+        width: 99%;
         display: block;
+        margin: 0 auto;
     }
     .img_container,
     .img_container .headshot {
         max-width: var(--squareSizeLarge);
         height: var(--squareSizeSmall);
-        margin: 0px 8px;
+        margin-right: 8px;
     }
     .img_container.active {
         margin: 0 10px;
@@ -142,9 +144,23 @@
     #summary_container {
         padding: 5px;
         font-size: 1.1rem;
+        margin: auto;
+        width: 90%;
     }
     #summary_container h2 {
         font-size: 1.4rem;
     }
 }
 
+@media only screen and (max-width: 477px) {
+    #summary_container {
+        transform: translateY(0);
+    }
+
+    .img_container,
+    .img_container .headshot {
+        max-width: 140px;
+        height: 140px;
+        margin: 0px 8px;
+    }
+}
