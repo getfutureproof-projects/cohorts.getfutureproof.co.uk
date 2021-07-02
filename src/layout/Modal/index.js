@@ -66,8 +66,8 @@ export default function Modal() {
         </iframe>)
     
     const renderGitHubStats = () => (<div id="github-stats">
-        <a href="https://github.com/Gingertonic" target="_blank" rel="noreferrer">Visit GitHub profile <span>➭</span></a>
-        <img src="https://github-readme-stats.vercel.app/api?username=gingertonic&show_icons=true&locale=en" alt="Github stats" />
+        <a href={`https://github.com/${featured.github}`} target="_blank" rel="noreferrer">Visit GitHub profile <span>➭</span></a>
+        <img src={`https://github-readme-stats.vercel.app/api?username=${featured.github}&show_icons=true&locale=en`} alt="Github stats" />
     </div>)
 
     const renderStudents = () => featured.students.map((s, i)=> (
