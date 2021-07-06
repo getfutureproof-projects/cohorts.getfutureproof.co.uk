@@ -29,6 +29,7 @@ body {
     display: block;
     margin: 0;
     text-align: center;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,6 +43,13 @@ main {
     background-size: cover;
     color: white;
     /* min-height: 80vh; */
+}
+
+@media screen and (max-width: 477px) {
+    main {
+        margin: 0 5px;
+        padding: 5vh 0;
+    }
 }
 
 main a {
