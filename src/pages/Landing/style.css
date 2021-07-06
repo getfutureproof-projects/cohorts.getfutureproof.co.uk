@@ -21,7 +21,28 @@
 
 @media screen and (max-width: 880px) {
     #greeting {
-        color: green;
         font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 477px) {
+    #greeting {
+        font-size: 2rem;
+        margin-top: 0px;
+    }
+    
+    h1 {
+        margin: -20px 0 20px 0;
+    }
+    
+    #summary {
+        max-width: 95%;
+        margin-bottom: 10px;
+    }
+
+    #summary p {
+        max-width: 95%;
+        margin: 18px auto;
+        font-size: 1.2rem;
     }
 }

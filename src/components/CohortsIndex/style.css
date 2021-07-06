@@ -1,13 +1,15 @@
 #cohorts {
     margin: auto;
     display: grid;
+    /* background-color: green; */
+    /* width: 110%; */
     grid-template-columns: repeat(4, minmax(300px, 380px));
     /* grid-template-columns: repeat(3, 1fr); */
     padding: 3rem;
     grid-gap: 1rem;
     align-items: center;
     justify-content: center;
-    /* background-color: pink; */
+    /* background-color: green; */
 }
 
 #cohorts h2 {
@@ -31,7 +33,6 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
-
 }
 
 .cohort-preview:hover {
@@ -42,8 +43,8 @@
 
 .cohort-preview .date {
     font-style: italic;
-    font-size: 0.9em;
-    background-color: red;
+    /* font-size: 0.9em; */
+    /* background-color: red; */
 }
 
 .cohort-preview span {
@@ -52,7 +53,7 @@
     padding: 10px 20px;
 
     white-space: pre-line;
-    transform: translateY(-14px);
+    /* transform: translateY(-14px); */
 
 }
 
@@ -68,7 +69,7 @@
 
 @media only screen and (max-width: 1040px) and (orientation: landscape) {
     .cohort-preview {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
 }
 
@@ -83,5 +84,68 @@
         display: block;
         /* margin: 10px 50px; */
         padding: 10px 20px;
+    }
+}
+
+
+@media only screen and (max-width: 880px) {
+    .cohort-preview span {
+        display: block;
+        /* margin: 10px 50px; */
+        padding: 5px 10px;
+        /* background-color:red; */
+    }
+}
+
+@media only screen and (max-width: 651px) {
+    #cohorts {
+        /* background-color: yellow; */
+        /* grid-template-columns: repeat(2, minxmax(200px, 1fr)); */
+        grid-template-columns: repeat(2, minmax(180px, 250px));
+        /* background: violet; */
+        /* display: block; */
+        grid-gap: 0.8rem;
+        /* margin: 10px auto; */
+        /* background-color: blue; */
+
+    }
+    
+    .cohort-preview {
+        /* width: 95%; */
+        line-height: 1.35;
+        font-size: 1.1rem;
+        /* margin-bottom: 20px; */
+        /* display: block; */
+        /* display:none; */
+        /* background-color: blue; */
+        padding: 0;
+
+    }
+
+    .cohort-preview span {
+        /* padding: 0px 20px; */
+        /* padding: 5px 10px; */
+        /* margin: 0px 0px; */
+        padding: 5px 5px;
+        /* width: 100%; */
+        /* display: inline-block; */
+        /* background-color: green; */
+
+
+        transform: translateY(0);
+
+    }
+}
+
+@media only screen and (max-width: 477px) {
+    #cohorts {
+        /* background-color: yellow; */
+        /* grid-template-columns: repeat(2, minxmax(200px, 1fr)); */
+        grid-template-columns: repeat(2, minmax(180px, 250px));
+        /* background: violet; */
+        /* display: block; */
+        grid-gap: 0.5rem;
+        padding: 0rem;
+
     }
 }
