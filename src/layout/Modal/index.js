@@ -34,6 +34,9 @@ export default function Modal() {
             case "cv":
                 setMedia(`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`);
                 break;
+            case "github":
+                setMedia("github");
+                break;
             default:
                 setMedia(m.url)
         }
@@ -45,11 +48,15 @@ export default function Modal() {
         feature(student)
     }
 
-    const renderMaterials = () => featured.materials.map((m, i)=> (
-        <button key={i} id={`st-${m.type.toLowerCase()}`} className="linkout" onClick={(e) => handleSelectMedia(e, m)}>
-            {m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
-        </button>
-    ))
+    const renderMaterials = () => (
+        [ ... featured.materials, { type: "github" }]
+            .sort((a, b) => a.type.localeCompare(b.type))
+            .map((m, i)=> (
+                <button key={i} id={`st-${m.type.toLowerCase()}`} className="linkout" onClick={(e) => handleSelectMedia(e, m)}>
+                    {m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
+                </button>
+            ))
+    )
 
     const renderContent = () => {
         if (media ==="github") return renderGitHubStats()
@@ -87,7 +94,7 @@ export default function Modal() {
                 </div>
 
                 <section className="btn-group" id="modal-btns">
-                    { featured.materials && featured.materials.length > 1 && renderMaterials() }
+                    { featured.materials && renderMaterials() }
                     { featured.students && renderStudents() }
                 </section>
 
