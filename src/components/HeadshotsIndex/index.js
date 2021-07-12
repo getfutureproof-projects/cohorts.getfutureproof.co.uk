@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
+import { useWindowSize } from '../../hooks/windowSize'
 import { Headshot, BackBtn } from '../'
 import './style.css'
 
 export default function HeadshotsIndex() {
     const { current } = useCohort()
+    const screen = useWindowSize()
+    const [ styles, setStyles ] = useState({ 
+        gridTemplateColumns: "repeat(2, auto)",
+        gridTemplateRows: "repeat(2, auto)"
+    })
+
+    useEffect(() => {
+        const calcStyles = () => {
+            let updates, numCols, summ;
+            if(screen.portrait){
+                updates = { 
+                    gridTemplateColumns: "repeat(2, auto)",
+                    gridTemplateRows: "repeat(2, auto)"
+                }
+            } else if(screen.width <= 1100){
+                numCols = 4;
+                summ = 4;
+            } else if (screen.width <= 1300){
+                numCols = 5;
+            } else if (screen.width <= 1920){
+                numCols = 6;
+            }
+            updates ||= {
+                gridTemplateColumns: `repeat(${numCols}, var(--squareSizeLarge))`,
+                gridTemplateRows: `repeat(${Math.ceil((current.students.length + (summ || 3)) / numCols)}, var(--squareSizeLarge))`,
+            }
+            setStyles(updates)
+        }
+
+        calcStyles()
+    }, [screen])
 
     const renderHeadshots = current.students.map((s, i) => <Headshot key={i} person={s}/>)
 
@@ -28,12 +60,11 @@ export default function HeadshotsIndex() {
 
         summary += current.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${current.addMaterialsDate.format("MMMM Do")}.`
 
-
         return summary
     }
 
     return (
-        <section id="container">
+        <section id="container" style={styles}>
                 <>
                 <div id="summary_container">
                     <h2><BackBtn path="/" /> {

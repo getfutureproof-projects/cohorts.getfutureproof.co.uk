@@ -49,7 +49,8 @@ export default function Modal() {
     }
 
     const renderMaterials = () => (
-        [ ... featured.materials, { type: "github" }]
+        [ ... featured.materials, featured.github && { type: "github" }]
+            .filter(x => !!x)
             .sort((a, b) => a.type.localeCompare(b.type))
             .map((m, i)=> (
                 <button key={i} id={`st-${m.type.toLowerCase()}`} className="linkout" onClick={(e) => handleSelectMedia(e, m)}>
