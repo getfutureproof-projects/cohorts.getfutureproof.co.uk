@@ -46,17 +46,26 @@
     opacity: 1;
 }
 
-.project_logo {
+.project_logo, .project_logo_placeholder {
     position: relative;
-    height: 24px !important;
-    z-index: 1;
     top: 5px;
     right: 2.5px;
     /* top: 20px; */
     transform: rotate(-90deg);
     transform-origin: right bottom;
-    opacity: 1 !important;
+    height: 24px !important;
+    z-index: 1;
+}
+
+.project_logo {
     border: 0.5px solid var(--fp-opacity) !important;
+    opacity: 1 !important;
+}
+
+.project_logo:hover {
+    transform: rotate(-45deg);
+    transform-origin: right top;
+    cursor: zoom-in;
 }
 
 /* Summary blurb */

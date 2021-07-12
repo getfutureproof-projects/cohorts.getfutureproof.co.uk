@@ -19,12 +19,13 @@ export default function Headshot({ person }) {
 
     return (
         <div className={setClassNames()} onClick={current.showModal ? (e => handleSelect(e, person)) : undefined}>
-            { person.project && 
-                <img className="project_logo"
-                    src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
-                    alt={person.project.name}
-                    onClick={e => handleSelect(e, person.project)}
-                /> }
+                { person.project ? 
+                    <img className="project_logo"
+                        src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
+                        alt={person.project.name}
+                        onClick={e => handleSelect(e, person.project)}
+                    /> : <div className="project_logo_placeholder"></div> }
+
                 <img 
                     className="headshot"
                     src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
