@@ -14,9 +14,13 @@ export default function HeadshotsIndex() {
 
     useEffect(() => {
         const calcStyles = () => {
-            if(screen.portrait) return
-            let numCols, summ;
-            if(screen.width <= 1100){
+            let updates, numCols, summ;
+            if(screen.portrait){
+                updates = { 
+                    gridTemplateColumns: "repeat(2, auto)",
+                    gridTemplateRows: "repeat(2, auto)"
+                }
+            } else if(screen.width <= 1100){
                 numCols = 4;
                 summ = 4;
             } else if (screen.width <= 1300){
@@ -24,7 +28,7 @@ export default function HeadshotsIndex() {
             } else if (screen.width <= 1920){
                 numCols = 6;
             }
-            let updates = {
+            updates ||= {
                 gridTemplateColumns: `repeat(${numCols}, var(--squareSizeLarge))`,
                 gridTemplateRows: `repeat(${Math.ceil((current.students.length + (summ || 3)) / numCols)}, var(--squareSizeLarge))`,
             }
