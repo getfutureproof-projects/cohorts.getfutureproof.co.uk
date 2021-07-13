@@ -25,7 +25,7 @@ export default function HeadshotsIndex() {
                 summ = 4;
             } else if (screen.width <= 1300){
                 numCols = 5;
-            } else if (screen.width <= 1920){
+            } else {
                 numCols = 6;
             }
             updates ||= {
