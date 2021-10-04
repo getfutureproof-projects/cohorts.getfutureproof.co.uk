@@ -4,6 +4,8 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
 
+const weeksOffset = process.env.WEEKS_OFFSET || 0;
+
 const CohortContext = React.createContext();
 
 export function useCohort(){
@@ -22,7 +24,7 @@ export function CohortProvider({ children }){
 
     async function fetchCohorts(){
         try {
-            let today = dayjs()
+            let today = dayjs().add(weeksOffset, 'weeks')
             const { data } = await axios.get('https://raw.githubusercontent.com/getfutureproof-admin/cohorts/main/db.json')
             let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBefore(today.add(3, 'months')))
             let sorted = filtered.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
