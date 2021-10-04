@@ -32,7 +32,7 @@ export function CohortProvider({ children }){
                 let startDate = dayjs(c.startDate)
                 let previewEndDate = dayjs(c.startDate).add(1, 'weeks')
                 let addMaterialsDate = dayjs(c.startDate).add(4, "weeks")
-                let endDate = dayjs(c.startDate).add(13, 'weeks').subtract(3, 'days')
+                let endDate = c.endDate ? dayjs(c.endDate) : dayjs(c.startDate).add(13, 'weeks').subtract(3, 'days')
                  
 
                 let status = 'preview'
