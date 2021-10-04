@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 
 export default function Headshot({ person }) {
     const { feature, current } = useCohort()
+    const [ cohort, setCohort ] = useState("")
+    const [ showModal, setShowModal ] = useState()
+    
+    useEffect(() => {
+        let cohort = person.cohort || current.name
+        let modal = person.cohort || current.showModal
+        setCohort(cohort)
+        setShowModal(modal)
+    }, [person])
+
 
     const handleSelect = (e, toFeature) => {
         e.stopPropagation()
@@ -13,22 +23,22 @@ export default function Headshot({ person }) {
 
     const setClassNames = () => {
         let classNames = ["img_container"]
-        current.showModal && classNames.push("active")
+        showModal && classNames.push("active")
         return classNames.join(" ")
     }
 
     return (
-        <div className={setClassNames()} onClick={current.showModal ? (e => handleSelect(e, person)) : undefined}>
+        <div className={setClassNames()} onClick={showModal ? (e => handleSelect(e, person)) : undefined}>
                 { person.project ? 
                     <img className="project_logo"
-                        src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
+                        src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${cohort.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
                         alt={person.project.name}
                         onClick={e => handleSelect(e, person.project)}
                     /> : <div className="project_logo_placeholder"></div> }
 
                 <img 
                     className="headshot"
-                    src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
+                    src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
                     onError={e => e.target.src = 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Placeholder_no_text.svg'}
                     alt={person.name} 
                 />

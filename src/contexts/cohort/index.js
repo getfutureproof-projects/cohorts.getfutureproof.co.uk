@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useParams } from 'react';
 import axios from 'axios';
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -18,6 +18,7 @@ export function CohortProvider({ children }){
     const [ list, setList ] = useState();
     const [ current, setCurrent ] = useState();
     const [ featured, setFeatured ] = useState();
+    const [ available, setAvailable ] = useState();
     const [ loading, setLoading ] = useState()
     const [ error, setError ] = useState()
 
@@ -43,7 +44,7 @@ export function CohortProvider({ children }){
                     previewEndDate: startDate.add(1, 'weeks'),
                     addMaterialsDate: startDate.add(4, "weeks"),
                     startInterviewsDate: endDate.subtract(4, "weeks"),
-                    bondEndDate: endDate.add(8, 'weeks'),
+                    bondEndDate: endDate.add(8, 'weeks')
                 }
                 
                 let descriptors = {
@@ -121,22 +122,25 @@ export function CohortProvider({ children }){
     }
 
     async function loadAvailable() {
-        try {
-            let interviewEligible = list.filter(c => c.isInterviewEligible);
-            setError(false)
-            setLoading(true)
-            set(null)
-            for (let cohort of interviewEligible){
-                let { students } = await fetchStudents(cohort.name)
-                let available = students.filter(s => !s.placement)
-                interviewEligible.push(...available)
+        if(list){
+            try {
+                let interviewEligible = []
+                let eligibleCohorts = list.filter(c => c.isInterviewEligible);
+                setError(false)
+                setLoading(true)
+                set(null)
+                for (let cohort of eligibleCohorts){
+                    let { students } = await fetchStudents(cohort.name)
+                    let unplaced = students.filter(s => !s.placement).map(s => ({ ...s, cohort: cohort.name }))
+                    interviewEligible.push(...unplaced)
+                }
+                setAvailable(interviewEligible)
+            } catch (e) {
+                setError(`Oops, there has been an error finding our students who are ready to interview!`)
+                console.error(e);
+            } finally {
+                setLoading(false)
             }
-            return interviewEligible
-        } catch (e) {
-            setError(`Oops, there has been an error finding our students who are ready to interview!`)
-            console.error(e);
-        } finally {
-            setLoading(false)
         }
     }
 
@@ -155,6 +159,7 @@ export function CohortProvider({ children }){
 
     const helpers = {
         list, set, current,
+        available,
         feature, featured, clearFeatured,
         loadCohort, loadAvailable,
         error, setError,
