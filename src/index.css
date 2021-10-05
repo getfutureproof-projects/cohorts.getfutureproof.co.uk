@@ -58,21 +58,24 @@ main a:hover {
     text-transform: capitalize;
 }
 
-#back-btn {
-    position: relative;
-    display: inline-block;
+.btn {
     cursor: pointer;
-    top: 5px;
-    margin-right: 10px;
-    font-size: 2em;
     transition: all 0.8s;
-    border-radius: 50%;
-    padding: 0 10px;
     box-shadow: 5px 5px var(--fp-dark-steel);
 }
 
-#back-btn:hover {
+.btn:hover {
     transform: translate(5px, 5px);
     transition: all 0.05s;
     box-shadow: 1px 1px var(--fp-dark-petrol);
+}
+
+#back-btn {
+    position: relative;
+    display: inline-block;
+    top: 5px;
+    margin-right: 10px;
+    font-size: 2em;
+    border-radius: 50%;
+    padding: 0 10px;
 }

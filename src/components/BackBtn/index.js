@@ -12,7 +12,7 @@ export default function BackBtn({ path }) {
     }
 
     return (
-        <span id="back-btn" onClick={handleClick}>
+        <span id="back-btn" class="btn" onClick={handleClick}>
             ⇦
         </span>
     )
