@@ -17,6 +17,13 @@
     --fp-opacity: rgba(255, 255, 255, 0.3);
     --fp-header-font: 'Quicksand', sans-serif;
     --fp-body-font: 'Work Sans', sans-serif;
+
+    --toastify-text-color-light: var(--fp-accent-cherry);
+    --toastify-font-family: var(--fp-body-font);
+}
+
+.Toastify__toast {
+    border: 1px solid var(--fp-accent-cherry);
 }
 
 * {
@@ -52,6 +59,10 @@ main a {
 
 main a:hover {
    text-decoration: dotted;
+}
+
+code {
+    background-color: yellow;
 }
 
 .name {
