@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \":( :( :( No tests! :( :( :(\" && exit 1",
     "dev": "webpack-cli serve --mode development --config config/webpack.config.dev.js",
-    "build": "webpack --config config/webpack.config.production.js",
-    "build-week-preview": "webpack --env.WEEKS_OFFSET=1 --config config/webpack.config.production.js"
+    "build": "webpack --config config/webpack.config.production.js"
   },
   "repository": {
     "type": "git",

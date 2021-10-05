@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext, useParams } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -6,7 +7,7 @@ import isBetween from 'dayjs/plugin/isBetween'
 dayjs.extend(relativeTime)
 dayjs.extend(isBetween)
 
-const weeksOffset = process.env.WEEKS_OFFSET || 0;
+const PREVIEW = process.env.CONTEXT !== 'production';
 
 const CohortContext = React.createContext();
 
@@ -19,8 +20,10 @@ export function CohortProvider({ children }){
     const [ current, setCurrent ] = useState();
     const [ featured, setFeatured ] = useState();
     const [ available, setAvailable ] = useState();
-    const [ loading, setLoading ] = useState()
-    const [ error, setError ] = useState()
+    const [ loading, setLoading ] = useState();
+    const [ error, setError ] = useState();
+
+    const options = new URLSearchParams(useLocation().search);
 
     useEffect(() => {
         fetchCohorts()
@@ -30,6 +33,10 @@ export function CohortProvider({ children }){
         try {
             setLoading(true)
             setError(false)
+            let weeksOffset = 0;
+            if(PREVIEW && options.get("offset")){
+                weeksOffset = options.get("offset")
+            }
             let today = dayjs().add(weeksOffset, 'weeks')
             const { data } = await axios.get('https://raw.githubusercontent.com/getfutureproof-admin/cohorts/main/db.json')
             let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBefore(today.add(3, 'months')))
