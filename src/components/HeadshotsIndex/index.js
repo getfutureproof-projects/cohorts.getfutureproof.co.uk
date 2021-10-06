@@ -19,7 +19,7 @@ export default function HeadshotsIndex({ showAvailable }) {
     
     useEffect(() => {
         let group = showAvailable ? ({
-            students: available,
+            students: available.reverse(),
             showModal: true,
             status: "available",
             isLive: true
