@@ -35,17 +35,10 @@ export default function Landing() {
                 action={() => history.push('/available')}
             />
 
-            <div id="summary">
-                {/* {formatText("Here you can see all our cohorts and find associate CVs, video introductions and portfolio links.")}
-                {formatText("For more information on futureproof or any of our associates, contact us below.")} */}
+            <div id="summary" className="italic">
                 <p>Here you can see all our cohorts and find associate CVs, video introductions and portfolio links.</p>
                 <p>For more information on futureproof or any of our associates, contact us below.</p>
             </div>
-
-            {/* <Button
-                text="See all associates currently open for consulations"
-                action={() => history.push('/available')}
-            /> */}
 
             <CohortsIndex />
         </>

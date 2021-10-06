@@ -2,10 +2,8 @@
     font-size: 4rem;
 }
 
-#summary {
+#summary, #cohort-summary {
     margin-top: 2rem;
-    font-style: italic;
-    /* color: var(--fp-opacity); */
     color: var(--fp-grey-medium);
 }
 

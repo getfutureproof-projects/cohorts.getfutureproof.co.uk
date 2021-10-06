@@ -132,7 +132,7 @@ export default function HeadshotsIndex({ showAvailable }) {
                     <h2><BackBtn path="/" /> 
                         { renderHeader() }
                     </h2>
-                    <p id="cohort-summary">{ renderSummary() }</p>
+                    <p id="cohort-summary" className="italic">{ renderSummary() }</p>
                 </div>
                 { data.isLive && renderHeadshots() }
                 </>

@@ -17,6 +17,7 @@
     --fp-opacity: rgba(255, 255, 255, 0.3);
     --fp-header-font: 'Quicksand', sans-serif;
     --fp-body-font: 'Work Sans', sans-serif;
+    --fp-custom-italic: skew(-5deg);
 
     --toastify-text-color-light: var(--fp-accent-cherry);
     --toastify-font-family: var(--fp-body-font);
@@ -63,6 +64,11 @@ main a:hover {
 
 code {
     background-color: yellow;
+}
+
+.italic {
+    transform: var(--fp-custom-italic);
+    -webkit-transform: var(--fp-custom-italic);
 }
 
 .name {
