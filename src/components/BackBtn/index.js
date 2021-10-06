@@ -12,7 +12,7 @@ export default function BackBtn({ path }) {
     }
 
     return (
-        <span id="back-btn" className="btn" onClick={handleClick}>
+        <span id="back-btn" className="btn" onClick={handleClick} style={{position: 'relative', left: '-20px'}}>
             ⇦
         </span>
     )
