@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
+import { S3_PUBLIC, PLACEHOLDER } from '../../_assets';
 
 export default function Headshot({ person }) {
     const { feature, current } = useCohort()
@@ -31,15 +32,15 @@ export default function Headshot({ person }) {
         <div className={setClassNames()} onClick={showModal ? (e => handleSelect(e, person)) : undefined}>
                 { person.project ? 
                     <img className="project_logo"
-                        src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${cohort.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
+                        src={`${S3_PUBLIC}/${cohort.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
                         alt={person.project.name}
                         onClick={e => handleSelect(e, person.project)}
                     /> : <div className="project_logo_placeholder"></div> }
 
                 <img 
                     className="headshot"
-                    src={`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
-                    onError={e => e.target.src = 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Placeholder_no_text.svg'}
+                    src={`${S3_PUBLIC}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
+                    onError={e => e.target.src = PLACEHOLDER}
                     alt={person.name} 
                 />
                 <button className="select">{person.name}</button>
