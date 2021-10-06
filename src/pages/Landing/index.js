@@ -7,24 +7,6 @@ import './style.css'
 export default function Landing() {
     const history = useHistory()
 
-    const formatText = (text) => {
-        let words = text.split(" ");
-        let perLine = Math.ceil(words.length/3);
-        let formatted = ""
-        let trackr = 0;
-        for(let word of words){
-            console.log(trackr, perLine);
-            formatted += `${word} `
-            if(trackr === perLine){
-                console.log('adding break after', word);
-                formatted += "\n"
-                trackr = 0;
-            }
-            trackr++
-        }
-        return <p style={{ whiteSpace: "pre-wrap"}}>{formatted}</p>;
-    }
-
     return (
         <>
             <SEO topic="index"/>
