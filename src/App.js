@@ -20,11 +20,11 @@ const App = () => {
                     <Pages.Landing />
                 </Route>
 
-                <Route exact path="/available">
+                <Route path="/available/:student?">
                     <Pages.Available />
                 </Route>
 
-                <Route exact path="/:cohortName">
+                <Route path="/:cohort/:student?">
                     <Pages.Cohort />
                 </Route>
 
