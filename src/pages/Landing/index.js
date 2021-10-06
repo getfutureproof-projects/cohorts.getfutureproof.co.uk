@@ -31,7 +31,7 @@ export default function Landing() {
             <h1 id="greeting" className="shimmer static">Welcome to futureproof!</h1>
 
             <Button
-                text="See all associates currently available for consulations"
+                text="See all associates currently available for interviews"
                 action={() => history.push('/available')}
             />
 

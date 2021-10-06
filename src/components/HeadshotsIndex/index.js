@@ -11,12 +11,12 @@ export default function HeadshotsIndex({ showAvailable }) {
     const [ data, setData ] = useState()
     
     const screen = useWindowSize()
-    const [ styles, setStyles ] = useState({ 
+    const [ containerStyles, setContainerStyles ] = useState({ 
         gridTemplateColumns: "repeat(2, auto)",
         gridTemplateRows: "repeat(2, auto)"
     })
+    const [ summaryStyles, setSummaryStyles ] = useState({})
 
-    
     useEffect(() => {
         let group = showAvailable ? ({
             students: available.reverse(),
@@ -36,34 +36,50 @@ export default function HeadshotsIndex({ showAvailable }) {
 
     useEffect(() => {
         const calcStyles = () => {
-            let updates, numCols, summ;
+            let containerUpdates, summaryUpdates, numCols;
             if(screen.portrait){
-                updates = { 
+                containerUpdates = { 
                     gridTemplateColumns: "repeat(2, auto)",
                     gridTemplateRows: "repeat(2, auto)"
                 }
             } else if(screen.width <= 1100){
                 numCols = 4;
-                summ = 4;
             } else if (screen.width <= 1300){
                 numCols = 5;
             } else {
                 numCols = 6;
             }
 
-            updates ||= { 
+            containerUpdates ||= { 
                 gridTemplateColumns: `repeat(${numCols}, var(--squareSizeLarge))`,
                 gridTemplateRows: "repeat(2, auto)"
             }
 
             if(data) {
-                updates = {
+                let summWidth = 4
+                let numRows = Math.ceil((data.students.length + summWidth) / numCols);
+    
+                if(showAvailable){
+                    summWidth = 6;
+                } else if ((data.students.length - 2) % numRows === 1) {
+                    summWidth = 3
+                }
+
+                numRows = Math.ceil((data.students.length + summWidth) / numCols);
+
+                summaryUpdates = {
+                    gridColumn: `span ${summWidth}`,
+                    textAlign: showAvailable ? 'center' : 'left'
+                }
+
+                containerUpdates = {
                     gridTemplateColumns: `repeat(${numCols}, var(--squareSizeLarge))`,
-                    gridTemplateRows: `repeat(${Math.ceil((data.students.length + (summ || 3)) / numCols)}, var(--squareSizeLarge))`,
+                    gridTemplateRows: `repeat(${numRows}, var(--squareSizeLarge))`,
                 }
             }
 
-            setStyles(updates)
+            setContainerStyles(containerUpdates)
+            setSummaryStyles(summaryUpdates)
         }
 
         calcStyles()
@@ -77,7 +93,7 @@ export default function HeadshotsIndex({ showAvailable }) {
     const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} person={s} loadStudent={loadStudent}/>)
 
     const renderHeader = () => {
-        let header = showAvailable && "Hello! We are open for consultation!"
+        let header = showAvailable && "Hello! We are now available for interviews!"
         header ||= data.isLive ? `Hello! We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
         return header
     }
@@ -109,10 +125,10 @@ export default function HeadshotsIndex({ showAvailable }) {
     }
 
     return (
-        <section id="container" style={styles}>
+        <section id="container" style={containerStyles}>
             {  data && data.students && (
                 <>
-                <div id="summary_container">
+                <div id="summary_container" style={summaryStyles}>
                     <h2><BackBtn path="/" /> 
                         { renderHeader() }
                     </h2>
