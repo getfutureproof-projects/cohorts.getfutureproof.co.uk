@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -23,6 +23,8 @@ export function CohortProvider({ children }){
     const [ loading, setLoading ] = useState();
     const [ error, setError ] = useState();
 
+    const history = useHistory();
+    const params = useParams();
     const options = new URLSearchParams(useLocation().search);
 
     useEffect(() => {
@@ -102,7 +104,7 @@ export function CohortProvider({ children }){
                     }
                 }
                 resolve ({
-                    name: cohortName[0].toUpperCase() + cohortName.slice(1).toLowerCase(),
+                    name: capitalise(cohortName),
                     ...data
                 })
             } catch (e) {
@@ -111,16 +113,26 @@ export function CohortProvider({ children }){
         });
     }
 
-    async function loadCohort(cohortName){
+    function slugify(name){
+        return name.toLowerCase().replace(/[^a-zA-Z]/g,"")
+    }
+
+    function capitalise(name){
+        return name[0].toUpperCase() + name.slice(1).toLowerCase()
+    }
+
+    async function loadCohort(cohort){
         if(list){
             try {
                 setError(false)
                 setLoading(true)
                 set(null)
-                let cohortData = await fetchStudents(cohortName)
+                let cohortData = await fetchStudents(cohort)
+                // let studentData = student && cohortData.students.find(s => slug(s.name) === slug(student))
                 set(cohortData)
+                // studentData ? feature(studentData) : history.push(`/${cohort}`)
             } catch (e) {
-                setError(`Oops, we can't find a cohort called ${cohortName[0].toUpperCase() + cohortName.slice(1).toLowerCase()}!`)
+                setError(`Oops, we can't find a cohort called ${capitalise(cohort)}!`)
                 console.error(e);
             } finally {
                 setLoading(false)
@@ -160,9 +172,31 @@ export function CohortProvider({ children }){
         }
     };
 
-    const feature = (feature) => setFeatured(feature)
+    const feature = (toFeature, entry) => {
+        if(current || available){
+            let entryPoint = slugify(entry);
+    
+            try {
+                let student, studentSlug;
+                let students = entryPoint === 'available' ? available : current.students;
+                student = toFeature.name ? toFeature : students.find(s => slugify(s.name) === slugify(toFeature));
+                // debugger
+                studentSlug = slugify(student.name);
+                !params.student && history.push(`/${entryPoint}/${studentSlug}`)
+                setFeatured({ ...student, closeTo: entryPoint })
+            } catch (err) {
+                console.warn(err);
+                history.push(`/${entryPoint}`);
+            }
+        }
+        // }
+    }
 
-    const clearFeatured = () => setFeatured(null)
+    const clearFeatured = () => {
+        let closeTo = featured.closeTo;
+        setFeatured(null)
+        history.push(`/${closeTo}`);
+    }
 
     const helpers = {
         list, set, current,

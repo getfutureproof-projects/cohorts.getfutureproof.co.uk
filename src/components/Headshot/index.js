@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { S3_PUBLIC, PLACEHOLDER } from '../../_assets';
 
-export default function Headshot({ person }) {
+export default function Headshot({ person, loadStudent }) {
     const { feature, current } = useCohort()
     const [ cohort, setCohort ] = useState("")
     const [ showModal, setShowModal ] = useState()
@@ -14,10 +14,9 @@ export default function Headshot({ person }) {
         setShowModal(modal)
     }, [person])
 
-
     const handleSelect = (e, toFeature) => {
         e.stopPropagation()
-        feature(toFeature)
+        loadStudent(toFeature)
     }
 
     const normalise = str => str.normalize("NFD").replace(/\p{Diacritic}/gu, "") 

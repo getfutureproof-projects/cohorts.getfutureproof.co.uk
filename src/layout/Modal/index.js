@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import { useCohort } from '../../contexts/cohort'
 import './style.css'
 
@@ -8,10 +9,10 @@ const YOUTUBE = "https://www.youtube-nocookie.com/embed"
 const YT_OPTS = "controls=1&autoplay=1"
 
 export default function Modal() {
-    const { clearFeatured, featured, current, feature } = useCohort()
+    const { featured, clearFeatured, current, feature } = useCohort()
     const [ media, setMedia ] = useState()
 
-    
+
     useEffect(() => {
         function selectInitMaterial(){
             if(featured.materials){
@@ -50,7 +51,7 @@ export default function Modal() {
     const handleSelectStudent = (e, st) => {
         e.stopPropagation()
         let student = current.students.find(s => s.name === st)
-        feature(student)
+        feature(student, current.name)
     }
 
     const renderMaterials = () => (

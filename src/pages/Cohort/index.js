@@ -5,14 +5,14 @@ import { BackBtn, HeadshotsIndex } from '../../components'
 import SEO from '../SEO'
 
 export default function Cohort() {
-    const { cohortName } = useParams()
-    const { list, set, current, loading, error, loadCohort } = useCohort()
+    const { cohort } = useParams();
+    const { list, set, current, loading, error, loadCohort } = useCohort();
 
     useEffect(() => {
-        loadCohort(cohortName)
+        loadCohort(cohort)
 
         return () => set(null)
-    }, [cohortName, list])
+    }, [list])
 
     return (
         <>

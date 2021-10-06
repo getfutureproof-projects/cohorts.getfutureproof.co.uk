@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useParams, useHistory } from 'react-router-dom';
 import { useCohort } from '../../contexts/cohort'
 import { useWindowSize } from '../../hooks/windowSize'
 import { Headshot, BackBtn } from '../'
-import './style.css'
+import './style.css';
 
 export default function HeadshotsIndex({ showAvailable }) {
-    const { current, available } = useCohort()
+    const { cohort, student } = useParams();
+    const history = useHistory();
+    const { current, available, feature } = useCohort()
     const [ data, setData ] = useState()
     
     const screen = useWindowSize()
@@ -14,16 +17,33 @@ export default function HeadshotsIndex({ showAvailable }) {
         gridTemplateRows: "repeat(2, auto)"
     })
 
+    
     useEffect(() => {
         let group = showAvailable ? ({
-                students: available,
-                showModal: true,
-                status: "available",
-                isLive: true
-            }) : current
-
+            students: available,
+            showModal: true,
+            status: "available",
+            isLive: true
+        }) : current
+        
         setData(group)
     }, [showAvailable])
+    
+    useEffect(() => {
+        if(student){
+            loadStudent(student);
+            // try {
+            //     // let studentData = data.students.find(s => slug(s.name) === slug(student));
+            //     // feature(studentData)
+            //     feature(student, showAvailable)
+            // } catch (err) {
+            //     console.warn(err);
+            //     let entryPoint = showAvailable ? '/available' : `/${cohort}`;
+            //     history.push(entryPoint);
+            // }
+        }
+        
+    }, [data]);
 
     useEffect(() => {
         const calcStyles = () => {
@@ -60,7 +80,12 @@ export default function HeadshotsIndex({ showAvailable }) {
         calcStyles()
     }, [screen, data])
 
-    const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} person={s}/>)
+    function loadStudent(toFeature){
+        let entryPoint = showAvailable ? 'available' : cohort;
+        feature(toFeature, entryPoint)
+    }
+
+    const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} person={s} loadStudent={loadStudent}/>)
 
     const renderHeader = () => {
         let header = showAvailable && "Hello! We are open for consultation!"
