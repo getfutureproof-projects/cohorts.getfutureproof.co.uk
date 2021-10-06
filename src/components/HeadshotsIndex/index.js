@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useCohort } from '../../contexts/cohort'
 import { useWindowSize } from '../../hooks/windowSize'
 import { Headshot, BackBtn } from '../'
@@ -7,7 +7,6 @@ import './style.css';
 
 export default function HeadshotsIndex({ showAvailable }) {
     const { cohort, student } = useParams();
-    const history = useHistory();
     const { current, available, feature } = useCohort()
     const [ data, setData ] = useState()
     
@@ -32,17 +31,7 @@ export default function HeadshotsIndex({ showAvailable }) {
     useEffect(() => {
         if(student){
             loadStudent(student);
-            // try {
-            //     // let studentData = data.students.find(s => slug(s.name) === slug(student));
-            //     // feature(studentData)
-            //     feature(student, showAvailable)
-            // } catch (err) {
-            //     console.warn(err);
-            //     let entryPoint = showAvailable ? '/available' : `/${cohort}`;
-            //     history.push(entryPoint);
-            // }
         }
-        
     }, [data]);
 
     useEffect(() => {

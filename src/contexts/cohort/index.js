@@ -128,9 +128,7 @@ export function CohortProvider({ children }){
                 setLoading(true)
                 set(null)
                 let cohortData = await fetchStudents(cohort)
-                // let studentData = student && cohortData.students.find(s => slug(s.name) === slug(student))
                 set(cohortData)
-                // studentData ? feature(studentData) : history.push(`/${cohort}`)
             } catch (e) {
                 setError(`Oops, we can't find a cohort called ${capitalise(cohort)}!`)
                 console.error(e);
@@ -180,7 +178,6 @@ export function CohortProvider({ children }){
                 let student, studentSlug;
                 let students = entryPoint === 'available' ? available : current.students;
                 student = toFeature.name ? toFeature : students.find(s => slugify(s.name) === slugify(toFeature));
-                // debugger
                 studentSlug = slugify(student.name);
                 !params.student && history.push(`/${entryPoint}/${studentSlug}`)
                 setFeatured({ ...student, closeTo: entryPoint })
@@ -189,7 +186,6 @@ export function CohortProvider({ children }){
                 history.push(`/${entryPoint}`);
             }
         }
-        // }
     }
 
     const clearFeatured = () => {

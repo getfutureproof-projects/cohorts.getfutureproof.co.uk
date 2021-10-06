@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import fakeRoster from './test/fakeRoster.json';
 import * as Layout from './layout';
 import * as Pages from './pages';
 import { useCohort } from './contexts/cohort';
