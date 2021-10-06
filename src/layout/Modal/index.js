@@ -10,7 +10,7 @@ const YT_OPTS = "controls=1&autoplay=1"
 export default function Modal() {
     const { featured, clearFeatured, current, feature } = useCohort()
     const [ media, setMedia ] = useState()
-    const [ cohort, setCohort ] = useState(() => current ? current.name : featured.cohort)
+    const [ cohort, ] = useState(() => current ? current.name : featured.cohort)
 
 
     useEffect(() => {
