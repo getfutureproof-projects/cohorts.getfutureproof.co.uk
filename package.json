@@ -4,7 +4,7 @@
   "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/1e089998-fdae-402b-b576-2008635c0cbf/deploy-status)](https://app.netlify.com/sites/futureproof-cohorts/deploys)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \":( :( :( No tests! :( :( :(\" && exit 1",
     "dev": "webpack-cli serve --mode development --config config/webpack.config.dev.js",
     "build": "webpack --config config/webpack.config.production.js"
   },
@@ -35,9 +35,11 @@
   "dependencies": {
     "axios": "^0.21.1",
     "dayjs": "^1.10.5",
+    "process": "^0.11.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-toastify": "^8.0.3"
   }
 }

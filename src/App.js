@@ -1,15 +1,16 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import fakeRoster from './test/fakeRoster.json';
+import { ToastContainer } from 'react-toastify';
 import * as Layout from './layout';
 import * as Pages from './pages';
 import { useCohort } from './contexts/cohort';
 
 const App = () => {
-    const { featured } = useCohort()
+    const { featured } = useCohort();
 
     return (
         <>
+            <ToastContainer />
             <Layout.Header />
 
             <main>
@@ -18,7 +19,11 @@ const App = () => {
                     <Pages.Landing />
                 </Route>
 
-                <Route exact path="/:cohortName">
+                <Route path="/available/:student?">
+                    <Pages.Available />
+                </Route>
+
+                <Route path="/:cohort/:student?">
                     <Pages.Cohort />
                 </Route>
 

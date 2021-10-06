@@ -17,6 +17,13 @@
     --fp-opacity: rgba(255, 255, 255, 0.3);
     --fp-header-font: 'Quicksand', sans-serif;
     --fp-body-font: 'Work Sans', sans-serif;
+
+    --toastify-text-color-light: var(--fp-accent-cherry);
+    --toastify-font-family: var(--fp-body-font);
+}
+
+.Toastify__toast {
+    border: 1px solid var(--fp-accent-cherry);
 }
 
 * {
@@ -54,25 +61,32 @@ main a:hover {
    text-decoration: dotted;
 }
 
+code {
+    background-color: yellow;
+}
+
 .name {
     text-transform: capitalize;
+}
+
+.btn {
+    cursor: pointer;
+    transition: all 0.8s;
+    box-shadow: 5px 5px var(--fp-dark-steel);
+}
+
+.btn:hover {
+    transform: translate(5px, 5px);
+    transition: all 0.05s;
+    box-shadow: 1px 1px var(--fp-dark-petrol);
 }
 
 #back-btn {
     position: relative;
     display: inline-block;
-    cursor: pointer;
     top: 5px;
     margin-right: 10px;
     font-size: 2em;
-    transition: all 0.8s;
     border-radius: 50%;
     padding: 0 10px;
-    box-shadow: 5px 5px var(--fp-dark-steel);
-}
-
-#back-btn:hover {
-    transform: translate(5px, 5px);
-    transition: all 0.05s;
-    box-shadow: 1px 1px var(--fp-dark-petrol);
 }

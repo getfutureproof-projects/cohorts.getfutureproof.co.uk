@@ -2,10 +2,18 @@
     font-size: 4rem;
 }
 
+#summary {
+    margin-top: 2rem;
+    font-style: italic;
+    /* color: var(--fp-opacity); */
+    color: var(--fp-grey-medium);
+}
+
 #summary p {
     max-width: 80%;
-    margin: 20px auto;
-    font-size: 1.5rem;
+    margin: auto;
+    font-size: 1.4rem;
+    font-family: var(--fp-header-font);
 }
 
 /* Media queries */
@@ -17,4 +25,16 @@
     #summary {
         margin-bottom: 50px;
     }
+
+    #summary p {
+        font-size: 1.2rem;
+        max-width: 90%;
+        margin: 50px auto;
+        /* text-align: justify; */
+        /* text-align: right; */
+    }
+
+    /* #summary p:first-of-type {
+        text-align: left;
+    } */
 }
