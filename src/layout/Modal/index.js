@@ -10,6 +10,7 @@ const YT_OPTS = "controls=1&autoplay=1"
 export default function Modal() {
     const { featured, clearFeatured, current, feature } = useCohort()
     const [ media, setMedia ] = useState()
+    const [ cohort, ] = useState(() => current ? current.name : featured.cohort)
 
 
     useEffect(() => {
@@ -18,7 +19,7 @@ export default function Modal() {
                 let video = featured.materials.find(m => m.type === "video")
                 let cv = featured.materials.find(m => m.type === "cv")
                 if(video) return `${YOUTUBE}/${video.url}?start=0&${YT_OPTS}`;
-                if(cv) return `${S3_PUBLIC}/${current.name.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`;
+                if(cv) return `${S3_PUBLIC}/${cohort.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`;
             } else if (current.projects) {
                 return `${YOUTUBE}/${current.projects.videoId}?start=${featured.startPoint}&${YT_OPTS}`;
             }
@@ -37,7 +38,7 @@ export default function Modal() {
                 setMedia(`${YOUTUBE}/${m.url}?start=0&${YT_OPTS}`);
                 break;
             case "cv":
-                setMedia(`${S3_PUBLIC}/${current.name.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`);
+                setMedia(`${S3_PUBLIC}/${cohort.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`);
                 break;
             case "github":
                 setMedia("github");
