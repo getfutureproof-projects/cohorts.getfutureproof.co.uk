@@ -28,7 +28,7 @@ export default function CohortsIndex() {
                         <Link to={`/${c.name}`} key={c.name}>
                             <div className="cohort-preview">
                                 <span className="name">{c.name}</span>
-                                <span className="date">{formatEndDate(c)}</span>
+                                <span className="date italic">{formatEndDate(c)}</span>
                             </div>
                         </Link>
                     )) }

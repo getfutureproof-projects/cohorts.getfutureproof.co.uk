@@ -1,51 +1,113 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import { useCohort } from '../../contexts/cohort'
 import { useWindowSize } from '../../hooks/windowSize'
 import { Headshot, BackBtn } from '../'
-import './style.css'
+import './style.css';
 
-export default function HeadshotsIndex() {
-    const { current } = useCohort()
+export default function HeadshotsIndex({ showAvailable }) {
+    const { cohort, student } = useParams();
+    const { current, available, feature } = useCohort()
+    const [ data, setData ] = useState()
+    
     const screen = useWindowSize()
-    const [ styles, setStyles ] = useState({ 
+    const [ containerStyles, setContainerStyles ] = useState({ 
         gridTemplateColumns: "repeat(2, auto)",
         gridTemplateRows: "repeat(2, auto)"
     })
+    const [ summaryStyles, setSummaryStyles ] = useState({})
+
+    useEffect(() => {
+        let group = showAvailable ? ({
+            students: available.reverse(),
+            showModal: true,
+            status: "available",
+            isLive: true
+        }) : current
+        
+        setData(group)
+    }, [showAvailable])
+    
+    useEffect(() => {
+        if(student){
+            loadStudent(student);
+        }
+    }, [data]);
 
     useEffect(() => {
         const calcStyles = () => {
-            let updates, numCols, summ;
+            let containerUpdates, summaryUpdates, numCols;
             if(screen.portrait){
-                updates = { 
+                containerUpdates = { 
                     gridTemplateColumns: "repeat(2, auto)",
                     gridTemplateRows: "repeat(2, auto)"
                 }
-            } else if(screen.width <= 1100){
+            } else if(screen.width <= 1300){
                 numCols = 4;
-                summ = 4;
-            } else if (screen.width <= 1300){
-                numCols = 5;
+            // } else if (screen.width <= 1300){
+            //     numCols = 5;
             } else {
                 numCols = 6;
             }
-            updates ||= {
+
+            containerUpdates ||= { 
                 gridTemplateColumns: `repeat(${numCols}, var(--squareSizeLarge))`,
-                gridTemplateRows: `repeat(${Math.ceil((current.students.length + (summ || 3)) / numCols)}, var(--squareSizeLarge))`,
+                gridTemplateRows: "repeat(2, auto)"
             }
-            setStyles(updates)
+
+            if(!screen.portrait && data) {
+                let summWidth = 4
+                let numRows = Math.ceil((data.students.length + summWidth) / numCols);
+    
+                if(showAvailable){
+                    // summWidth = screen.width <= 1300 ? 5 : 6;
+                    summWidth = 6
+                } else if (screen.width > 1300 && (data.students.length - 2) % numRows === 1) {
+                    summWidth = 3
+                }
+
+                numRows = Math.ceil((data.students.length + summWidth) / numCols);
+
+                summaryUpdates = {
+                    gridColumn: `span ${summWidth}`,
+                    textAlign: showAvailable ? 'center' : 'left'
+                }
+
+                containerUpdates = {
+                    gridTemplateColumns: `repeat(${numCols}, var(--squareSizeLarge))`,
+                    gridTemplateRows: `repeat(${numRows}, var(--squareSizeLarge))`,
+                }
+            }
+
+            setContainerStyles(containerUpdates)
+            setSummaryStyles(summaryUpdates)
         }
 
         calcStyles()
-    }, [screen])
+    }, [screen, data])
 
-    const renderHeadshots = current.students.map((s, i) => <Headshot key={i} person={s}/>)
+    function loadStudent(toFeature){
+        let entryPoint = showAvailable ? 'available' : cohort;
+        feature(toFeature, entryPoint)
+    }
+
+    const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} person={s} loadStudent={loadStudent}/>)
+
+    const renderHeader = () => {
+        let header = showAvailable && "Hello! We are now available for interviews!"
+        header ||= data.isLive ? `Hello! We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
+        return header
+    }
 
     const renderSummary = () => {
         let summary;
 
-        switch(current.status){
+        switch(data.status){
+            case 'available':
+                summary = 'We have been working hard and are excited to join a commercial team!'
+                break;
             case 'graduated':
-                summary = `We graduated on ${current.endDate.format("MMMM Do YYYY")}!`
+                summary = `We graduated on ${data.endDate.format("MMMM Do YYYY")}!`
                 break;
             case 'current':
                 summary = "We're currently honing our skills on futureproof's 13 week course!"
@@ -54,29 +116,28 @@ export default function HeadshotsIndex() {
                 summary = `We recently started our course and are working hard!`
                 break;
             case 'upcoming':
-                summary = `We are excited to start our course on ${current.startDate.format("MMMM Do YYYY")}!`
+                summary = `We are excited to start our course on ${data.startDate.format("MMMM Do YYYY")}!`
                 break;
         }
 
-        summary += current.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${current.addMaterialsDate.format("MMMM Do")}.`
+        summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
 
         return summary
     }
 
     return (
-        <section id="container" style={styles}>
+        <section id="container" style={containerStyles}>
+            {  data && data.students && (
                 <>
-                <div id="summary_container">
-                    <h2><BackBtn path="/" /> {
-                        current.isLive ? 
-                            `Hello! We are the ${current.name} cohort.`
-                            : `The ${current.name} cohort is coming soon!`
-}                   </h2>
-                    <p id="cohort-summary">{ renderSummary() }</p>
+                <div id="summary_container" style={summaryStyles}>
+                    <h2><BackBtn path="/" /> 
+                        { renderHeader() }
+                    </h2>
+                    <p id="cohort-summary" className="italic">{ renderSummary() }</p>
                 </div>
-                { current.isLive && renderHeadshots }
+                { data.isLive && renderHeadshots() }
                 </>
-
-        </section>
+            )}  
+        </section>        
     )
 }

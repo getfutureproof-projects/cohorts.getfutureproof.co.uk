@@ -18,6 +18,9 @@ export default function SEO({topic}) {
                 description = `Showcasing the futureproof ${current.name} cohort`; break;
             case 'error':
                 title = 'Oops!'; break;
+            case 'available':
+                title = 'Available';
+                description = `These futureproofers are ready to interview now!`; break;
             default:;
                 title = 'Cohorts'; break;
         }

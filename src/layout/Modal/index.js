@@ -2,20 +2,26 @@ import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import './style.css'
 
-export default function Modal() {
-    const { clearFeatured, featured, current, feature } = useCohort()
-    const [ media, setMedia ] = useState()
+import { S3_PUBLIC } from '../../_assets';
 
-    
+const YOUTUBE = "https://www.youtube-nocookie.com/embed"
+const YT_OPTS = "controls=1&autoplay=1"
+
+export default function Modal() {
+    const { featured, clearFeatured, current, feature } = useCohort()
+    const [ media, setMedia ] = useState()
+    const [ cohort, ] = useState(() => current ? current.name : featured.cohort)
+
+
     useEffect(() => {
         function selectInitMaterial(){
             if(featured.materials){
                 let video = featured.materials.find(m => m.type === "video")
                 let cv = featured.materials.find(m => m.type === "cv")
-                if(video) return `https://www.youtube-nocookie.com/embed/${video.url}?start=0&controls=1&autoplay=1`;
-                if(cv) return `https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`;
+                if(video) return `${YOUTUBE}/${video.url}?start=0&${YT_OPTS}`;
+                if(cv) return `${S3_PUBLIC}/${cohort.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`;
             } else if (current.projects) {
-                return `https://www.youtube-nocookie.com/embed/${current.projects.videoId}?start=${featured.startPoint}&controls=1&autoplay=1`;
+                return `${YOUTUBE}/${current.projects.videoId}?start=${featured.startPoint}&${YT_OPTS}`;
             }
             return "github"
         }
@@ -29,10 +35,10 @@ export default function Modal() {
         e.stopPropagation()
         switch(m.type) {
             case "video": 
-                setMedia(`https://www.youtube-nocookie.com/embed/${m.url}?start=0&controls=1&autoplay=1`);
+                setMedia(`${YOUTUBE}/${m.url}?start=0&${YT_OPTS}`);
                 break;
             case "cv":
-                setMedia(`https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/${current.name.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`);
+                setMedia(`${S3_PUBLIC}/${cohort.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`);
                 break;
             case "github":
                 setMedia("github");
@@ -45,7 +51,7 @@ export default function Modal() {
     const handleSelectStudent = (e, st) => {
         e.stopPropagation()
         let student = current.students.find(s => s.name === st)
-        feature(student)
+        feature(student, current.name)
     }
 
     const renderMaterials = () => (
