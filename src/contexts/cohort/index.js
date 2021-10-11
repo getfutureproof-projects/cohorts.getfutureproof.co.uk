@@ -52,7 +52,7 @@ export function CohortProvider({ children }){
                     endDate,
                     previewEndDate: startDate.add(1, 'weeks'),
                     addMaterialsDate: startDate.add(4, "weeks"),
-                    startInterviewsDate: endDate.subtract(4, "weeks"),
+                    startInterviewsDate: endDate.subtract(6, "weeks"),
                     bondEndDate: endDate.add(8, 'weeks')
                 }
                 
