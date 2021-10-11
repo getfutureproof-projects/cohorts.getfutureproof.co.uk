@@ -9,7 +9,9 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import './index.css'
 
 import { ICON } from './_assets';
-const PREVIEW = process.env.CONTEXT !== 'production';
+
+// TO-DO: access Netlify env vars
+const PREVIEW = false; // process.env.CONTEXT !== 'production';
 
 ReactDOM.render(
   <Router>
