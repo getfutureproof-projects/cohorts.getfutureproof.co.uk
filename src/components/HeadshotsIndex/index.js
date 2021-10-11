@@ -42,10 +42,10 @@ export default function HeadshotsIndex({ showAvailable }) {
                     gridTemplateColumns: "repeat(2, auto)",
                     gridTemplateRows: "repeat(2, auto)"
                 }
-            } else if(screen.width <= 1100){
+            } else if(screen.width <= 1300){
                 numCols = 4;
-            } else if (screen.width <= 1300){
-                numCols = 5;
+            // } else if (screen.width <= 1300){
+            //     numCols = 5;
             } else {
                 numCols = 6;
             }
@@ -60,8 +60,9 @@ export default function HeadshotsIndex({ showAvailable }) {
                 let numRows = Math.ceil((data.students.length + summWidth) / numCols);
     
                 if(showAvailable){
-                    summWidth = 6;
-                } else if ((data.students.length - 2) % numRows === 1) {
+                    // summWidth = screen.width <= 1300 ? 5 : 6;
+                    summWidth = 6
+                } else if (screen.width > 1300 && (data.students.length - 2) % numRows === 1) {
                     summWidth = 3
                 }
 
