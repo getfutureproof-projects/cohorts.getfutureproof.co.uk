@@ -96,7 +96,7 @@
         width: 1024px;
     }
     #summary_container {
-        grid-column: span 3;
+        grid-column: span 3 !important;
     }
 
     #cohort-summary {
@@ -110,7 +110,7 @@
         width: 816px;
     }
     #summary_container {
-        grid-column: span 4;
+        grid-column: span 4 !important;
     }
 
    #cohort-summary {
@@ -124,7 +124,7 @@
     }
     #summary_container {
         padding: 20px;
-        grid-column: span 3;
+        grid-column: span 3 !important;
         font-size: 1.3rem;
     }
     #summary_container h2 {
@@ -144,7 +144,7 @@
     }
     #summary_container {
         padding: 5px;
-        grid-column: span 2;
+        grid-column: span 2 !important;
         font-size: 1.1rem;
     }
     #summary_container h2 {
@@ -165,7 +165,7 @@
     }
     #summary_container {
         padding: 5px;
-        grid-column: span 2;
+        grid-column: span 2 !important;
         font-size: 1.1rem;
     }
     #summary_container h2 {
@@ -182,7 +182,7 @@
     #summary_container {
         display: flex;
         flex-direction: column;
-        grid-column: span 2;
+        grid-column: span 2 !important;
         text-align: left;
         font-size: 2rem;
     }

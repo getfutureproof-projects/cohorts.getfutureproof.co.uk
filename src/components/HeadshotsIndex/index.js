@@ -55,7 +55,7 @@ export default function HeadshotsIndex({ showAvailable }) {
                 gridTemplateRows: "repeat(2, auto)"
             }
 
-            if(data) {
+            if(!screen.portrait && data) {
                 let summWidth = 4
                 let numRows = Math.ceil((data.students.length + summWidth) / numCols);
     
