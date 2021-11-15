@@ -17,9 +17,9 @@ export default function Modal() {
         function selectInitMaterial(){
             if(featured.materials){
                 let video = featured.materials.find(m => m.type === "video")
-                let cv = featured.materials.find(m => m.type === "cv")
+                let profile = featured.materials.find(m => m.type === "cv" || m.type === "profile")
                 if(video) return `${YOUTUBE}/${video.url}?start=0&${YT_OPTS}`;
-                if(cv) return `${S3_PUBLIC}/${cohort.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`;
+                if(profile) return `${S3_PUBLIC}/${cohort.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`;
             } else if (current.projects) {
                 return `${YOUTUBE}/${current.projects.videoId}?start=${featured.startPoint}&${YT_OPTS}`;
             }
@@ -39,6 +39,9 @@ export default function Modal() {
                 break;
             case "cv":
                 setMedia(`${S3_PUBLIC}/${cohort.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`);
+                break;
+            case "profile":
+                setMedia(`${S3_PUBLIC}/${cohort.toLowerCase()}/profiles/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`);
                 break;
             case "github":
                 setMedia("github");
@@ -60,7 +63,7 @@ export default function Modal() {
             .sort((a, b) => a.type.localeCompare(b.type))
             .map((m, i)=> (
                 <button key={i} id={`st-${m.type.toLowerCase()}`} className="linkout" onClick={(e) => handleSelectMedia(e, m)}>
-                    {m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
+                    {m.type === "cv" ? "Profile" : m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
                 </button>
             ))
     )
