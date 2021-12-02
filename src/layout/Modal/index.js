@@ -19,7 +19,7 @@ export default function Modal() {
                 let video = featured.materials.find(m => m.type === "video")
                 let profile = featured.materials.find(m => m.type === "cv" || m.type === "profile")
                 if(video) return `${YOUTUBE}/${video.url}?start=0&${YT_OPTS}`;
-                if(profile) return `${S3_PUBLIC}/${cohort.toLowerCase()}/${m.type}s/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`;
+                if(profile) return `${S3_PUBLIC}/${cohort.toLowerCase()}/${profile.type}s/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`;
             } else if (current.projects) {
                 return `${YOUTUBE}/${current.projects.videoId}?start=${featured.startPoint}&${YT_OPTS}`;
             }
