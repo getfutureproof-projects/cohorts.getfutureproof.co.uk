@@ -15,7 +15,7 @@ export default function Header() {
             }) 
             : setNamesake({ 
                 name: 'What our clients say',
-                imageUrl: FP.ICON,
+                imageUrl: FP.DEVICE,
                 materials: [
                     { type: 'video', url: 'f5RNSRC7NP4' }
                 ]

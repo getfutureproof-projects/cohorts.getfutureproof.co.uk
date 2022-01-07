@@ -1,98 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&family=Work+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400&family=Work+Sans:wght@300&display=swap");
 /* font-family: 'Quicksand', sans-serif; */
 
 /* Variables */
 :root {
-    --squareSizeLarge: 192px;
-    --squareSizeSmall: 160px;
-    --fp-main-aubergine: #35205c;
-    --fp-accent-plum: #7d4098;
-    --fp-dark-petrol: #0b3954;
-    --fp-dark-steel: #181d2c;
-    --fp-dark-steel-op: rgba(24, 29, 44, 0.8);
-    --fp-grey-light: #e9e3e6;
-    --fp-grey-medium: #959193;
-    --fp-accent-cherry: #cc2936;
-    --fp-accent-apple: #0bbc62;
-    --fp-opacity: rgba(255, 255, 255, 0.3);
-    --fp-header-font: 'Quicksand', sans-serif;
-    --fp-body-font: 'Work Sans', sans-serif;
-    --fp-custom-italic: skew(-5deg);
-
-    --toastify-text-color-light: var(--fp-accent-cherry);
-    --toastify-font-family: var(--fp-body-font);
+  --squareSizeLarge: 192px;
+  --squareSizeSmall: 160px;
+  /* --fp-main-aubergine: #35205c;
+  --fp-accent-plum: #7d4098;
+  --fp-dark-petrol: #0b3954;
+  --fp-dark-steel: #181d2c;
+  --fp-dark-steel-op: rgba(24, 29, 44, 0.8);
+  --fp-grey-light: #e9e3e6;
+  --fp-grey-medium: #959193;
+  --fp-accent-cherry: #cc2936;
+  --fp-accent-apple: #0bbc62;
+  --fp-opacity: rgba(255, 255, 255, 0.3);
+  --fp-header-font: "Quicksand", sans-serif;
+  --fp-body-font: "Work Sans", sans-serif;
+  --fp-custom-italic: skew(-5deg); */
+  /* 
+  --toastify-text-color-light: var(--fp-accent-cherry);
+  --toastify-font-family: var(--fp-body-font); */
 }
 
 .Toastify__toast {
-    border: 1px solid var(--fp-accent-cherry);
+  border: 1px solid var(--fp-accent-cherry);
 }
 
-* {
-    box-sizing: border-box;
-}
+/* * {
+  box-sizing: border-box;
+} */
 
 body {
-    font-family: var(--fp-body-font);
-    color: var(--fp-main-aubergine);
-    display: block;
-    margin: 0;
-    text-align: center;
+  /* font-family: var(--fp-body-font);
+  color: var(--fp-main-aubergine); */
+  display: block;
+  margin: 0;
+  text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--fp-header-font);
-}
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fp-header-font);
+} */
 
 main {
-    margin: 20px;
-    padding: 10vh 0;
-    background: url('https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/futureproof-stars.jpg');
-    background-size: cover;
-    color: white;
-    /* min-height: 80vh; */
+  margin: 20px;
+  padding: 10vh 0;
+  /* background-color: ; */
+  /* background: url("https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/futureproof-stars.jpg"); */
+  /* background-size: cover; */
+  /* color: white; */
+  /* min-height: 80vh; */
 }
 
 main a {
-    color: white;
-    text-shadow: 0.5px 0.5px var(--fp-accent-cherry);
-    text-decoration: none;
+  color: white;
+  text-shadow: 0.5px 0.5px var(--fp-accent-cherry);
+  text-decoration: none;
 }
 
 main a:hover {
-   text-decoration: dotted;
+  text-decoration: dotted;
 }
 
 code {
-    background-color: yellow;
+  background-color: yellow;
 }
 
 .italic {
-    transform: var(--fp-custom-italic);
-    -webkit-transform: var(--fp-custom-italic);
+  transform: var(--fp-custom-italic);
+  -webkit-transform: var(--fp-custom-italic);
 }
 
 .name {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .btn {
-    cursor: pointer;
-    transition: all 0.8s;
-    box-shadow: 5px 5px var(--fp-dark-steel);
+  cursor: pointer;
+  transition: all 0.8s;
+  box-shadow: 5px 5px var(--fp-dark-steel);
 }
 
 .btn:hover {
-    transform: translate(5px, 5px);
-    transition: all 0.05s;
-    box-shadow: 1px 1px var(--fp-dark-petrol);
+  transform: translate(5px, 5px);
+  transition: all 0.05s;
+  box-shadow: 1px 1px var(--fp-dark-petrol);
 }
 
 #back-btn {
-    position: relative;
-    display: inline-block;
-    top: 5px;
-    margin-right: 10px;
-    font-size: 2em;
-    border-radius: 50%;
-    padding: 0 10px;
+  position: relative;
+  display: inline-block;
+  top: 5px;
+  margin-right: 10px;
+  font-size: 2em;
+  border-radius: 50%;
+  padding: 0 10px;
 }

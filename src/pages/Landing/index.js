@@ -1,6 +1,8 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import { CohortsIndex, Button } from '../../components'
+// import { CohortsIndex, Button } from '../../components'
+import { CohortsIndex } from '../../components'
+import { Button, Heading } from '@getfutureproof/fpsb'
 import SEO from '../SEO'
 import './style.css'
 
@@ -10,11 +12,12 @@ export default function Landing() {
     return (
         <>
             <SEO topic="index"/>
-            <h1 id="greeting" className="shimmer static">Welcome to futureproof!</h1>
+            {/* <h1 id="greeting" className="shimmer static">Welcome to futureproof!</h1> */}
+            <Heading size="large" content="Welcome to futureproof!" />
 
             <Button
-                text="See all associates currently available for interviews"
-                action={() => history.push('/available')}
+                label="See all associates currently available for interviews"
+                onClick={() => history.push('/available')}
             />
 
             <div id="summary" className="italic">
