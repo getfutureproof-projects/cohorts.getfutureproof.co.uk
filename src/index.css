@@ -27,9 +27,9 @@
   border: 1px solid var(--fp-accent-cherry);
 }
 
-/* * {
+* {
   box-sizing: border-box;
-} */
+}
 
 body {
   /* font-family: var(--fp-body-font);

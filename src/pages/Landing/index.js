@@ -18,6 +18,7 @@ export default function Landing() {
             <Button
                 label="See all associates currently available for interviews"
                 onClick={() => history.push('/available')}
+                style={{ margin: '0 auto' }}
             />
 
             <div id="summary" className="italic">
