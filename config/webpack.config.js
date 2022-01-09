@@ -47,6 +47,13 @@ const config = {
         test: /\.(png|svg|jpg|gif|pdf)$/,
         use: ['file-loader'],
       }, // transpile image files
+      {
+        test: /\.(ttf|otf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: './fonts/[name][ext]'
+        }
+      }, // transpile image files
     ],
   },
 };

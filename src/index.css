@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400&family=Work+Sans:wght@300&display=swap");
 /* font-family: 'Quicksand', sans-serif; */
+@font-face {
+  font-family: "FK Screamer Legacy";
+  src: local("FKScreamerLegacy"), url("./fonts/FKScreamerLegacy-Upright.ttf"),
+    format("truetype");
+}
+@font-face {
+  font-family: "Work Sans";
+  src: local("WorkSans"), url("./fonts/WorkSans-VariableFont_wght.ttf"),
+    format("truetype");
+}
 
 /* Variables */
 :root {
@@ -39,15 +49,18 @@ body {
   text-align: center;
 }
 
-/* h1,
+h1,
 h2,
-h3,
+h3 {
+  font-family: "FK Screamer Legacy" !important;
+}
+
 h4,
 h5,
-h6 {
-  font-family: var(--fp-header-font);
-} */
-
+h6,
+p {
+  font-family: "Work Sans" !important;
+}
 main {
   margin: 20px;
   padding: 10vh 0;

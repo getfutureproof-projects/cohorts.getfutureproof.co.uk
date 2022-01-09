@@ -13,8 +13,10 @@ export default function Landing() {
         <>
             <SEO topic="index"/>
             {/* <h1 id="greeting" className="shimmer static">Welcome to futureproof!</h1> */}
-            <Heading size="large" content="Welcome to futureproof!" />
-
+            <Heading
+                size="xlarge"
+                content="Welcome to futureproof!" />
+                
             <Button
                 label="See all associates currently available for interviews"
                 onClick={() => history.push('/available')}
