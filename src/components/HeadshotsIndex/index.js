@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useCohort } from '../../contexts/cohort'
 import { useWindowSize } from '../../hooks/windowSize'
 import { Headshot, BackBtn } from '../'
+import { Heading } from '@getfutureproof/fpsb'
 import './style.css';
 
 export default function HeadshotsIndex({ showAvailable }) {
@@ -130,9 +131,11 @@ export default function HeadshotsIndex({ showAvailable }) {
             {  data && data.students && (
                 <>
                 <div id="summary_container" style={summaryStyles}>
-                    <h2><BackBtn path="/" /> 
-                        { renderHeader() }
-                    </h2>
+                    {/* <BackBtn path="/" /> */}
+                    <Heading
+                        size="large"
+                        content={renderHeader()}
+                    />
                     <p id="cohort-summary" className="italic">{ renderSummary() }</p>
                 </div>
                 { data.isLive && renderHeadshots() }
