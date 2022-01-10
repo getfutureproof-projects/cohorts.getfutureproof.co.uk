@@ -143,14 +143,14 @@ export default function HeadshotsIndex({ showAvailable }) {
                     <p id="cohort-summary">
                         {
                             showAvailable ? (
-                                <Section>
+                                <div style={{display: 'flex', justifyContent: 'center'}}>
                                         <Card
                                         shadow inverted
                                         colorway='lime'
                                     >
                                         {renderSummary()}
                                     </Card>
-                                </Section>
+                                </div>
                             ):(<Card
                                 shadow inverted
                                 colorway='lime'

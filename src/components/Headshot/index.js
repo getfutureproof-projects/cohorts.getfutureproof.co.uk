@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { S3_PUBLIC, PLACEHOLDER } from '../../_assets';
+import { Button, colors } from '@getfutureproof/fpsb'
 
 export default function Headshot({ person, loadStudent }) {
     const { feature, current } = useCohort()
@@ -42,7 +43,8 @@ export default function Headshot({ person, loadStudent }) {
                     onError={e => e.target.src = PLACEHOLDER}
                     alt={person.name} 
                 />
-                <button className="select">{person.name}</button>
+                <button className="select" style={{backgroundColor: colors.purple}}>{person.name}</button>
+
         </div>
     )
 }
