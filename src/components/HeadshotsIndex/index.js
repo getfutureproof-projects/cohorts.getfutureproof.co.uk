@@ -5,6 +5,8 @@ import { useWindowSize } from '../../hooks/windowSize'
 import { Headshot, BackBtn } from '../'
 import { Heading } from '@getfutureproof/fpsb'
 import './style.css';
+import { Card } from '../../forsb/Card';
+import { Section } from '../../forsb/Section'
 
 export default function HeadshotsIndex({ showAvailable }) {
     const { cohort, student } = useParams();
@@ -136,7 +138,28 @@ export default function HeadshotsIndex({ showAvailable }) {
                         size="large"
                         content={renderHeader()}
                     />
-                    <p id="cohort-summary" className="italic">{ renderSummary() }</p>
+                    {/* <p id="cohort-summary" className="italic">{ renderSummary() }</p> */}
+                    {/* <Section> */}
+                    <p id="cohort-summary">
+                        {
+                            showAvailable ? (
+                                <Section>
+                                        <Card
+                                        shadow inverted
+                                        colorway='lime'
+                                    >
+                                        {renderSummary()}
+                                    </Card>
+                                </Section>
+                            ):(<Card
+                                shadow inverted
+                                colorway='lime'
+                            >
+                                {renderSummary()}
+                            </Card>)
+                        }   
+                    </p>
+                    {/* </Section> */}
                 </div>
                 { data.isLive && renderHeadshots() }
                 </>

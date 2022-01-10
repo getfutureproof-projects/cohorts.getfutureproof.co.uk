@@ -18,7 +18,7 @@ import { colors } from '@getfutureproof/fpsb';
 //     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 // }
 
-export const Card = ({ children, type='info', shadow=false, inverted=false, colorway='purple', ...props })=> {
+export const Card = ({ children, type='info', maxWidth='fit-content', shadow=false, inverted=false, colorway='purple', ...props })=> {
     let isDefault = colorway === 'purple';
     let contrast = isDefault ? 'white' : colorway;
     let bgColor = inverted ? contrast : 'purple';
@@ -31,7 +31,7 @@ export const Card = ({ children, type='info', shadow=false, inverted=false, colo
                 backgroundColor: colors[bgColor],
                 boxShadow: shadow ? `-10px 10px ${colors.purple}` : 'none',
                 color: colors[textColor], textAlign: 'left', fontWeight: 800,
-                maxWidth: '30%', padding: '10px 20px', fontSize: '0.9em'
+                maxWidth: maxWidth, padding: '25px 30px', fontSize: '0.9em'
             }} >
                 {children}
         </div>

@@ -6,6 +6,7 @@ import { Button, Heading } from '@getfutureproof/fpsb'
 import { Card } from '../../forsb/Card'
 import SEO from '../SEO'
 import './style.css'
+import { Section } from '../../forsb/Section'
 
 export default function Landing() {
     const history = useHistory()
@@ -24,12 +25,13 @@ export default function Landing() {
                 style={{ margin: '0 auto' }}
             />
 
-            <div style={{display: 'flex', justifyContent: 'space-around', margin: '40px', padding: '30px'}}>
+            <Section>
                 <Card 
                     variant='info'
                     shadow
                     inverted
                     colorway='lemon'
+                    maxWidth='30%'
                 >
                     Here you can see all our cohorts and find associate profiles.
                 </Card>
@@ -39,10 +41,11 @@ export default function Landing() {
                     shadow
                     colorway='coral'
                     inverted
+                    maxWidth='30%'
                 >
                     For more information on futureproof or any of our associates, contact us below.
                 </Card>
-            </div>
+            </Section>
 
             {/* <div id="summary" className="italic">
                 <p>Here you can see all our cohorts and find associate profiles.</p>
