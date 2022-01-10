@@ -30,6 +30,7 @@ export default function Header() {
                 <img
                     id="namesake" src={namesake.imageUrl}
                     alt={namesake.name}
+                    onError={e => e.target.src = FP.DEVICE}
                     onClick={() => history.push('/')}/>
                     // onClick={() => feature(namesake)}/>
             )}
