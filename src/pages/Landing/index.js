@@ -17,7 +17,7 @@ export default function Landing() {
             {/* <h1 id="greeting" className="shimmer static">Welcome to futureproof!</h1> */}
             <Heading
                 size="xlarge"
-                content="Welcome to futureproof!" />
+                content="Meet the futureproof cohorts!" />
                 
             <Button
                 label="See all associates currently available for interviews"
