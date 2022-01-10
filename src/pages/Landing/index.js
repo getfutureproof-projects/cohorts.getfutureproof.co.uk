@@ -24,7 +24,7 @@ export default function Landing() {
                 style={{ margin: '0 auto' }}
             />
 
-            <div style={{display: 'flex', justifyContent: 'space-around', margin: '40px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-around', margin: '40px', padding: '30px'}}>
                 <Card 
                     variant='info'
                     shadow

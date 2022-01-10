@@ -31,7 +31,7 @@ export const Card = ({ children, type='info', shadow=false, inverted=false, colo
                 backgroundColor: colors[bgColor],
                 boxShadow: shadow ? `-10px 10px ${colors.purple}` : 'none',
                 color: colors[textColor], textAlign: 'left', fontWeight: 800,
-                maxWidth: '40%', padding: '10px 20px', fontSize: '0.8em'
+                maxWidth: '30%', padding: '10px 20px', fontSize: '0.9em'
             }} >
                 {children}
         </div>
