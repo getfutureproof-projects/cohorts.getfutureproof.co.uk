@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import * as Layout from './layout';
 import * as Pages from './pages';
 import { useCohort } from './contexts/cohort';
+import { colors } from '@getfutureproof/fpsb';
 
 const App = () => {
     const { featured } = useCohort();
@@ -13,7 +14,7 @@ const App = () => {
             <ToastContainer />
             <Layout.Header />
 
-            <main>
+            <main style={{ backgroundColor: colors.violet, color: colors.purple }}>
             <Switch>
                 <Route exact path="/">
                     <Pages.Landing />
