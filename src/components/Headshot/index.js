@@ -29,12 +29,12 @@ export default function Headshot({ person, loadStudent }) {
 
     return (
         <div className={setClassNames()} onClick={showModal ? (e => handleSelect(e, person)) : undefined}>
-                { person.project ? 
+                {/* { person.project ? 
                     <img className="project_logo"
                         src={`${S3_PUBLIC}/${cohort.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
                         alt={person.project.name}
                         onClick={e => handleSelect(e, person.project)}
-                    /> : <div className="project_logo_placeholder"></div> }
+                    /> : <div className="project_logo_placeholder"></div> } */}
 
                 <img 
                     className="headshot"
