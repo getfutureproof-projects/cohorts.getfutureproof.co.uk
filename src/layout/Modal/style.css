@@ -70,7 +70,9 @@ iframe {
   top: 0;
   padding-top: 2%;
   margin: 0;
+  margin-top: 10px;
   height: 10%;
+  font-size: 1.8em;
 }
 
 #st-profile {
@@ -113,7 +115,7 @@ iframe {
   letter-spacing: 1px;
   outline: none;
   background-color: inherit;
-  font-family: var(--fp-header-font);
+  font-family: "FK Screamer Legacy";
 }
 .linkout:hover {
   background-color: var(--fp-accent-plum);
