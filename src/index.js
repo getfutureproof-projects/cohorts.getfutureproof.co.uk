@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import App from './App'
 import { CohortProvider } from './contexts/cohort';
+import { GlobalStyle } from "@getfutureproof/fpsb";
 
 import 'react-toastify/dist/ReactToastify.min.css';
 import './index.css'
@@ -15,6 +16,7 @@ const PREVIEW = false; // process.env.CONTEXT !== 'production';
 
 ReactDOM.render(
   <Router>
+    <GlobalStyle />
     <CohortProvider>
      <App />
     </CohortProvider>

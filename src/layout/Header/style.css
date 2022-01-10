@@ -1,53 +1,55 @@
 header {
-    display: flex;
-    margin-top: 5%;
-    margin-bottom: 5px;
-    width: 100vw;
-    padding: 0 calc((100vw - 1232px) / 2);
-    position: relative;
-    justify-content: space-between;
+  display: flex !important;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  width: 100vw;
+  padding: 0 calc((100vw - 1232px) / 2);
+  position: relative;
+  justify-content: space-between;
+  align-content: center;
+  /* border: 2px solid blue; */
 }
 
 #namesake {
-    height: 80px;
-    border: 1px solid var(--fp-opacity);
-    box-shadow: -1px 1px 5px 1px var(--fp-grey-medium);
-    cursor: pointer;
+  height: 80px;
+  border: 1px solid var(--fp-opacity);
+  box-shadow: -1px 1px 5px 1px var(--fp-grey-medium);
+  cursor: pointer;
 }
 
 header #logo {
-    justify-self: right;
-    align-self: center;
-    cursor: pointer;
-    margin-right: -20px;
-    height: 60px;
+  justify-self: right;
+  align-self: center;
+  cursor: pointer;
+  margin-right: -20px;
+  height: 60px;
 }
 
 /* Media queries */
 @media only screen and (max-width: 1300px) {
-    header {
-        padding: 0 calc((100vw - 1024px) / 2);
-    }
+  header {
+    padding: 0 calc((100vw - 1024px) / 2);
+  }
 }
 
 @media only screen and (max-width: 1090px) {
-    header {
-        padding: 0 calc((100vw - 816px) / 2);
-    }
+  header {
+    padding: 0 calc((100vw - 816px) / 2);
+  }
 }
 
 @media only screen and (max-width: 880px) {
-    header {
-        padding: 0 calc((100vw - 608px) / 2);
-    }
+  header {
+    padding: 0 calc((100vw - 608px) / 2);
+  }
 }
 
 @media only screen and (max-width: 650px) {
-    header {
-        padding: 0 calc((100vw - 336px) / 2);
-    }
-    #namesake,
-    #logo {
-        height: 40px;
-    }
+  header {
+    padding: 0 calc((100vw - 336px) / 2);
+  }
+  #namesake,
+  #logo {
+    height: 40px;
+  }
 }

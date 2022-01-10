@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { S3_PUBLIC, PLACEHOLDER } from '../../_assets';
+import { Button, colors } from '@getfutureproof/fpsb'
 
 export default function Headshot({ person, loadStudent }) {
     const { feature, current } = useCohort()
@@ -29,12 +30,12 @@ export default function Headshot({ person, loadStudent }) {
 
     return (
         <div className={setClassNames()} onClick={showModal ? (e => handleSelect(e, person)) : undefined}>
-                { person.project ? 
+                {/* { person.project ? 
                     <img className="project_logo"
                         src={`${S3_PUBLIC}/${cohort.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
                         alt={person.project.name}
                         onClick={e => handleSelect(e, person.project)}
-                    /> : <div className="project_logo_placeholder"></div> }
+                    /> : <div className="project_logo_placeholder"></div> } */}
 
                 <img 
                     className="headshot"
@@ -42,7 +43,8 @@ export default function Headshot({ person, loadStudent }) {
                     onError={e => e.target.src = PLACEHOLDER}
                     alt={person.name} 
                 />
-                <button className="select">{person.name}</button>
+                <button className="select" style={{backgroundColor: colors.purple}}>{person.name}</button>
+
         </div>
     )
 }

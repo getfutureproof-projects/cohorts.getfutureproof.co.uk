@@ -1,38 +1,39 @@
 #greeting {
-    font-size: 4rem;
+  font-size: 4rem;
 }
 
-#summary, #cohort-summary {
-    margin-top: 2rem;
-    color: var(--fp-grey-medium);
+#summary,
+#cohort-summary {
+  /* margin-top: 2rem; */
+  color: var(--fp-grey-medium);
 }
 
 #summary p {
-    max-width: 80%;
-    margin: auto;
-    font-size: 1.4rem;
-    font-family: var(--fp-header-font);
+  max-width: 80%;
+  margin: auto;
+  font-size: 0.7em;
+  font-family: var(--fp-header-font);
 }
 
 /* Media queries */
 @media only screen and (orientation: portrait) {
-    h1 {
-        margin: -50px 0 50px 0;
-    }
+  h1 {
+    margin: -50px 0 50px 0;
+  }
 
-    #summary {
-        margin-bottom: 50px;
-    }
+  #summary {
+    margin-bottom: 50px;
+  }
 
-    #summary p {
-        font-size: 1.2rem;
-        max-width: 90%;
-        margin: 50px auto;
-        /* text-align: justify; */
-        /* text-align: right; */
-    }
+  #summary p {
+    font-size: 0.6em;
+    max-width: 90%;
+    margin: 50px auto;
+    /* text-align: justify; */
+    /* text-align: right; */
+  }
 
-    /* #summary p:first-of-type {
+  /* #summary p:first-of-type {
         text-align: left;
     } */
 }

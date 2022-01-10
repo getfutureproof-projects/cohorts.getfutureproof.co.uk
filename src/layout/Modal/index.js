@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
+import { colors, Heading } from '@getfutureproof/fpsb';
 import './style.css'
 
 import { S3_PUBLIC } from '../../_assets';
@@ -95,8 +96,14 @@ export default function Modal() {
 
     return (
         <div id="overlay" onClick={clearFeatured}>
-            <section id="modal">
-                <h1 id="st-name">{featured.name}</h1>
+            <section
+                id="modal" 
+                style={{
+                    backgroundColor: colors.purple
+                }}>
+
+                <h2 id='st-name'>{featured.name}</h2>
+
                 <div id="icons">
                     <span onClick={clearFeatured} style={{ cursor: "pointer" }}>✖</span>
                     { media !=="github" && 
