@@ -2,13 +2,11 @@
 /* font-family: 'Quicksand', sans-serif; */
 @font-face {
   font-family: "FK Screamer Legacy";
-  src: local("FKScreamerLegacy"), url("./fonts/FKScreamerLegacy-Upright.ttf"),
-    format("truetype");
+  src: url("./fonts/FKScreamerLegacy-Upright.ttf"), format("truetype");
 }
 @font-face {
   font-family: "Work Sans";
-  src: local("WorkSans"), url("./fonts/WorkSans-VariableFont_wght.ttf"),
-    format("truetype");
+  src: url("./fonts/WorkSans-VariableFont_wght.ttf"), format("truetype");
 }
 
 /* Variables */
