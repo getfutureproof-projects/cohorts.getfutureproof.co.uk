@@ -3,10 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useCohort } from '../../contexts/cohort'
 import { useWindowSize } from '../../hooks/windowSize'
 import { Headshot, BackBtn } from '../'
-import { Heading } from '@getfutureproof/fpsb'
+import { Heading, Card } from '@getfutureproof/fpsb'
 import './style.css';
-import { Card } from '../../forsb/Card';
-import { Section } from '../../forsb/Section'
 
 export default function HeadshotsIndex({ showAvailable }) {
     const { cohort, student } = useParams();

@@ -1,16 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Card } from '../../forsb/Card'
+import { useNavigate } from 'react-router-dom'
 import { useCohort } from '../../contexts/cohort';
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 dayjs.extend(advancedFormat)
 
 import './style.css'
-import { colors } from '@getfutureproof/fpsb';
+import { Card, colors } from '@getfutureproof/fpsb';
 
 export default function CohortsIndex() {
     let { list, error } = useCohort();
+    const navigate = useNavigate();
 
     const formatEndDate = cohort => {
         let formatted = cohort.endDate.format("MMMM Do YYYY")
@@ -26,13 +26,18 @@ export default function CohortsIndex() {
 
             { list && (
                 <>
-                    { list.map(c => (
-                        <Link to={`/${c.name}`} key={c.name}>
-                            <div className="cohort-preview" style={{backgroundColor: colors.purple}}>
-                                <span className="name">{c.name}</span>
-                                <span className="date italic">{formatEndDate(c)}</span>
-                            </div>
-                        </Link>
+                    { list.map(c => (  
+                        <Card
+                            key={c.name}
+                            colorway="purple"
+                            title={c.name}
+                            variant="square"
+                            width="200px"
+                            shadow
+                            onClick={() => navigate(`/${c.name}`)}
+                        >
+                            {formatEndDate(c)}
+                        </Card>
                     )) }
                 </>
             )}
@@ -40,3 +45,11 @@ export default function CohortsIndex() {
         </article>
     )
 }
+
+
+        // <Link to={`/${c.name}`} key={c.name}>
+                        //     <div className="cohort-preview" style={{backgroundColor: colors.purple}}>
+                        //         <span className="name">{c.name}</span>
+                        //         <span className="date italic">{formatEndDate(c)}</span>
+                        //     </div>
+                        // </Link>

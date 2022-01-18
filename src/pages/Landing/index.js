@@ -1,12 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
-// import { CohortsIndex, Button } from '../../components'
 import { CohortsIndex } from '../../components'
-import { Button, Heading } from '@getfutureproof/fpsb'
-import { Card } from '../../forsb/Card'
+import { Button, Heading, Section, Card } from '@getfutureproof/fpsb'
 import SEO from '../SEO'
 import './style.css'
-import { Section } from '../../forsb/Section'
 
 export default function Landing() {
     const navigate = useNavigate()
@@ -15,37 +12,40 @@ export default function Landing() {
         <>
             <SEO topic="index"/>
             {/* <h1 id="greeting" className="shimmer static">Welcome to futureproof!</h1> */}
-            <Heading
-                size="xlarge"
-                content="Meet the futureproof cohorts!" />
-                
-            <Button
-                label="See all associates currently available for interviews"
-                onClick={() => navigate('/available')}
-                style={{ margin: '0 auto' }}
-            />
-
-            <Section>
-                <Card 
-                    variant='info'
-                    shadow
-                    inverted
+            <Section justifyContent='center'>
+                <Heading
+                    size="xlarge"
+                    content="Meet the futureproof cohorts!" />
+                    
+                <Button
+                    label="See all associates currently available for interviews"
+                    onClick={() => navigate('/available')}
                     colorway='lemon'
-                    maxWidth='30%'
-                >
+                    inverted
+                    shadow
+                />
+</Section>
+                <Section direction='ltr' justifyContent='center'>
+                <Card
+                    variant='info'
+                    inverted
+                    colorway='lime'
+                    width='200px'
+                    >
                     Here you can see all our cohorts and find associate profiles.
                 </Card>
                 
                 <Card 
                     variant='info'
-                    shadow
                     colorway='coral'
                     inverted
-                    maxWidth='30%'
-                >
+                    width='200px'
+                    >
                     For more information on futureproof or any of our associates, contact us below.
                 </Card>
             </Section>
+
+            <Section bgColor='purple' direction='ltr' justifyContent='center'>
 
             {/* <div id="summary" className="italic">
                 <p>Here you can see all our cohorts and find associate profiles.</p>
@@ -53,6 +53,7 @@ export default function Landing() {
             </div> */}
 
             <CohortsIndex />
+            </Section>
         </>
     )
 }
