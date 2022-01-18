@@ -15,25 +15,17 @@ const App = () => {
             <ToastContainer />
             <Header />
 
-            {/* <main style={{ backgroundColor: colors.violet, color: colors.purple }}> */}
             <main>
-            {/* <Routes>
-                <Route path="/" element={<App />}>
-                    <Route index element={<Home />} />
-                    <Route path="teams" element={<Teams />}>
-                    <Route path=":teamId" element={<Team />} />
-                    <Route path="new" element={<NewTeamForm />} />
-                    <Route index element={<LeagueStandings />} />
-                    </Route>
-                </Route>
-            </Routes> */}
-
             <Routes>
                 <Route exact path="/" element={<Pages.Landing />} />
 
-                <Route path="/available/:student?" element={<Pages.Available />} />
+                <Route path="/available" element={<Pages.Available />}>
+                    <Route path=":student" />
+                </Route>
 
-                <Route path="/:cohort/:student?" element={<Pages.Cohort />} />
+                <Route path="/:cohort" element={<Pages.Cohort />}>
+                    <Route path=":student" />
+                </Route>
 
                 <Route element={<Pages.NotFound />} />
             </Routes>
