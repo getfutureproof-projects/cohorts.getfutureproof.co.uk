@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useCohort } from '../../contexts/cohort';
 import * as FP from '../../_assets';
 import './style.css'
@@ -7,7 +7,7 @@ import './style.css'
 export default function Header() {
     const { current, feature } = useCohort()
     const [ namesake, setNamesake ] = useState()
-    const history = useHistory()
+    const navigate = useNavigate()
 
     useEffect(() => {
         current ? 
@@ -31,7 +31,7 @@ export default function Header() {
                     id="namesake" src={namesake.imageUrl}
                     alt={namesake.name}
                     onError={e => e.target.src = FP.DEVICE}
-                    onClick={() => history.push('/')}/>
+                    onClick={() => navigate('/')}/>
                     // onClick={() => feature(namesake)}/>
             )}
 

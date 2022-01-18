@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 // import { CohortsIndex, Button } from '../../components'
 import { CohortsIndex } from '../../components'
 import { Button, Heading } from '@getfutureproof/fpsb'
@@ -9,7 +9,7 @@ import './style.css'
 import { Section } from '../../forsb/Section'
 
 export default function Landing() {
-    const history = useHistory()
+    const navigate = useNavigate()
 
     return (
         <>
@@ -21,7 +21,7 @@ export default function Landing() {
                 
             <Button
                 label="See all associates currently available for interviews"
-                onClick={() => history.push('/available')}
+                onClick={() => navigate('/available')}
                 style={{ margin: '0 auto' }}
             />
 

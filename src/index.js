@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import App from './App'
 import { CohortProvider } from './contexts/cohort';
