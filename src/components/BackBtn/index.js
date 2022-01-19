@@ -1,14 +1,14 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useCohort } from '../../contexts/cohort'
 
 export default function BackBtn({ path }) {
-    const history = useHistory()
+    const navigate = useNavigate()
     const { setError } = useCohort()
 
     const handleClick = () => {
         setError(false)
-        path ? history.push(path) : history.goBack()
+        path ? navigate(path) : navigate(-1)
     }
 
     return (

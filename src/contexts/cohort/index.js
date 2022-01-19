@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useLocation, useHistory, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -23,7 +23,7 @@ export function CohortProvider({ children }){
     const [ loading, setLoading ] = useState();
     const [ error, setError ] = useState();
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const params = useParams();
     const options = new URLSearchParams(useLocation().search);
 
@@ -179,11 +179,11 @@ export function CohortProvider({ children }){
                 let students = entryPoint === 'available' ? available : current.students;
                 student = toFeature.name ? toFeature : students.find(s => slugify(s.name) === slugify(toFeature));
                 studentSlug = slugify(student.name);
-                !params.student && history.push(`/${entryPoint}/${studentSlug}`)
+                !params.student && navigate(`/${entryPoint}/${studentSlug}`)
                 setFeatured({ ...student, closeTo: entryPoint })
             } catch (err) {
                 console.warn(err);
-                history.push(`/${entryPoint}`);
+                navigate(`/${entryPoint}`);
             }
         }
     }
@@ -191,7 +191,7 @@ export function CohortProvider({ children }){
     const clearFeatured = () => {
         let closeTo = featured.closeTo;
         setFeatured(null)
-        history.push(`/${closeTo}`);
+        navigate(`/${closeTo}`);
     }
 
     const helpers = {
