@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
-import { colors, Button, Card, Heading } from '@getfutureproof/fpsb';
+import { colors, Button, Card, Heading, Section } from '@getfutureproof/fpsb';
 import './style.css'
 
 import { S3_PUBLIC } from '../../_assets';
@@ -59,13 +59,13 @@ export default function Modal() {
     }
 
     const renderMaterials = (opts = ['violet', 'lime', 'lemon', 'coral']) => (
-        [ ... featured.materials, featured.github && { type: "github" }]
+        [ ...featured.materials, featured.github && { type: "github" }]
             .filter(x => !!x)
             .sort((a, b) => a.type.localeCompare(b.type))
             .map((m, i)=> (
                 <Card
                     key={i}
-                    width='100%'
+                    width={`calc(100%/${featured.materials.length + 3})`}
                     variant='info'
                     colorway={opts[i]}
                     clickable
@@ -111,26 +111,28 @@ export default function Modal() {
                 style={{
                     backgroundColor: colors.purple
                 }}>
-
+                <Section bgColor='purple'>
                 {/* <h2 id='st-name'>{featured.name}</h2> */}
                 <Heading color='white' size='h2' content={featured.name} />
-
+                </Section>
                 <div id="icons">
                     <span onClick={clearFeatured} style={{ cursor: "pointer" }}>✖</span>
-                    { media !=="github" && 
-                        <Button href={media} colorway='lime' target="_blank" rel="noreferrer" external inverted label="Open in a new tab" />
-                        // <a id="pop-out" href={media} target="_blank" rel="noreferrer">Open in a new tab ➭</a>
-                    }
                 </div>
 
-                <section className="btn-group" id="modal-btns">
-                    { featured.materials && renderMaterials() }
-                    { featured.students && renderStudents() }
-                </section>
-
+                {/* <Section> */}
                 <section id="content">
                     { renderContent() }            
                 </section>
+                {/* </Section> */}
+
+                {/* <section className="btn-group" id="modal-btns"> */}
+                <Section direction='ltr' bgColor='purple'>
+                    { featured.materials && renderMaterials() }
+                    { featured.students && renderStudents() }
+                </Section>
+                {/* </section> */}
+
+                
             </section>
         </div>
     )
