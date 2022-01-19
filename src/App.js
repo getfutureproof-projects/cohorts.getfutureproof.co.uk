@@ -1,6 +1,7 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { Header, Footer, Card, Section } from '@getfutureproof/fpsb';
 import * as Layout from './layout';
 import * as Pages from './pages';
 import { useCohort } from './contexts/cohort';
@@ -12,31 +13,31 @@ const App = () => {
     return (
         <>
             <ToastContainer />
-            <Layout.Header />
+            <Section bgColor='purple'>
+                <Header />
+            </Section>
 
-            <main style={{ backgroundColor: colors.violet, color: colors.purple }}>
-            <Switch>
-                <Route exact path="/">
-                    <Pages.Landing />
+            <main>
+            <Routes>
+                <Route exact path="/" element={<Pages.Landing />} />
+
+                <Route path="/available" element={<Pages.Available />}>
+                    <Route path=":student" />
                 </Route>
 
-                <Route path="/available/:student?">
-                    <Pages.Available />
+                <Route path="/:cohort" element={<Pages.Cohort />}>
+                    <Route path=":student" />
                 </Route>
 
-                <Route path="/:cohort/:student?">
-                    <Pages.Cohort />
-                </Route>
+                <Route element={<Pages.NotFound />} />
+            </Routes>
 
-                <Route>
-                    <Pages.NotFound />
-                </Route> 
-            </Switch>
             </main>
 
             { featured && <Layout.Modal /> }
             <Layout.Contact />
-            <Layout.Footer />
+
+            <Footer />
         </>
     );
 }
