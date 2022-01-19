@@ -5,8 +5,7 @@ import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 dayjs.extend(advancedFormat)
 
-import './style.css'
-import { Card, colors } from '@getfutureproof/fpsb';
+import { Card } from '@getfutureproof/fpsb';
 
 export default function CohortsIndex() {
     let { list, error } = useCohort();
@@ -21,15 +20,17 @@ export default function CohortsIndex() {
     }
 
     return (
-        <article id="cohorts">
+        <>
             { error && <h2 className="error">{error}</h2> }
 
             { list && (
-                <>
-                    { list.map(c => (  
+                <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: '1232px', justifyContent: 'center'}}>
+                    { list.map((c, i) => (  
                         <Card
                             key={c.name}
-                            colorway="purple"
+                            colorway='lemon'
+                            // inverted
+                            hoverEffect
                             title={c.name}
                             variant="square"
                             width="200px"
@@ -39,10 +40,10 @@ export default function CohortsIndex() {
                             {formatEndDate(c)}
                         </Card>
                     )) }
-                </>
+                </div>
             )}
 
-        </article>
+        </>
     )
 }
 

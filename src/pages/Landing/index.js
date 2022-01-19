@@ -12,9 +12,10 @@ export default function Landing() {
         <>
             <SEO topic="index"/>
             {/* <h1 id="greeting" className="shimmer static">Welcome to futureproof!</h1> */}
-            <Section justifyContent='center'>
+            <Section justifyContent='center' bgColor='purple'>
                 <Heading
-                    size="xlarge"
+                    size="huge"
+                    color="white"
                     content="Meet the futureproof cohorts!" />
                     
                 <Button
@@ -24,13 +25,15 @@ export default function Landing() {
                     inverted
                     shadow
                 />
-</Section>
-                <Section direction='ltr' justifyContent='center'>
+            </Section>
+
+            <Section direction='ltr' justifyContent='center' bgColor='white'>
+                <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: '1232px', justifyContent: 'center'}}>
                 <Card
                     variant='info'
                     inverted
                     colorway='lime'
-                    width='200px'
+                    width='40%'
                     >
                     Here you can see all our cohorts and find associate profiles.
                 </Card>
@@ -39,18 +42,14 @@ export default function Landing() {
                     variant='info'
                     colorway='coral'
                     inverted
-                    width='200px'
+                    width='40%'
                     >
                     For more information on futureproof or any of our associates, contact us below.
                 </Card>
+                </div>
             </Section>
 
-            <Section bgColor='purple' direction='ltr' justifyContent='center'>
-
-            {/* <div id="summary" className="italic">
-                <p>Here you can see all our cohorts and find associate profiles.</p>
-                <p>For more information on futureproof or any of our associates, contact us below.</p>
-            </div> */}
+            <Section bgColor='lime' direction='ltr' justifyContent='center'>
 
             <CohortsIndex />
             </Section>

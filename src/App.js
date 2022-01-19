@@ -13,7 +13,9 @@ const App = () => {
     return (
         <>
             <ToastContainer />
-            <Header />
+            <Section bgColor='purple'>
+                <Header />
+            </Section>
 
             <main>
             <Routes>
@@ -34,6 +36,7 @@ const App = () => {
 
             { featured && <Layout.Modal /> }
             <Layout.Contact />
+
             <Footer />
         </>
     );

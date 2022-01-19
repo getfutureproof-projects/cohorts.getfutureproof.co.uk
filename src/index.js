@@ -7,7 +7,7 @@ import { CohortProvider } from './contexts/cohort';
 import { GlobalStyle, FontStyles } from "@getfutureproof/fpsb";
 
 import 'react-toastify/dist/ReactToastify.min.css';
-// import './index.css'
+import './variables.css'
 
 import { ICON } from './_assets';
 

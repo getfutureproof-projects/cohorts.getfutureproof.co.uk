@@ -1,0 +1,6 @@
+/* Variables */
+:root {
+  --squareSizeLarge: 200px;
+  --squareSizeSmall: 200px;
+  --fp-opacity: rgba(255, 255, 255, 0.3);
+}

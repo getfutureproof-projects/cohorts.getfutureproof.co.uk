@@ -19,8 +19,8 @@
 
 /* Variables */
 :root {
-  --squareSizeLarge: 192px;
-  --squareSizeSmall: 160px;
+  --squareSizeLarge: 200px;
+  --squareSizeSmall: 200px;
   --fp-opacity: rgba(255, 255, 255, 0.3);
 }
 

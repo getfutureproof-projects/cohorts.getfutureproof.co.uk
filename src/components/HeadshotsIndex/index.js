@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useCohort } from '../../contexts/cohort'
 import { useWindowSize } from '../../hooks/windowSize'
 import { Headshot, BackBtn } from '../'
-import { Heading, Card } from '@getfutureproof/fpsb'
+import { Heading, Card, Section, Shape } from '@getfutureproof/fpsb'
 import './style.css';
 
 export default function HeadshotsIndex({ showAvailable }) {
@@ -44,39 +44,37 @@ export default function HeadshotsIndex({ showAvailable }) {
                     gridTemplateRows: "repeat(2, auto)"
                 }
             } else if(screen.width <= 1300){
-                numCols = 4;
+                numCols = 3;
             // } else if (screen.width <= 1300){
             //     numCols = 5;
             } else {
-                numCols = 6;
+                numCols = 4;
             }
 
             containerUpdates ||= { 
-                gridTemplateColumns: `repeat(${numCols}, var(--squareSizeLarge))`,
+                gridTemplateColumns: `repeat(${numCols}, 1fr)`,
                 gridTemplateRows: "repeat(2, auto)"
             }
 
             if(!screen.portrait && data) {
-                let summWidth = 4
-                let numRows = Math.ceil((data.students.length + summWidth) / numCols);
+                // let summWidth = 4
+                // let numRows = Math.ceil((data.students.length + summWidth) / numCols);
     
-                if(showAvailable){
-                    // summWidth = screen.width <= 1300 ? 5 : 6;
-                    summWidth = 6
-                } else if (screen.width > 1300 && (data.students.length - 2) % numRows === 1) {
-                    summWidth = 3
-                }
+                // if(showAvailable){
+                //     summWidth = 6
+                // } else if (screen.width > 1300 && (data.students.length - 2) % numRows === 1) {
+                //     summWidth = 3
+                // }
 
-                numRows = Math.ceil((data.students.length + summWidth) / numCols);
+                // numRows = Math.ceil((data.students.length + summWidth) / numCols);
 
-                summaryUpdates = {
-                    gridColumn: `span ${summWidth}`,
-                    textAlign: showAvailable ? 'center' : 'left'
-                }
+                // summaryUpdates = {
+                //     gridColumn: `span ${summWidth}`,
+                //     textAlign: showAvailable ? 'center' : 'left'
+                // }
 
                 containerUpdates = {
-                    gridTemplateColumns: `repeat(${numCols}, var(--squareSizeLarge))`,
-                    gridTemplateRows: `repeat(${numRows}, var(--squareSizeLarge))`,
+                    gridTemplateColumns: `repeat(${numCols}, 1fr)`
                 }
             }
 
@@ -92,7 +90,33 @@ export default function HeadshotsIndex({ showAvailable }) {
         feature(toFeature, entryPoint)
     }
 
-    const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} person={s} loadStudent={loadStudent}/>)
+    const renderGrid = () => {
+        let items = renderHeadshots();
+        let num = 20 - items.length;
+        let offset = items.length/4;
+        let placeholder = (kind, color) => <div style={{position: 'relative', height: '0', width: '0'}}><Shape kind={kind} color={color} /></div>
+        let randIdx = Math.floor((Math.random() * offset) + offset);
+        // while(num > 0){
+        //     items = [...items.slice(0, randIdx), placeholder, ...items.slice(randIdx + 1)]
+        //     num--
+        // }
+        items = [
+            placeholder('cog', 'coral'),
+            ...items.slice(0, items.length - 1),
+            // ...items.slice(0, randIdx),
+            // placeholder('star', 'lime'),
+            // ...items.slice(randIdx + 1, randIdx + 1 + offset),
+            // placeholder('shield', 'lemon'),
+            // ...items.slice(randIdx + 2 + offset, items.length - 1),
+            placeholder('angles', 'violet'),
+            items[items.length - 1]
+        ]
+        // items.unshift(placeholder('cog', 'coral'))
+        // items.push(placeholder('angles', 'violet'))
+        return items
+    }
+
+    const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} idx={i} person={s} loadStudent={loadStudent}/>)
 
     const renderHeader = () => {
         let header = showAvailable && "Hello! We are now available for interviews!"
@@ -127,41 +151,34 @@ export default function HeadshotsIndex({ showAvailable }) {
     }
 
     return (
-        <section id="container" style={containerStyles}>
+        <>
             {  data && data.students && (
                 <>
-                <div id="summary_container" style={summaryStyles}>
+                {/* <div id="summary_container" style={summaryStyles}> */}
+                <Section direction='ttb' justifyContent='center'>
                     {/* <BackBtn path="/" /> */}
                     <Heading
                         size="large"
                         content={renderHeader()}
                     />
-                    {/* <p id="cohort-summary" className="italic">{ renderSummary() }</p> */}
-                    {/* <Section> */}
-                    <p id="cohort-summary">
-                        {
-                            showAvailable ? (
-                                <div style={{display: 'flex', justifyContent: 'center'}}>
-                                        <Card
-                                        shadow inverted
-                                        colorway='lime'
-                                    >
-                                        {renderSummary()}
-                                    </Card>
-                                </div>
-                            ):(<Card
-                                shadow inverted
+
+   
+                       <Card
+                                inverted
                                 colorway='lime'
+                            
                             >
                                 {renderSummary()}
-                            </Card>)
-                        }   
-                    </p>
-                    {/* </Section> */}
-                </div>
-                { data.isLive && renderHeadshots() }
+                            </Card>
+
+                    </Section>
+                <Section direction='ltr' justifyContent='space-between'>
+                    <div id="container" style={containerStyles}>
+                        { data.isLive && renderHeadshots() }
+                    </div>
+                </Section>
                 </>
             )}  
-        </section>        
+        </>        
     )
 }

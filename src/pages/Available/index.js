@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { BackBtn, HeadshotsIndex } from '../../components'
+import { Section } from '@getfutureproof/fpsb'
 import SEO from '../SEO'
 
 export function Available() {
@@ -13,11 +14,11 @@ export function Available() {
     return (
         <>
         <SEO topic="available"/>
-        <article id="headshots">
+        <Section direction='ltr'>
             { loading && <h2>Finding futureproofers available for consultation...</h2> }
             { error && <h2><BackBtn path="/" /> {error}</h2> }
             { available && <HeadshotsIndex showAvailable /> }
-        </article>
+        </Section>
         </>
     )
 }

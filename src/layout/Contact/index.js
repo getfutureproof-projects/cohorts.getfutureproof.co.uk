@@ -31,9 +31,11 @@ export default function Contact() {
                 </button> */}
                 <Button
                     colorway='coral'
+                    color='coral'
                     shadow
                     width='70vw'
-                    onClick={sendMail}
+                    href={`mailto:krikor@getfutureproof.co.uk,claudia@getfutureproof.co.uk?subject=${subject}`}
+                    // onClick={sendMail}
                     label={"Get in touch with futureproof,\nwe can't wait to get started!"}
                 >
                     {/* <p>Get in touch with futureproof</p> */}
