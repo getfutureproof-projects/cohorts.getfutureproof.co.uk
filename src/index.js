@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import App from './App'
 import { CohortProvider } from './contexts/cohort';
-import { GlobalStyle } from "@getfutureproof/fpsb";
+import { GlobalStyle, FontStyles } from "@getfutureproof/fpsb";
 
 import 'react-toastify/dist/ReactToastify.min.css';
-import './index.css'
+import './variables.css'
 
 import { ICON } from './_assets';
 
@@ -16,6 +16,7 @@ const PREVIEW = false; // process.env.CONTEXT !== 'production';
 
 ReactDOM.render(
   <Router>
+    <FontStyles />
     <GlobalStyle />
     <CohortProvider>
      <App />

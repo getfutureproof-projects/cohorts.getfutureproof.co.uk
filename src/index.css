@@ -1,34 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400&family=Work+Sans:wght@300&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400&family=Work+Sans:wght@300&display=swap"); */
 /* font-family: 'Quicksand', sans-serif; */
 @font-face {
-  font-family: "FK Screamer Legacy";
-  src: url("./fonts/FKScreamerLegacy-Upright.ttf"), format("truetype");
+  font-family: "FKScreamerS3";
+  font-weight: 1 1000;
+  src: url("https://futureproof-protected-assets.s3.eu-west-2.amazonaws.com/brand-assets/fonts/FKScreamerLegacy-Upright.ttf");
 }
 @font-face {
-  font-family: "Work Sans";
-  src: url("./fonts/WorkSans-VariableFont_wght.ttf"), format("truetype");
+  font-family: "WorkSansS3";
+  font-weight: 1 1000;
+  src: url("https://futureproof-protected-assets.s3.eu-west-2.amazonaws.com/brand-assets/fonts/WorkSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "WorkSansItalicS3";
+  font-weight: 1 1000;
+  src: url("https://futureproof-protected-assets.s3.eu-west-2.amazonaws.com/brand-assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
 }
 
 /* Variables */
 :root {
-  --squareSizeLarge: 192px;
-  --squareSizeSmall: 160px;
-  /* --fp-main-aubergine: #35205c;
-  --fp-accent-plum: #7d4098;
-  --fp-dark-petrol: #0b3954;
-  --fp-dark-steel: #181d2c;
-  --fp-dark-steel-op: rgba(24, 29, 44, 0.8);
-  --fp-grey-light: #e9e3e6;
-  --fp-grey-medium: #959193;
-  --fp-accent-cherry: #cc2936;
-  --fp-accent-apple: #0bbc62; */
+  --squareSizeLarge: 200px;
+  --squareSizeSmall: 200px;
   --fp-opacity: rgba(255, 255, 255, 0.3);
-  /* --fp-header-font: "Quicksand", sans-serif;
-  --fp-body-font: "Work Sans", sans-serif;
-  --fp-custom-italic: skew(-5deg); */
-  /* 
-  --toastify-text-color-light: var(--fp-accent-cherry);
-  --toastify-font-family: var(--fp-body-font); */
 }
 
 .Toastify__toast {
@@ -40,25 +33,11 @@
 }
 
 body {
-  /* font-family: var(--fp-body-font);
-  color: var(--fp-main-aubergine); */
   display: block;
   margin: 0;
   text-align: center;
 }
 
-h1,
-h2,
-h3 {
-  font-family: "FK Screamer Legacy" !important;
-}
-
-h4,
-h5,
-h6,
-p {
-  font-family: "Work Sans" !important;
-}
 main {
   margin: 20px 0;
   padding: 10vh 0;

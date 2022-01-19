@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { S3_PUBLIC, PLACEHOLDER } from '../../_assets';
-import { Button, colors } from '@getfutureproof/fpsb'
+import { Card, colors } from '@getfutureproof/fpsb'
 
-export default function Headshot({ person, loadStudent }) {
+export default function Headshot({ person, loadStudent, idx }) {
     const { feature, current } = useCohort()
     const [ cohort, setCohort ] = useState("")
     const [ showModal, setShowModal ] = useState()
@@ -28,23 +28,29 @@ export default function Headshot({ person, loadStudent }) {
         return classNames.join(" ")
     }
 
+    const randColor = () => {
+        let opts = ['coral', 'lime', 'lemon', 'violet'];
+        let rand = Math.floor(Math.random() * opts.length);
+        return opts[rand];
+    }
+
     return (
-        <div className={setClassNames()} onClick={showModal ? (e => handleSelect(e, person)) : undefined}>
-                {/* { person.project ? 
-                    <img className="project_logo"
-                        src={`${S3_PUBLIC}/${cohort.toLowerCase()}/projectLogos/${person.project.name.replace(' ', '')}.png`}
-                        alt={person.project.name}
-                        onClick={e => handleSelect(e, person.project)}
-                    /> : <div className="project_logo_placeholder"></div> } */}
+        <Card
+            hoverEffect={showModal}
+            onClick={showModal ? (e => handleSelect(e, person)) : undefined}
+            variant='image'
+            width='200px'
+            colorway={randColor()}
+            accent={randColor()}
+            inverted={Math.random() < 0.5}
+            title={person.name}
+            image={`${S3_PUBLIC}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
+        >
+        </Card>
+        )
+    }
+    
+    // <div className={setClassNames()} onClick={showModal ? (e => handleSelect(e, person)) : undefined}>
+    //         <button className="select" style={{backgroundColor: colors.purple}}>{person.name}</button>
 
-                <img 
-                    className="headshot"
-                    src={`${S3_PUBLIC}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
-                    onError={e => e.target.src = PLACEHOLDER}
-                    alt={person.name} 
-                />
-                <button className="select" style={{backgroundColor: colors.purple}}>{person.name}</button>
-
-        </div>
-    )
-}
+    // </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
-import { colors, Heading } from '@getfutureproof/fpsb';
+import { colors, Button, Card, Heading } from '@getfutureproof/fpsb';
 import './style.css'
 
 import { S3_PUBLIC } from '../../_assets';
@@ -58,14 +58,24 @@ export default function Modal() {
         feature(student, current.name)
     }
 
-    const renderMaterials = () => (
+    const renderMaterials = (opts = ['violet', 'lime', 'lemon', 'coral']) => (
         [ ... featured.materials, featured.github && { type: "github" }]
             .filter(x => !!x)
             .sort((a, b) => a.type.localeCompare(b.type))
             .map((m, i)=> (
-                <button key={i} id={`st-${m.type.toLowerCase()}`} className="linkout" onClick={(e) => handleSelectMedia(e, m)}>
-                    {m.type === "cv" ? "Profile" : m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
-                </button>
+                <Card
+                    key={i}
+                    width='100%'
+                    variant='info'
+                    colorway={opts[i]}
+                    clickable
+                    inverted
+                    onClick={(e) => handleSelectMedia(e, m)}
+                    title={m.type === "cv" ? "Profile" : m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
+
+                >
+                    {'\n'}
+                </Card>
             ))
     )
 
@@ -84,7 +94,7 @@ export default function Modal() {
         </iframe>)
     
     const renderGitHubStats = () => (<div id="github-stats">
-        <a href={`https://github.com/${featured.github}`} target="_blank" rel="noreferrer">Visit GitHub profile <span>➭</span></a>
+        <Button href={`https://github.com/${featured.github}`} target="_blank" rel="noreferrer" external colorway='lime' inverted label="Visit GitHub profile" />
         <img src={`https://github-readme-stats.vercel.app/api?username=${featured.github}&show_icons=true&locale=en`} alt="Github stats" />
     </div>)
 
@@ -102,12 +112,15 @@ export default function Modal() {
                     backgroundColor: colors.purple
                 }}>
 
-                <h2 id='st-name'>{featured.name}</h2>
+                {/* <h2 id='st-name'>{featured.name}</h2> */}
+                <Heading color='white' size='h2' content={featured.name} />
 
                 <div id="icons">
                     <span onClick={clearFeatured} style={{ cursor: "pointer" }}>✖</span>
                     { media !=="github" && 
-                        <a id="pop-out" href={media} target="_blank" rel="noreferrer">Open in a new tab ➭</a> }
+                        <Button href={media} colorway='lime' target="_blank" rel="noreferrer" external inverted label="Open in a new tab" />
+                        // <a id="pop-out" href={media} target="_blank" rel="noreferrer">Open in a new tab ➭</a>
+                    }
                 </div>
 
                 <section className="btn-group" id="modal-btns">

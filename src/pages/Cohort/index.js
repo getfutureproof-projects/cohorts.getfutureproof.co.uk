@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useCohort } from '../../contexts/cohort'
 import { BackBtn, HeadshotsIndex } from '../../components'
+import { Section } from '@getfutureproof/fpsb'
 import SEO from '../SEO'
 
 export default function Cohort() {
@@ -17,11 +18,11 @@ export default function Cohort() {
     return (
         <>
         <SEO topic={current ? 'cohort' : 'index'}/>
-        <article id="headshots">
+        <Section direction='ltr'>
             { loading && <h2>Loading cohort data...</h2> }
             { error && <h2><BackBtn path="/" /> {error}</h2> }
             { current && <HeadshotsIndex />}
-        </article>
+        </Section>
         </>
     )
 }
