@@ -143,10 +143,11 @@ export function CohortProvider({ children }){
             try {
                 let interviewEligible = []
                 let eligibleCohorts = list.filter(c => c.isInterviewEligible);
+                let sorted = eligibleCohorts.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
                 setError(false)
                 setLoading(true)
                 set(null)
-                for (let cohort of eligibleCohorts){
+                for (let cohort of sorted){
                     let { students } = await fetchStudents(cohort.name)
                     let unplaced = students.filter(s => !s.placement).map(s => ({ ...s, cohort: cohort.name }))
                     interviewEligible.push(...unplaced)
