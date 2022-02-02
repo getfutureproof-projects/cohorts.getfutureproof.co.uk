@@ -11,7 +11,7 @@ export default function SEO({topic}) {
 
     useEffect(() => {
         let title;
-        let description = "Showcasing the work of futureproof's cohorts"
+        let description = "Meet the tech superstars of the future!"
         switch (topic) {
             case 'cohort':
                 title = current.name
@@ -35,6 +35,36 @@ export default function SEO({topic}) {
 
             <meta property="twitter:description" content={data.description} />
             <meta property="twitter:title" content={`futureproof ∞ ${data.title}`} />
+
+            <meta property="twitter:site" content="@get_futureproof" />
+            <meta property="twitter:creator" content="@get_futureproof" />
+
+            <meta
+                property="og:image:width"
+                content="250px"
+            />
+            <meta
+                property="og:image:height"
+                content="60px"
+            />
+            <meta
+                property="og:image"
+                content="https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/brand-assets/logo_250x60.png"
+            />
+            <meta
+                property="og:image:secure_url"
+                content="https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/brand-assets/logo_250x60.png"
+            />
+
+            <meta
+                property="twitter:image"
+                content="https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/brand-assets/logo_250x60.png"
+            />
+            <meta
+                property="twitter:image:alt"
+                content="futureproof logo"
+            />
+
         </Helmet>
     )
 }
