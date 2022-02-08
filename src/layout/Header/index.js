@@ -13,7 +13,7 @@ export default function Header() {
         current ? 
             setNamesake({
                 ...current.namesake,
-                imageUrl: `${FP.S3_PUBLIC}/${current.name.toLowerCase()}/avatar.jpeg`
+                imageUrl: `${FP.S3_COHORTS}/${current.name.toLowerCase()}/avatar.jpeg`
             }) 
             : setNamesake({ 
                 name: 'What our clients say',
