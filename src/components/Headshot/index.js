@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
-import { S3_PUBLIC, PLACEHOLDER } from '../../_assets';
+import { S3_COHORTS, PLACEHOLDER } from '../../_assets';
 import { Card, colors } from '@getfutureproof/fpsb'
 
 export default function Headshot({ person, loadStudent, idx }) {
@@ -44,7 +44,7 @@ export default function Headshot({ person, loadStudent, idx }) {
             accent={randColor()}
             inverted={Math.random() < 0.5}
             title={person.name}
-            image={`${S3_PUBLIC}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
+            image={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
         >
         </Card>
         )
