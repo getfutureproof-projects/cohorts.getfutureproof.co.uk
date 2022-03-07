@@ -29,12 +29,12 @@ export default function SEO({topic}) {
 
     return (
         <Helmet>
-            <meta property="og:site_name" content={`futureproof ∞ ${data.title}`} />
-            <title>{`futureproof ∞ ${data.title}`}</title>
+            <meta property="og:site_name" content={`futureproof ✱ ${data.title}`} />
+            <title>{`futureproof ✱ ${data.title}`}</title>
             <meta name="description" content={data.description} />
 
             <meta property="twitter:description" content={data.description} />
-            <meta property="twitter:title" content={`futureproof ∞ ${data.title}`} />
+            <meta property="twitter:title" content={`futureproof ✱ ${data.title}`} />
 
             <meta property="twitter:site" content="@get_futureproof" />
             <meta property="twitter:creator" content="@get_futureproof" />
