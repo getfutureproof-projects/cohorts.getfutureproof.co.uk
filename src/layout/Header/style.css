@@ -11,17 +11,22 @@ header {
 
 #namesake {
   height: 80px;
-  border: 1px solid var(--fp-opacity);
+  justify-self: right;
+  margin-right: 20px;
+  align-self: center;
+  /* border: 1px solid var(--fp-opacity); */
   box-shadow: -1px 1px 5px 1px var(--fp-grey-medium);
   cursor: pointer;
 }
 
+#namesake[alt="What our clients say"] {
+  border: none;
+}
+
 header #logo {
-  justify-self: right;
   align-self: center;
   cursor: pointer;
-  margin-right: -20px;
-  height: 60px;
+  height: 40px;
 }
 
 /* Media queries */
