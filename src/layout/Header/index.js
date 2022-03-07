@@ -17,7 +17,7 @@ export default function Header() {
             }) 
             : setNamesake({ 
                 name: 'What our clients say',
-                imageUrl: FP.DEVICE,
+                imageUrl: `${FP.SHAPES}/star-coral-555.png`,
                 materials: [
                     { type: 'video', url: 'f5RNSRC7NP4' }
                 ]
@@ -26,6 +26,10 @@ export default function Header() {
 
     return (
         <header>
+            <a href={FP.WWW} target="_blank" rel="noopener">
+                <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" />
+            </a>
+
             { namesake && (
                 <img
                     id="namesake" src={namesake.imageUrl}
@@ -35,9 +39,6 @@ export default function Header() {
                     // onClick={() => feature(namesake)}/>
             )}
 
-            <a href={FP.WWW} target="_blank" rel="noopener">
-                <img id="logo" src={FP.LOGO} alt="futureproof logo" />
-            </a>
         </header>
     )
 }

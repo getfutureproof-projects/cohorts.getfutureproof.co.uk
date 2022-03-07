@@ -14,7 +14,7 @@ const App = () => {
         <>
             <ToastContainer />
             <Section bgColor='purple'>
-                <Header />
+                <Layout.Header />
             </Section>
 
             <main>
