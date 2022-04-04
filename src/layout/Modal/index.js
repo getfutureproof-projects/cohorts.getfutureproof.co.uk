@@ -19,7 +19,12 @@ export default function Modal() {
             if(featured.materials){
                 let video = featured.materials.find(m => m.type === "video")
                 let profile = featured.materials.find(m => m.type === "cv" || m.type === "profile")
-                if(video) return `${YOUTUBE}/${video.url}?start=0&${YT_OPTS}`;
+                if(video) {
+                    if (video.hasOwnProperty("url") && !video.hasOwnProperty("id")){
+                        video.id = video.url;
+                    }
+                    return `${YOUTUBE}/${video.id}?start=0&${YT_OPTS}`;
+                };
                 if(profile) return `${S3_COHORTS}/${cohort.toLowerCase()}/${profile.type}s/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`;
             } else if (current.projects) {
                 return `${YOUTUBE}/${current.projects.videoId}?start=${featured.startPoint}&${YT_OPTS}`;
@@ -35,8 +40,11 @@ export default function Modal() {
     const handleSelectMedia = (e, m) => {
         e.stopPropagation()
         switch(m.type) {
-            case "video": 
-                setMedia(`${YOUTUBE}/${m.url}?start=0&${YT_OPTS}`);
+            case "video":
+                if (m.hasOwnProperty("url") && !m.hasOwnProperty("id")) {
+                    m.id = m.url;
+                }
+                setMedia(`${YOUTUBE}/${m.id}?start=0&${YT_OPTS}`);
                 break;
             case "cv":
                 setMedia(`${S3_COHORTS}/${cohort.toLowerCase()}/cvs/${normalise(featured.name).replace(/\s/gu, "_")}.pdf`);
