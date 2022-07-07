@@ -29,14 +29,12 @@ export default function CohortsIndex() {
                         <Card
                             key={c.name}
                             colorway='lemon'
-                            frame='cog'
                             // inverted
                             hoverEffect
                             title={c.name}
                             variant="square"
                             width="200px"
                             shadow
-                            
                             onClick={() => navigate(`/${c.name}`)}
                         >
                             {formatEndDate(c)}

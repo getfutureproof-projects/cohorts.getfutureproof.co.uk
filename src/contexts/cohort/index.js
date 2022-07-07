@@ -41,7 +41,7 @@ export function CohortProvider({ children }){
             }
             let today = dayjs().add(weeksOffset, 'weeks')
             const { data } = await axios.get('https://raw.githubusercontent.com/getfutureproof-admin/cohorts/main/db.json')
-            let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBefore(today.add(3, 'months')))
+            let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBetween(today.subtract(6, 'months'), today.add(3, 'months')))
             let sorted = filtered.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
             let cohorts = sorted.map(c => {
                 let startDate = dayjs(c.startDate)

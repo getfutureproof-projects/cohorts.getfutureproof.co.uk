@@ -37,7 +37,6 @@ export default function Headshot({ person, loadStudent, idx }) {
     const randFrame = () => {
         let frames = ['angles', 'cog', 'star', 'shield'];
         let rand = Math.floor(Math.random() * frames.length);
-        console.log('Mike')
         return frames[rand];
     }
 
