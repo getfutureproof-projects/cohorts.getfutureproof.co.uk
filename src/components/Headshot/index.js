@@ -42,21 +42,21 @@ export default function Headshot({ person, loadStudent, idx }) {
 
     return (
 
-        <div 
+        <div
             class={`bg-${randColor()}`}
-            onClick={showModal ? (e => handleSelect(e, person)) : undefined} 
             style={
-                {cursor:'pointer', display: 'flex', flexWrap: 'wrap', maxWidth: '250px', justifyContent: 'center', height: '275px', paddingTop: '10px'}
+                { display: 'flex', flexWrap: 'wrap', maxWidth: '275px', justifyContent: 'center', height: '325px', padding: '10px 0 20px 0' }
             }
             color={randColor()}
-            >
-        <img 
-            width='200px' 
-            class={`framed ${randFrame()}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
-        <span style={{padding: '5px'}}>{person.name}</span>
+        >
+            <img
+                width='200px'
+                class={`framed ${randFrame()}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
+            <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
+            <button class="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button>
         </div>
         // </Card>
-        
+
     )
 }
 

@@ -26,9 +26,9 @@ export default function Header() {
 
     return (
         <header>
-            <a href={FP.WWW} target="_blank" rel="noopener">
+            {/* <a href={FP.WWW} target="_blank" rel="noopener">
                 <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" />
-            </a>
+            </a> */}
 
             { namesake && (
                 <img
