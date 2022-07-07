@@ -55,8 +55,6 @@ export default function Headshot({ person, loadStudent, idx }) {
             <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
             <button class="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button>
         </div>
-        // </Card>
-
     )
 }
 

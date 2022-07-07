@@ -13,28 +13,25 @@ const App = () => {
     return (
         <>
             <ToastContainer />
-            <Section bgColor='purple'>
-                <Layout.Header />
-            </Section>
+            {/* <Section bgColor='purple'> */}
+            <Layout.Header />
+            {/* </Section> */}
 
             <main>
-            <Routes>
-                <Route exact path="/" element={<Pages.Landing />} />
+                <Routes>
+                    <Route exact path="/" element={<Pages.Landing />} />
 
-                <Route path="/available" element={<Pages.Available />}>
-                    <Route path=":student" />
-                </Route>
-
-                <Route path="/:cohort" element={<Pages.Cohort />}>
-                    <Route path=":student" />
-                </Route>
-
-                <Route element={<Pages.NotFound />} />
-            </Routes>
-
+                    <Route path="/available" element={<Pages.Available />}>
+                        <Route path=":student" />
+                    </Route>
+                    <Route path="/:cohort" element={<Pages.Cohort />}>
+                        <Route path=":student" />
+                    </Route>
+                    <Route element={<Pages.NotFound />} />
+                </Routes>
             </main>
 
-            { featured && <Layout.Modal /> }
+            {featured && <Layout.Modal />}
             <Layout.Contact />
 
             <Footer />
