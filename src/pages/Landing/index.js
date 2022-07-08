@@ -49,7 +49,7 @@ export default function Landing() {
                 </div>
             </Section> */}
 
-            <Section bgColor='lime' direction='ltr' justifyContent='center'>
+            <Section direction='ltr' justifyContent='center'>
 
             <CohortsIndex />
             </Section>
