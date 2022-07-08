@@ -4,6 +4,7 @@ import { useCohort } from '../../contexts/cohort';
 import { Heading, Button } from '@getfutureproof/fpsb'
 import * as FP from '../../_assets';
 import './style.css'
+import ContactBtn from '../../components/ContactBtn';
 
 export default function Header() {
     const { current, available, loading, error } = useCohort()
@@ -123,12 +124,7 @@ export default function Header() {
                                 { pathname === '/available' ? "See all cohorts" : "See all associates currently available for interviews" }
                             </span>
 
-                            <span className="btn bg-coral"
-                                onClick={() => navigate('/contact')}
-                                style={{ width: 'fit-content' }}
-                            >
-                                Contact us
-                            </span>
+                            <ContactBtn mini />
 
                         </div>
             

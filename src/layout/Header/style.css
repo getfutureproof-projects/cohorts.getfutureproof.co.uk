@@ -21,6 +21,14 @@ header {
   padding: 60px 0 0 16px;
 }
 
+a.btn:any-link:not([class="bg-*"]) {
+  color: var(--purple) !important;
+}
+
+a.btn:any-link:not([class="bg-*"])::after {
+  background-color: var(--purple) !important;
+}
+
 #namesake {
   height: 40vh;
   /* width: 80%; */
