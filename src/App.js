@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { Header, Footer, Card, Section } from '@getfutureproof/fpsb';
 import * as Layout from './layout';
 import * as Pages from './pages';
 import { useCohort } from './contexts/cohort';
@@ -34,7 +33,7 @@ const App = () => {
             {featured && <Layout.Modal />}
             {/* <Layout.Contact /> */}
 
-            <Footer />
+            <Layout.Footer />
         </>
     );
 }

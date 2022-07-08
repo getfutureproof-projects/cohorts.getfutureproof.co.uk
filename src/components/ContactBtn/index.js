@@ -22,7 +22,7 @@ export default function ContactBtn({mini}) {
             // onClick={() => navigate('/contact')}
             style={{ width: 'fit-content' }}
         >
-            {mini ? "Contact us" : "Get in touch with futureproof,\nwe can't wait to get started!"}
+            {mini ? "Speak to us" : "Get in touch with futureproof,\nwe can't wait to get started!"}
         </a>
     )
     return (
