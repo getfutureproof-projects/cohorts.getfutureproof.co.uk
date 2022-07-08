@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router'
+import { useNavigate, useLocation } from 'react-router'
 import { useCohort } from '../../contexts/cohort';
+import { Heading, Card } from '@getfutureproof/fpsb'
 import * as FP from '../../_assets';
 import './style.css'
 
 export default function Header() {
-    const { current, feature, available } = useCohort()
+    const { current, available } = useCohort()
     const [namesake, setNamesake] = useState()   
     const [ data, setData ] = useState()
     const navigate = useNavigate()
+    const location = useLocation()
 
     useEffect(() => {
         current ?
@@ -26,13 +28,14 @@ export default function Header() {
     }, [current])
 
     useEffect(() => {
-        let group = available ? ({
-            // status: "available",
-            isLive: true
+        let group = location.pathname == '/available' ? ({
+            status: "available",
+            isLive: true,
+            showModal: true
         }) : current
         
         setData(group)
-    }, [available])
+    }, [current, location.pathname])
 
     const renderHeader = () => {
         let header = available && "Hello! We are now available for interviews!"
@@ -40,8 +43,35 @@ export default function Header() {
         return header
     }
 
+    const renderSummary = () => {
+        let summary;
+
+        switch(data.status){
+            case 'available':
+                summary = 'We have been working hard and are excited to join a commercial team!'
+                break;
+            case 'graduated':
+                summary = `We graduated on ${data.endDate.format("MMMM Do YYYY")}!`
+                break;
+            case 'current':
+                summary = "We're currently honing our skills on futureproof's 13 week course!"
+                break;
+            case 'preview':
+                summary = `We recently started our course and are working hard!`
+                break;
+            case 'upcoming':
+                summary = `We are excited to start our course on ${data.startDate.format("MMMM Do YYYY")}!`
+                break;
+        }
+
+        summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
+
+        return summary
+    }
+
     return (
         <div className="bg-purple" style={{ padding: '0 80px' }}>
+            <div className="header-container" style={{ maxWidth: '1500px'}}>
             <div>
                 <a href={FP.WWW} target="_blank" rel="noopener">
                     <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={{ width: '180px', padding: '16px' }} />
@@ -49,10 +79,25 @@ export default function Header() {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
-                <div className="bg-purple">
-                    <p>{ data && renderHeader()}</p>
+                <div className="header-text-container">
+                    { data && data.status && (
+                        <>
+                        <Heading
+                            size="huge"
+                            color="white"
+                            content={renderHeader()}
+                        />
+
+                        <Heading
+                            size="small"
+                            color="white"
+                            content={renderSummary()}
+                        />
+                        {/* {renderSummary()} */}
+                        </>
+                    )}
                 </div>
-                <div className="bg-purple hero-image-container">
+                <div className="hero-image-container">
                     {namesake && (
                         <img
                             id="namesake" src={namesake.imageUrl}
@@ -63,7 +108,7 @@ export default function Header() {
                     )}
                 </div>
             </div>
-
+        </div>
         </div>
     )
 }

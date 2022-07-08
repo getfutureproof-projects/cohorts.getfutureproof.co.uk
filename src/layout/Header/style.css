@@ -14,6 +14,13 @@ header {
   justify-content: flex-end;
 }
 
+.header-text-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 60px 0 0 16px;
+}
+
 #namesake {
   height: 40vh;
   /* width: 80%; */
