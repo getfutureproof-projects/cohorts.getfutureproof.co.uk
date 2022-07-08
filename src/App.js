@@ -16,7 +16,7 @@ const App = () => {
             <Layout.Header />
             {/* </Section> */}
 
-            <main style={{paddingBottom: '15vh'}}>
+            <main style={{paddingBottom: '175px'}}>
                 <Routes>
                     <Route exact path="/" element={<Pages.Landing />} />
 

@@ -5,8 +5,13 @@ footer {
     background: rgba(255, 255, 255, 0.9);
     background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.8) 70%, rgba(255,255,255,0) 100%);
     z-index: 6;
-    height: calc(15vh + 50px);
+    /* height: calc(15vh + 100px); */
+    /* min-height: 200px; */
     transition: bottom 1s ease-out;
+}
+
+.footer-container {
+    /* height: calc(15vh + 100px); */
 }
 
 footer.visible {

@@ -30,7 +30,7 @@ export default function Footer() {
             {/* <h3>
                 <a href="http://getfutureproof.co.uk" target="_blank" rel="noopener">getfutureproof.co.uk</a>
             </h3> */}
-            <div className="footer-container" style={{ width: '100%', maxWidth: '1500px', display: 'flex', flexDirection: 'column', justifyContent: 'space-around', paddingBottom: '20px' }}>
+            <div className="footer-container" style={{ width: '100%', maxWidth: '1500px', paddingBottom: '30px', display: 'flex', flexDirection: 'column', gap: '35px' }}>
 
                 <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <span className="medium text-body">Still looking for the right candidate?</span>
