@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router'
 import { useCohort } from '../../contexts/cohort';
-import { Heading, Card } from '@getfutureproof/fpsb'
+import { Heading, Button } from '@getfutureproof/fpsb'
 import * as FP from '../../_assets';
 import './style.css'
 
@@ -97,12 +97,38 @@ export default function Header() {
                         </>
                     )}
 
-                    { (loading || error) && (<Heading
+                    { !data && (<Heading
                             size="huge"
                             color="white"
                             content="Meet the futureproof cohorts"
                         />)
                     }
+
+                    { location.pathname === '/' && (<>
+                        <Heading
+                            size="small"
+                            color="white"
+                            content="Here you can see all our cohorts and find associate profiles."
+                        />
+                        
+                        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                            <span className="btn bg-lime"
+                                onClick={() => navigate('/available')}
+                                style={{ width: 'fit-content' }}
+                            >
+                                See all associates currently available for interviews
+                            </span>
+
+                            <span className="btn bg-coral"
+                                onClick={() => navigate('/contact')}
+                                style={{ width: 'fit-content' }}
+                            >
+                                Contact us
+                            </span>
+
+                        </div>
+            
+                    </>)}
 
                     
                 </div>

@@ -27,7 +27,7 @@ export default function Landing() {
                 />
             </Section> */}
 
-            <Section direction='ltr' justifyContent='center' bgColor='white'>
+            {/* <Section direction='ltr' justifyContent='center' bgColor='white'>
                 <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: '1232px', justifyContent: 'center'}}>
                 <Card
                     variant='info'
@@ -47,7 +47,7 @@ export default function Landing() {
                     For more information on futureproof or any of our associates, contact us below.
                 </Card>
                 </div>
-            </Section>
+            </Section> */}
 
             <Section bgColor='lime' direction='ltr' justifyContent='center'>
 
