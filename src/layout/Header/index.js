@@ -121,7 +121,7 @@ export default function Header() {
                                 onClick={() => pathname === '/available' ? navigate('/') : navigate('/available')}
                                 style={{ width: 'fit-content', marginRight: '20px' }}
                             >
-                                { pathname === '/available' ? "See all cohorts" : "See all associates currently available for interviews" }
+                                { pathname === '/available' ? "See all cohorts" : "Find talent" }
                             </span>
 
                             <ContactBtn mini />
