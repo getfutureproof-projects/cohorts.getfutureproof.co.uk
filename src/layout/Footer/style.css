@@ -10,10 +10,6 @@ footer {
     transition: bottom 1s ease-out;
 }
 
-.footer-container {
-    /* height: calc(15vh + 100px); */
-}
-
 footer.visible {
     bottom: 0;
 }
