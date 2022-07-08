@@ -12,26 +12,30 @@ export default function Header() {
     const [ data, setData ] = useState()
     const [ headerText, setHeaderText ] = useState('Meet the futureproof cohorts')
     const [ summaryText, setSummaryText ] = useState('Here you can see all our cohorts and find associate profiles.')
+    const [ heroImg, setHeroImg ] = useState(FP.HERO_WOMAN1)
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
     useEffect(() => {
         current ?
-            setNamesake({
-                ...current.namesake,
-                imageUrl: `${FP.S3_COHORTS}/${current.name.toLowerCase()}/avatar.jpeg`
-            })
-            : setNamesake({
-                name: 'What our clients say',
-                imageUrl: FP.HERO_WOMAN1,
-                materials: [
-                    { type: 'video', url: 'f5RNSRC7NP4' }
-                ]
-            })
+            setHeroImg(`${FP.S3_COHORTS}/${current.name.toLowerCase()}/avatar.jpeg`)
+            // setNamesake({
+            //     ...current.namesake,
+            //     imageUrl: `${FP.S3_COHORTS}/${current.name.toLowerCase()}/avatar.jpeg`
+            // })
+            : 
+            setHeroImg(FP.HERO_WOMAN1)
+            // setNamesake({
+            //     name: 'What our clients say',
+            //     imageUrl: FP.HERO_WOMAN1,
+            //     materials: [
+            //         { type: 'video', url: 'f5RNSRC7NP4' }
+            //     ]
+            // })
     }, [current])
 
     useEffect(() => {
-        let header = "Meet the futureproof cohorts!"
+        let header = "Meet the futureproof cohorts"
         let summary = "Here you can see all our cohorts and find associate profiles."
         let data
         if(pathname === '/available'){
@@ -40,7 +44,8 @@ export default function Header() {
                 isLive: true,
                 showModal: true
             }
-            header = "We are now available for interviews!"
+            // header = "We are now available for interviews!"
+            header = "Our candidates"
             summary = "We have been working hard and are excited to join a commercial team!"
         } else if (current) {
             data = current
@@ -50,7 +55,7 @@ export default function Header() {
                     summary = `We graduated on ${data.endDate.format("MMMM Do YYYY")}!`
                     break;
                 case 'current':
-                    summary = "We're currently honing our skills on futureproof's 13 week course!"
+                    summary = "We're currently honing our skills on futureproof's intensive training course!"
                     break;
                 case 'preview':
                     summary = `We recently started our course and are working hard!`
@@ -114,20 +119,23 @@ export default function Header() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh'}}>
                 <div className="header-text-container" style={{ whiteSpace: 'pre-line'}}>
                     {/* { !loading && data && data.status && ( */}
+
                         <>
+
                         <Heading
                             size="xlarge"
                             color="white"
                             content={headerText}
-                            // content={renderHeader()}
                         />
 
+                        <span className="small regular">{summaryText}</span>
+
+{/* 
                         <Heading
                             size="small"
                             color="white"
                             content={summaryText}
-                            // content={renderSummary()}
-                        />
+                        /> */}
                         {/* {renderSummary()} */}
                         </>
                     {/* )} */}
@@ -150,7 +158,7 @@ export default function Header() {
 
 
                         
-                        <div style={{display: 'flex'}}>
+                        <div style={{display: 'flex', marginTop: '30px'}}>
                             <span className="btn bg-lime"
                                 onClick={() => pathname === '/available' ? navigate('/') : navigate('/available')}
                                 style={{ width: 'fit-content', marginRight: '20px' }}
@@ -167,14 +175,16 @@ export default function Header() {
                     
                 </div>
                 <div className="hero-image-container">
-                    {namesake && (
+                    {heroImg && (
+                        <div className={`hero-wrapper ${heroImg.match(/(hero|device)/g) ? 'original': 'filtered'}`}>
                         <img
-                            id="namesake" src={namesake.imageUrl}
-                            alt={namesake.name}
-                            className={namesake.imageUrl.match(/(hero|device)/g) ? 'fp-image': 'framed angles'}
-                            onError={e => e.target.src = FP.DEVICE}
-                            onClick={() => navigate('/')} />
-                        // onClick={() => feature(namesake)}/>
+                            id="namesake" src={heroImg}
+                            alt={current ? current.namesake.name : 'futureproof'}
+                            className={heroImg.match(/(hero|device)/g) ? 'fp-image': 'framed angles'}
+                            onError={() => setHeroImg(FP.DEVICE)}
+                            // onClick={() => navigate('/')}
+                            />
+                        </div>
                     )}
                 </div>
             </div>
