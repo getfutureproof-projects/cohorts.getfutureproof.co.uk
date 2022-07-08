@@ -10,8 +10,8 @@ export default function Header() {
     const { current, available, loading, error } = useCohort()
     const [namesake, setNamesake] = useState()   
     const [ data, setData ] = useState()
-    const [ headerText, setHeaderText ] = useState('')
-    const [ summaryText, setSummaryText ] = useState('')
+    const [ headerText, setHeaderText ] = useState('Meet the futureproof cohorts')
+    const [ summaryText, setSummaryText ] = useState('Here you can see all our cohorts and find associate profiles.')
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
@@ -31,10 +31,10 @@ export default function Header() {
     }, [current])
 
     useEffect(() => {
-        let header
-        let summary
+        let header = "Meet the futureproof cohorts!"
+        let summary = "Here you can see all our cohorts and find associate profiles."
         let data
-        if(location.pathname == '/available'){
+        if(pathname === '/available'){
             data = {
                 status: "available",
                 isLive: true,
@@ -64,10 +64,10 @@ export default function Header() {
 
         if(data) {
             summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
-            setHeaderText(header)
-            setSummaryText(summary)
-            setData(data)
         }
+        setHeaderText(header)
+        setSummaryText(summary)
+        setData(data)
     }, [current, pathname])
 
     // const renderHeader = () => {
@@ -113,7 +113,7 @@ export default function Header() {
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh'}}>
                 <div className="header-text-container" style={{ whiteSpace: 'pre-line'}}>
-                    { !loading && data && data.status && (
+                    {/* { !loading && data && data.status && ( */}
                         <>
                         <Heading
                             size="xlarge"
@@ -130,9 +130,9 @@ export default function Header() {
                         />
                         {/* {renderSummary()} */}
                         </>
-                    )}
+                    {/* )} */}
 
-                    { (!data || loading) && (<Heading
+                    {/* { (!data || loading) && (<Heading
                             size="xlarge"
                             color="white"
                             content="Meet the futureproof cohorts"
@@ -146,7 +146,7 @@ export default function Header() {
                             content="Here you can see all our cohorts and find associate profiles."
                         />
     
-                    )}
+                    )} */}
 
 
                         
