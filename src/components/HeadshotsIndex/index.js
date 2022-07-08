@@ -116,7 +116,7 @@ export default function HeadshotsIndex({ showAvailable }) {
         return items
     }
 
-    const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} idx={i} person={s} loadStudent={loadStudent}/>)
+    const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} idx={i} person={s} seeMore={data.showModal} loadStudent={loadStudent}/>)
 
     const renderHeader = () => {
         let header = showAvailable && "Hello! We are now available for interviews!"
