@@ -79,7 +79,7 @@ export default function Header() {
                 </a>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', height: '40vh'}}>
                 <div className="header-text-container" style={{ whiteSpace: 'pre-line'}}>
                     { !loading && data && data.status && (
                         <>
@@ -137,6 +137,7 @@ export default function Header() {
                         <img
                             id="namesake" src={namesake.imageUrl}
                             alt={namesake.name}
+                            className={namesake.imageUrl.match(/(hero|device)/g) ? 'fp-image': 'framed angles'}
                             onError={e => e.target.src = FP.DEVICE}
                             onClick={() => navigate('/')} />
                         // onClick={() => feature(namesake)}/>
