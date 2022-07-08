@@ -43,7 +43,7 @@ export default function Headshot({ person, loadStudent, idx }) {
     return (
 
         <div
-            class={`bg-${randColor()}`}
+            className={`bg-${randColor()}`}
             style={
                 { display: 'flex', flexWrap: 'wrap', maxWidth: '275px', justifyContent: 'center', height: '325px', padding: '10px 0 20px 0' }
             }
@@ -51,9 +51,9 @@ export default function Headshot({ person, loadStudent, idx }) {
         >
             <img
                 width='200px'
-                class={`framed ${randFrame()}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
+                className={`framed ${randFrame()}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
             <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
-            <button class="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button>
+            <button className="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button>
         </div>
     )
 }
