@@ -41,18 +41,18 @@ export default function Header() {
     }
 
     return (
-        <div>
-            <div className="bg-purple">
+        <div className="bg-purple" style={{ padding: '0 80px' }}>
+            <div>
                 <a href={FP.WWW} target="_blank" rel="noopener">
-                    <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={{ width: '180px' }} />
+                    <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={{ width: '180px', padding: '16px' }} />
                 </a>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '30vh'}}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
                 <div className="bg-purple">
                     <p>{ data && renderHeader()}</p>
                 </div>
-                <div className="bg-purple">
+                <div className="bg-purple hero-image-container">
                     {namesake && (
                         <img
                             id="namesake" src={namesake.imageUrl}

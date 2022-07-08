@@ -9,14 +9,18 @@ header {
   align-content: center;
 }
 
+.hero-image-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 #namesake {
-  height: 80px;
-  justify-self: right;
-  margin-right: 20px;
-  align-self: center;
-  /* border: 1px solid var(--fp-opacity); */
-  box-shadow: -1px 1px 5px 1px var(--fp-grey-medium);
+  height: 40vh;
+  /* width: 80%; */
+  border: 1px solid var(--fp-opacity);
+  /* box-shadow: -1px 1px 5px 1px var(--fp-grey-medium); */
   cursor: pointer;
+  right: 0;
 }
 
 #namesake[alt="What our clients say"] {
