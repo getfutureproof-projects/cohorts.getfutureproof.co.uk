@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { S3_COHORTS, PLACEHOLDER } from '../../_assets';
 import { Card, colors, Frame } from '@getfutureproof/fpsb'
+import { useLocation } from 'react-router-dom';
 
 export default function Headshot({ person, loadStudent, idx }) {
     const { feature, current } = useCohort()
     const [cohort, setCohort] = useState("")
     const [showModal, setShowModal] = useState()
+    const { pathname } = useLocation()
 
     useEffect(() => {
         let cohort = person.cohort || current.name
@@ -54,7 +56,7 @@ export default function Headshot({ person, loadStudent, idx }) {
                 className={`framed ${randFrame()}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
             <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
 
-            { current.showModal && <button className="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button> }
+            { ((current && current.showModal) || (pathname === '/available') )&& <button className="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button> }
         </div>
     )
 }

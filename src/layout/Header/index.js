@@ -10,7 +10,7 @@ export default function Header() {
     const [namesake, setNamesake] = useState()   
     const [ data, setData ] = useState()
     const navigate = useNavigate()
-    const location = useLocation()
+    const { pathname } = useLocation()
 
     useEffect(() => {
         current ?
@@ -35,11 +35,11 @@ export default function Header() {
         }) : current
         
         setData(group)
-    }, [current, location.pathname])
+    }, [current, pathname])
 
     const renderHeader = () => {
-        let header = available && "Hello! We are now available for interviews!"
-        header ||= data.isLive ? `Hello! We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
+        let header = available && "We are now available for interviews!"
+        header ||= data.isLive ? `We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
         return header
     }
 
@@ -79,7 +79,7 @@ export default function Header() {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
-                <div className="header-text-container">
+                <div className="header-text-container" style={{ whiteSpace: 'pre-line'}}>
                     { !loading && data && data.status && (
                         <>
                         <Heading
@@ -97,26 +97,30 @@ export default function Header() {
                         </>
                     )}
 
-                    { !data && (<Heading
+                    { (!data || loading) && (<Heading
                             size="huge"
                             color="white"
                             content="Meet the futureproof cohorts"
                         />)
                     }
 
-                    { location.pathname === '/' && (<>
+                    { location.pathname === '/' && (
                         <Heading
                             size="small"
                             color="white"
                             content="Here you can see all our cohorts and find associate profiles."
                         />
+    
+                    )}
+
+
                         
-                        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <div style={{display: 'flex'}}>
                             <span className="btn bg-lime"
-                                onClick={() => navigate('/available')}
-                                style={{ width: 'fit-content' }}
+                                onClick={() => pathname === '/available' ? navigate('/') : navigate('/available')}
+                                style={{ width: 'fit-content', marginRight: '20px' }}
                             >
-                                See all associates currently available for interviews
+                                { pathname === '/available' ? "See all cohorts" : "See all associates currently available for interviews" }
                             </span>
 
                             <span className="btn bg-coral"
@@ -128,7 +132,7 @@ export default function Header() {
 
                         </div>
             
-                    </>)}
+                
 
                     
                 </div>
