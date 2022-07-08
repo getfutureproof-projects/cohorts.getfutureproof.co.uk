@@ -114,7 +114,7 @@ export function CohortProvider({ children }){
     }
 
     function slugify(name){
-        return name.toLowerCase().replace(/[^a-zA-Z]/g,"")
+        return name.toLowerCase().replace(/[^a-zA-Z-]/g,"")
     }
 
     function capitalise(name){

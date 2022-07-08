@@ -86,7 +86,7 @@ export default function HeadshotsIndex({ showAvailable }) {
     }, [screen, data])
 
     function loadStudent(toFeature){
-        let entryPoint = showAvailable ? 'available' : cohort;
+        let entryPoint = showAvailable ? 'available' : (toFeature.cohort || current.name)
         feature(toFeature, entryPoint)
     }
 
