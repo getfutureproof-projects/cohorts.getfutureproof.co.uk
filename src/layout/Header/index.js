@@ -71,20 +71,20 @@ export default function Header() {
     }
 
     return (
-        <div className="bg-purple" style={{ padding: '0 80px' }}>
-            <div className="header-container" style={{ maxWidth: '1500px'}}>
+        <div className="bg-purple" style={{ padding: '0 80px', display: 'flex', justifyContent: 'center' }}>
+            <div className="header-container" style={{ width: '100%', maxWidth: '1500px'}}>
             <div>
                 <a href={FP.WWW} target="_blank" rel="noopener">
                     <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={{ width: '180px', padding: '16px' }} />
                 </a>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', height: '40vh'}}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh'}}>
                 <div className="header-text-container" style={{ whiteSpace: 'pre-line'}}>
                     { !loading && data && data.status && (
                         <>
                         <Heading
-                            size="huge"
+                            size="xlarge"
                             color="white"
                             content={renderHeader()}
                         />
@@ -99,7 +99,7 @@ export default function Header() {
                     )}
 
                     { (!data || loading) && (<Heading
-                            size="huge"
+                            size="xlarge"
                             color="white"
                             content="Meet the futureproof cohorts"
                         />)
