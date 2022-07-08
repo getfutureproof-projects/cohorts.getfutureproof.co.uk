@@ -12,7 +12,7 @@ export default function Landing() {
         <>
             <SEO topic="index"/>
             {/* <h1 id="greeting" className="shimmer static">Welcome to futureproof!</h1> */}
-            <Section justifyContent='center' bgColor='purple'>
+            {/* <Section justifyContent='center' bgColor='purple'>
                 <Heading
                     size="huge"
                     color="white"
@@ -25,7 +25,7 @@ export default function Landing() {
                     inverted
                     shadow
                 />
-            </Section>
+            </Section> */}
 
             <Section direction='ltr' justifyContent='center' bgColor='white'>
                 <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: '1232px', justifyContent: 'center'}}>

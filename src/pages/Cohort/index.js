@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useCohort } from '../../contexts/cohort'
 import { BackBtn, HeadshotsIndex } from '../../components'
@@ -8,6 +8,7 @@ import SEO from '../SEO'
 export default function Cohort() {
     const { cohort } = useParams();
     const { list, set, current, loading, error, loadCohort } = useCohort();
+    const [dError, setDError] = useState()
 
     useEffect(() => {
         loadCohort(cohort)
@@ -15,12 +16,16 @@ export default function Cohort() {
         return () => set(null)
     }, [list])
 
+    useEffect(() => {
+        setDError(error)
+    }, [error])
+
     return (
         <>
         <SEO topic={current ? 'cohort' : 'index'}/>
         <Section direction='ltr'>
             { loading && <h2>Loading cohort data...</h2> }
-            { error && <h2><BackBtn path="/" /> {error}</h2> }
+            { dError && <h2><BackBtn path="/" /> {dError}</h2> }
             { current && <HeadshotsIndex />}
         </Section>
         </>

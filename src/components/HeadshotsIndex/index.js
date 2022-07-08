@@ -155,23 +155,23 @@ export default function HeadshotsIndex({ showAvailable }) {
             {  data && data.students && (
                 <>
                 {/* <div id="summary_container" style={summaryStyles}> */}
-                <Section direction='ttb' justifyContent='center'>
+                {/* <Section direction='ttb' justifyContent='center'>
                     {/* <BackBtn path="/" /> */}
-                    <Heading
+                    {/* <Heading
                         size="large"
                         content={renderHeader()}
-                    />
+                    /> */}
 
    
-                       <Card
+                       {/* <Card
                                 inverted
                                 colorway='lime'
                             
                             >
                                 {renderSummary()}
-                            </Card>
+                            </Card> */}
 
-                    </Section>
+                    {/* </Section> */}
                 <Section direction='ltr' justifyContent='space-between'>
                     <div id="container" style={containerStyles}>
                         { data.isLive && renderHeadshots() }

@@ -6,7 +6,7 @@ import * as FP from '../../_assets';
 import './style.css'
 
 export default function Header() {
-    const { current, available } = useCohort()
+    const { current, available, loading, error } = useCohort()
     const [namesake, setNamesake] = useState()   
     const [ data, setData ] = useState()
     const navigate = useNavigate()
@@ -80,7 +80,7 @@ export default function Header() {
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
                 <div className="header-text-container">
-                    { data && data.status && (
+                    { !loading && data && data.status && (
                         <>
                         <Heading
                             size="huge"
@@ -96,6 +96,15 @@ export default function Header() {
                         {/* {renderSummary()} */}
                         </>
                     )}
+
+                    { (loading || error) && (<Heading
+                            size="huge"
+                            color="white"
+                            content="Meet the futureproof cohorts"
+                        />)
+                    }
+
+                    
                 </div>
                 <div className="hero-image-container">
                     {namesake && (
