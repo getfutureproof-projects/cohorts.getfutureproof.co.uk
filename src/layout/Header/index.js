@@ -10,6 +10,8 @@ export default function Header() {
     const { current, available, loading, error } = useCohort()
     const [namesake, setNamesake] = useState()   
     const [ data, setData ] = useState()
+    const [ headerText, setHeaderText ] = useState('')
+    const [ summaryText, setSummaryText ] = useState('')
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
@@ -29,46 +31,76 @@ export default function Header() {
     }, [current])
 
     useEffect(() => {
-        let group = location.pathname == '/available' ? ({
-            status: "available",
-            isLive: true,
-            showModal: true
-        }) : current
-        
-        setData(group)
-    }, [current, pathname])
-
-    const renderHeader = () => {
-        let header = available && "We are now available for interviews!"
-        header ||= data.isLive ? `We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
-        return header
-    }
-
-    const renderSummary = () => {
-        let summary;
-
-        switch(data.status){
-            case 'available':
-                summary = 'We have been working hard and are excited to join a commercial team!'
-                break;
-            case 'graduated':
-                summary = `We graduated on ${data.endDate.format("MMMM Do YYYY")}!`
-                break;
-            case 'current':
-                summary = "We're currently honing our skills on futureproof's 13 week course!"
-                break;
-            case 'preview':
-                summary = `We recently started our course and are working hard!`
-                break;
-            case 'upcoming':
-                summary = `We are excited to start our course on ${data.startDate.format("MMMM Do YYYY")}!`
-                break;
+        let header
+        let summary
+        let data
+        if(location.pathname == '/available'){
+            data = {
+                status: "available",
+                isLive: true,
+                showModal: true
+            }
+            header = "We are now available for interviews!"
+            summary = "We have been working hard and are excited to join a commercial team!"
+        } else if (current) {
+            data = current
+            header = data.isLive ? `We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
+            switch(data.status){
+                case 'graduated':
+                    summary = `We graduated on ${data.endDate.format("MMMM Do YYYY")}!`
+                    break;
+                case 'current':
+                    summary = "We're currently honing our skills on futureproof's 13 week course!"
+                    break;
+                case 'preview':
+                    summary = `We recently started our course and are working hard!`
+                    break;
+                case 'upcoming':
+                    summary = `We are excited to start our course on ${data.startDate.format("MMMM Do YYYY")}!`
+                    break;
+            }
         }
 
-        summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
 
-        return summary
-    }
+        if(data) {
+            summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
+            setHeaderText(header)
+            setSummaryText(summary)
+            setData(data)
+        }
+    }, [current, pathname])
+
+    // const renderHeader = () => {
+    //     let header = available && "We are now available for interviews!"
+    //     header ||= data.isLive ? `We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
+    //     return header
+    // }
+
+    // const renderSummary = () => {
+    //     let summary;
+
+    //     switch(data.status){
+    //         case 'available':
+    //             summary = 'We have been working hard and are excited to join a commercial team!'
+    //             break;
+    //         case 'graduated':
+    //             summary = `We graduated on ${data.endDate.format("MMMM Do YYYY")}!`
+    //             break;
+    //         case 'current':
+    //             summary = "We're currently honing our skills on futureproof's 13 week course!"
+    //             break;
+    //         case 'preview':
+    //             summary = `We recently started our course and are working hard!`
+    //             break;
+    //         case 'upcoming':
+    //             summary = `We are excited to start our course on ${data.startDate.format("MMMM Do YYYY")}!`
+    //             break;
+    //     }
+
+    //     summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
+
+    //     return summary
+    // }
 
     return (
         <div className="bg-purple" style={{ padding: '0 80px', display: 'flex', justifyContent: 'center' }}>
@@ -86,13 +118,15 @@ export default function Header() {
                         <Heading
                             size="xlarge"
                             color="white"
-                            content={renderHeader()}
+                            content={headerText}
+                            // content={renderHeader()}
                         />
 
                         <Heading
                             size="small"
                             color="white"
-                            content={renderSummary()}
+                            content={summaryText}
+                            // content={renderSummary()}
                         />
                         {/* {renderSummary()} */}
                         </>
