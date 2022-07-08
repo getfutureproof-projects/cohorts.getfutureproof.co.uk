@@ -102,7 +102,7 @@ export default function Modal() {
         </iframe>)
     
     const renderGitHubStats = () => (<div id="github-stats">
-        <Button href={`https://github.com/${featured.github}`} target="_blank" rel="noreferrer" external colorway='lime' inverted label="Visit GitHub profile" />
+        <a className='btn bg-lemon' href={`https://github.com/${featured.github}`} target="_blank" rel="noreferrer">Visit GitHub profile</a>
         <img src={`https://github-readme-stats.vercel.app/api?username=${featured.github}&show_icons=true&locale=en`} alt="Github stats" />
     </div>)
 
