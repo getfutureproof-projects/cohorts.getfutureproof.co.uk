@@ -5,7 +5,7 @@ import { ContactBtn } from '../../components'
 
 export default function Footer() {
     return (
-        <footer style={{ padding: '30px 80px 0 80px', display: 'flex', justifyContent: 'center' }}>
+        <footer style={{ padding: '60px 80px 0 80px', display: 'flex', justifyContent: 'center' }}>
             {/* <h3>
                 <a href="http://getfutureproof.co.uk" target="_blank" rel="noopener">getfutureproof.co.uk</a>
             </h3> */}
