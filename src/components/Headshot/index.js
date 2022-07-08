@@ -53,7 +53,8 @@ export default function Headshot({ person, loadStudent, idx }) {
                 width='200px'
                 className={`framed ${randFrame()}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
             <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
-            <button className="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button>
+
+            { current.showModal && <button className="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button> }
         </div>
     )
 }
