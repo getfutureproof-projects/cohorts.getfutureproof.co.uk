@@ -17,7 +17,7 @@ const App = () => {
             <Layout.Header />
             {/* </Section> */}
 
-            <main>
+            <main style={{paddingBottom: '15vh'}}>
                 <Routes>
                     <Route exact path="/" element={<Pages.Landing />} />
 
@@ -32,7 +32,7 @@ const App = () => {
             </main>
 
             {featured && <Layout.Modal />}
-            <Layout.Contact />
+            {/* <Layout.Contact /> */}
 
             <Footer />
         </>

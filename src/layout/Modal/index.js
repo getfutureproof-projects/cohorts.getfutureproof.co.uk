@@ -116,15 +116,15 @@ export default function Modal() {
         <div id="overlay" onClick={clearFeatured}>
             <section
                 id="modal" 
-                style={{
-                    backgroundColor: colors.purple
-                }}>
-                <Section bgColor='purple'>
-                {/* <h2 id='st-name'>{featured.name}</h2> */}
-                <Heading color='white' size='h2' content={featured.name} />
-                </Section>
-                <div id="icons">
-                    <span onClick={clearFeatured} style={{ cursor: "pointer" }}>✖</span>
+                className='bg-purple'
+                >
+                <div>
+                    <div style={{paddingTop: '10px'}}>
+                        <Heading color='white' size='h2' content={featured.name} />
+                    </div>
+                    <div id="icons">
+                        <span onClick={clearFeatured} style={{ cursor: "pointer" }}>✖</span>
+                    </div>
                 </div>
 
                 {/* <Section> */}
@@ -133,12 +133,19 @@ export default function Modal() {
                 </section>
                 {/* </Section> */}
 
-                {/* <section className="btn-group" id="modal-btns"> */}
-                <Section direction='ltr' bgColor='purple'>
+                <section className="btn-group" id="modal-btns">
+                {/* <Section direction='ltr' bgColor='purple'
+                    style={{
+                        backgroundColor: colors.purple,
+                        flexWrap: 'none',
+                        padding: 0
+                    }}
+                
+                > */}
                     { featured.materials && renderMaterials() }
                     { featured.students && renderStudents() }
-                </Section>
-                {/* </section> */}
+                {/* </Section> */}
+                </section>
 
                 
             </section>
