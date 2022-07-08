@@ -53,6 +53,7 @@ export default function Headshot({ person, loadStudent, idx }) {
         >
             <img
                 width='200px'
+                style={{ objectFit: 'cover' }}
                 className={`framed ${randFrame()}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
             <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
 
