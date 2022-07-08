@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect }  from 'react'
 import './style.css'
 import { Heading } from '@getfutureproof/fpsb'
 import { ContactBtn } from '../../components'
 
 export default function Footer() {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {   
+        window.addEventListener("scroll", listenToScroll);
+        return () => 
+           window.removeEventListener("scroll", listenToScroll); 
+      }, [])
+
+      const listenToScroll = () => {
+        let showPoint = (window.innerHeight/100)*20;
+        const winScroll = document.body.scrollTop || 
+            document.documentElement.scrollTop;
+           
+        if (winScroll > showPoint) { 
+           !isVisible &&         
+             setIsVisible(true);
+        } else {
+             setIsVisible(false);
+        }  
+      };
+
     return (
-        <footer style={{ padding: '60px 80px 0 80px', display: 'flex', justifyContent: 'center' }}>
+        <footer className={isVisible ? 'visible' : 'hidden'} style={{ padding: '60px 80px 0 80px', display: 'flex', justifyContent: 'center' }}>
             {/* <h3>
                 <a href="http://getfutureproof.co.uk" target="_blank" rel="noopener">getfutureproof.co.uk</a>
             </h3> */}
