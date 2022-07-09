@@ -115,9 +115,11 @@ iframe {
 .btn-group {
   display: flex;
   flex-direction: row;
+  flex-wrap: none;
   /* height: 20%; */
   bottom: 0;
-  padding: 0 15px;
+  /* padding: 0 15px; */
+  padding: 0;
 }
 
 .linkout {
