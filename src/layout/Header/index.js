@@ -118,7 +118,8 @@ export default function Header() {
             grid: { display: 'block' },
             headerTextCont: { padding: '30px 16px 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
             heroImgCont: { display: 'none' },
-            btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px' }
+            btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px' },
+            bSpanClass: 'tiny'
         }) : ({
             outer: { padding: '0 80px', display: 'flex', justifyContent: 'center' },
             container: { width: '100%', maxWidth: '1500px'},
@@ -127,7 +128,8 @@ export default function Header() {
             grid: { display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh'},
             headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
             heroImgCont: { display: 'flex', justifyContent: 'flex-end', position: 'relative' },
-            btnGroup: { display: 'flex', marginTop: '30px', marginBottom: 0 }
+            btnGroup: { display: 'flex', marginTop: '30px', marginBottom: 0 },
+            bSpanClass: 'small'
         }) 
 
         setHeaderStyles(styles)
@@ -151,7 +153,7 @@ export default function Header() {
                             content={headerText}
                         />
 
-                        <span className="tiny regular">{summaryText}</span>
+                        <span className={`${headerStyles.bSpanClass} regular`}>{summaryText}</span>
                         
                         <div style={headerStyles.btnGroup}>
                             <span className="btn bg-lime"
