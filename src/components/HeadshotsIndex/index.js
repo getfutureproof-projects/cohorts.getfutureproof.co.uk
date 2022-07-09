@@ -40,8 +40,8 @@ export default function HeadshotsIndex({ showAvailable }) {
             let containerUpdates, summaryUpdates, numCols;
             if(screen.portrait){
                 containerUpdates = { 
-                    gridTemplateColumns: "repeat(2, auto)",
-                    gridTemplateRows: "repeat(2, auto)"
+                    gridTemplateColumns: "repeat(1, auto)",
+                    gridTemplateRows: "repeat(1, auto)"
                 }
             } else if(screen.width <= 1300){
                 numCols = 3;
@@ -57,22 +57,6 @@ export default function HeadshotsIndex({ showAvailable }) {
             }
 
             if(!screen.portrait && data) {
-                // let summWidth = 4
-                // let numRows = Math.ceil((data.students.length + summWidth) / numCols);
-    
-                // if(showAvailable){
-                //     summWidth = 6
-                // } else if (screen.width > 1300 && (data.students.length - 2) % numRows === 1) {
-                //     summWidth = 3
-                // }
-
-                // numRows = Math.ceil((data.students.length + summWidth) / numCols);
-
-                // summaryUpdates = {
-                //     gridColumn: `span ${summWidth}`,
-                //     textAlign: showAvailable ? 'center' : 'left'
-                // }
-
                 containerUpdates = {
                     gridTemplateColumns: `repeat(${numCols}, 1fr)`
                 }
