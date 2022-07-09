@@ -24,8 +24,8 @@ export default function Cohort() {
         <>
         <SEO topic={current ? 'cohort' : 'index'}/>
         <Section direction='ltr'>
-            { loading && <h2>Loading cohort data...</h2> }
-            { dError && <h2><BackBtn path="/" /> {dError}</h2> }
+            { loading && <span className='medium text-display'>Loading cohort data...</span> }
+            { dError && <span className='medium text-display'><BackBtn path="/" /> {dError}</span> }
             { current && <HeadshotsIndex />}
         </Section>
         </>
