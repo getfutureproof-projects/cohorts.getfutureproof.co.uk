@@ -5,6 +5,7 @@ import { Heading, Button } from '@getfutureproof/fpsb'
 import * as FP from '../../_assets';
 import './style.css'
 import ContactBtn from '../../components/ContactBtn';
+import { useWindowSize } from '../../hooks/windowSize';
 
 export default function Header() {
     const { current, available, loading, error } = useCohort()
@@ -13,8 +14,10 @@ export default function Header() {
     const [ headerText, setHeaderText ] = useState('Meet the futureproof cohorts')
     const [ summaryText, setSummaryText ] = useState('Here you can see all our cohorts and find associate profiles.')
     const [ heroImg, setHeroImg ] = useState(FP.HERO_WOMAN1)
+    const [ headerStyles, setHeaderStyles ] = useState({})
     const navigate = useNavigate()
     const { pathname } = useLocation()
+    const screen = useWindowSize()
 
     useEffect(() => {
         current ?
@@ -106,21 +109,35 @@ export default function Header() {
 
     //     return summary
     // }
+    useEffect(() => {
+        let styles = screen.portrait ? ({
+            outer: { padding: 0, display: 'flex', justifyContent: 'center' },
+            container: { width: '100vw' },
+            logo: { width: '50vw', padding: '16px', marginTop: '16px' },
+            logoWrapper: {marginRight: '80px'},
+            grid: { display: 'block' }
+        }) : ({
+            outer: { padding: '0 80px', display: 'flex', justifyContent: 'center' },
+            container: { width: '100%', maxWidth: '1500px'},
+            logo: { width: '180px', padding: '16px' },
+            logoWrapper: {},
+            grid: { display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh'}
+        }) 
+
+        setHeaderStyles(styles)
+    }, [screen])
 
     return (
-        <div className="bg-purple" style={{ padding: '0 80px', display: 'flex', justifyContent: 'center' }}>
-            <div className="header-container" style={{ width: '100%', maxWidth: '1500px'}}>
-            <div>
+        <div className="bg-purple header-wrapper" style={{...headerStyles.outer}}>
+            <div className="header-container" style={headerStyles.container}>
+            <div style={headerStyles.logoWrapper}>
                 <a href={FP.WWW} target="_blank" rel="noopener">
-                    <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={{ width: '180px', padding: '16px' }} />
+                    <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={headerStyles.logo} />
                 </a>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh'}}>
+            <div style={headerStyles.grid}>
                 <div className="header-text-container" style={{ whiteSpace: 'pre-line'}}>
-                    {/* { !loading && data && data.status && ( */}
-
-                        <>
 
                         <Heading
                             size="xlarge"
@@ -129,34 +146,6 @@ export default function Header() {
                         />
 
                         <span className="small regular">{summaryText}</span>
-
-{/* 
-                        <Heading
-                            size="small"
-                            color="white"
-                            content={summaryText}
-                        /> */}
-                        {/* {renderSummary()} */}
-                        </>
-                    {/* )} */}
-
-                    {/* { (!data || loading) && (<Heading
-                            size="xlarge"
-                            color="white"
-                            content="Meet the futureproof cohorts"
-                        />)
-                    }
-
-                    { location.pathname === '/' && (
-                        <Heading
-                            size="small"
-                            color="white"
-                            content="Here you can see all our cohorts and find associate profiles."
-                        />
-    
-                    )} */}
-
-
                         
                         <div style={{display: 'flex', marginTop: '30px'}}>
                             <span className="btn bg-lime"
@@ -169,9 +158,6 @@ export default function Header() {
                             <ContactBtn mini />
 
                         </div>
-            
-                
-
                     
                 </div>
                 <div className="hero-image-container">

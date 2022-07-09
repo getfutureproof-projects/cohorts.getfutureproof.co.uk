@@ -1,4 +1,4 @@
-header {
+/* header {
   display: flex !important;
   margin-top: 20px;
   margin-bottom: 5px;
@@ -7,7 +7,7 @@ header {
   position: relative;
   justify-content: space-between;
   align-content: center;
-}
+} */
 
 .hero-image-container {
   display: flex;
@@ -82,29 +82,29 @@ header #logo {
 
 /* Media queries */
 @media only screen and (max-width: 1300px) {
-  header {
+  .header-wrapper {
     padding: 0 calc((100vw - 1024px) / 2);
   }
 }
 
 @media only screen and (max-width: 1090px) {
-  header {
+  .header-wrapper {
     padding: 0 calc((100vw - 816px) / 2);
   }
 }
 
 @media only screen and (max-width: 880px) {
-  header {
+  .header-wrapper {
     padding: 0 calc((100vw - 608px) / 2);
   }
 }
 
 @media only screen and (max-width: 650px) {
-  header {
+  .header-wrapper {
     padding: 0 calc((100vw - 336px) / 2);
   }
-  #namesake,
+  /* #namesake,
   #logo {
     height: 40px;
-  }
+  } */
 }
