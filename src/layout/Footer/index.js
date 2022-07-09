@@ -30,7 +30,7 @@ export default function Footer() {
 
       useEffect(() => {
         let styles = screen.portrait ? ({
-            outer: { padding: '60px 16px 0', display: 'flex', justifyContent: 'center' },
+            outer: { padding: '60px 16px 100px', display: 'flex', justifyContent: 'center' },
             tSpanClass: 'small',
             bSpanClass: 'tiny'
         }) : ({
