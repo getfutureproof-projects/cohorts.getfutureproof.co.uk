@@ -113,15 +113,21 @@ export default function Header() {
         let styles = screen.portrait ? ({
             outer: { padding: 0, display: 'flex', justifyContent: 'center' },
             container: { width: '100vw' },
-            logo: { width: '50vw', padding: '16px', marginTop: '16px' },
+            logo: { width: '180px', padding: '0', margin: '16px 32px' },
             logoWrapper: {marginRight: '80px'},
-            grid: { display: 'block' }
+            grid: { display: 'block' },
+            headerTextCont: { padding: '30px 16px 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
+            heroImgCont: { display: 'none' },
+            btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px' }
         }) : ({
             outer: { padding: '0 80px', display: 'flex', justifyContent: 'center' },
             container: { width: '100%', maxWidth: '1500px'},
-            logo: { width: '180px', padding: '16px' },
+            logo: { width: '180px', padding: '16px', margin: 0 },
             logoWrapper: {},
-            grid: { display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh'}
+            grid: { display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh'},
+            headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
+            heroImgCont: { display: 'flex', justifyContent: 'flex-end', position: 'relative' },
+            btnGroup: { display: 'flex', marginTop: '30px', marginBottom: 0 }
         }) 
 
         setHeaderStyles(styles)
@@ -137,7 +143,7 @@ export default function Header() {
             </div>
 
             <div style={headerStyles.grid}>
-                <div className="header-text-container" style={{ whiteSpace: 'pre-line'}}>
+                <div className="header-text-container" style={headerStyles.headerTextCont}>
 
                         <Heading
                             size="xlarge"
@@ -145,9 +151,9 @@ export default function Header() {
                             content={headerText}
                         />
 
-                        <span className="small regular">{summaryText}</span>
+                        <span className="tiny regular">{summaryText}</span>
                         
-                        <div style={{display: 'flex', marginTop: '30px'}}>
+                        <div style={headerStyles.btnGroup}>
                             <span className="btn bg-lime"
                                 onClick={() => pathname === '/available' ? navigate('/') : navigate('/available')}
                                 style={{ width: 'fit-content', marginRight: '20px' }}
@@ -160,7 +166,7 @@ export default function Header() {
                         </div>
                     
                 </div>
-                <div className="hero-image-container">
+                <div className="hero-image-container" style={{...headerStyles.heroImgCont}}>
                     {heroImg && (
                         <div className={`hero-wrapper ${heroImg.match(/(hero|device)/g) ? 'original': 'filtered'}`}>
                         <img

@@ -9,17 +9,12 @@
   align-content: center;
 } */
 
-.hero-image-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.header-text-container {
+/* .header-text-container {
   display: flex;
   flex-direction: column;
   align-content: center;
-  padding: 60px 0 0 16px;
-}
+  white-space: 'pre-line';
+} */
 
 a.btn:any-link:not([class="bg-*"]) {
   color: var(--purple) !important;
@@ -27,10 +22,6 @@ a.btn:any-link:not([class="bg-*"]) {
 
 a.btn:any-link:not([class="bg-*"])::after {
   background-color: var(--purple) !important;
-}
-
-.hero-image-container {
-  position: relative;
 }
 
 #namesake {
