@@ -50,8 +50,11 @@ iframe {
   margin: auto;
   padding: 0;
   background-color: var(--fp-main-aubergine);
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+  display: grid;
+  grid-template-rows: 15% 70% 15%;
+  grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
   overflow: scroll;
@@ -72,13 +75,13 @@ iframe {
 #st-name {
   border: none;
   top: 0;
-  padding-top: 2%;
+  /* padding-top: 2%; */
   margin: 0;
-  margin-top: 10px;
-  height: 10%;
-  font-size: 1.8em;
+  /* margin-top: 10px; */
+  /* height: 10%; */
+  /* font-size: 1.8em; */
   text-transform: uppercase;
-  font-family: "";
+  /* font-family: ""; */
 }
 
 #st-profile {
@@ -86,9 +89,11 @@ iframe {
 }
 
 #content {
-  height: calc(80% - 20px);
-  margin-top: 20px;
+  height: 100%;
+  /* margin-top: 20px; */
+  position: relative;
   box-shadow: -1px 7px 28px 1px var(--fp-dark-petrol);
+  padding: 0;
 }
 
 #github-stats {
@@ -109,8 +114,12 @@ iframe {
 
 .btn-group {
   display: flex;
-  height: 10%;
+  flex-direction: row;
+  flex-wrap: none;
+  /* height: 20%; */
   bottom: 0;
+  /* padding: 0 15px; */
+  padding: 0;
 }
 
 .linkout {
