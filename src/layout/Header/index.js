@@ -53,8 +53,6 @@ export default function Header() {
                     break;
             }
         }
-
-
         if (data) {
             summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
         }
@@ -71,13 +69,13 @@ export default function Header() {
             logo: { width: '180px', padding: '0', margin: '16px 32px' },
             logoWrapper: { marginRight: '80px' },
             grid: { display: 'block' },
-            headerTextCont: { padding: '30px 16px 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
+            headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
             heroImgCont: { display: 'none' },
             btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px' },
             bSpanClass: 'tiny',
             titleSize: 'xlarge'
         }) : ({
-            outer: { padding: '0 80px', display: 'flex', justifyContent: 'center', overflow: 'hidden', position: ' relative', zIndex: '-1' },
+            outer: { padding: '0 10px', display: 'flex', justifyContent: 'center', overflow: 'hidden', position: ' relative', zIndex: '-1', height: '75vh' },
             container: { width: '100%', maxWidth: '1500px' },
             logo: { width: '180px', padding: '16px', margin: 0 },
             logoWrapper: {},
@@ -100,18 +98,14 @@ export default function Header() {
                         <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={headerStyles.logo} />
                     </a>
                 </div>
-
                 <div style={headerStyles.grid}>
                     <div className="header-text-container" style={headerStyles.headerTextCont}>
-
                         <Heading
                             size={headerStyles.titleSize}
                             color="white"
                             content={headerText}
                         />
-
                         <span className={`${headerStyles.bSpanClass} regular`}>{summaryText}</span>
-
                         <div style={headerStyles.btnGroup}>
                             <span className="btn bg-lime"
                                 onClick={() => pathname === '/available' ? navigate('/') : navigate('/available')}
@@ -119,11 +113,8 @@ export default function Header() {
                             >
                                 {pathname === '/available' ? "See all cohorts" : "Find talent"}
                             </span>
-
                             <ContactBtn mini />
-
                         </div>
-
                     </div>
                     <div className="hero-image-container" style={{ ...headerStyles.heroImgCont }}>
                         {heroImg && (

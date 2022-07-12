@@ -7,7 +7,7 @@ a.btn:any-link:not([class="bg-*"])::after {
 }
 
 #namesake {
-  height: 40vh;
+  height: 70vh;
   max-height: 50vw;
   width: auto;
   cursor: pointer;
@@ -30,7 +30,7 @@ a.btn:any-link:not([class="bg-*"])::after {
   bottom: 0;
   left: -50px;
   right: 0;
-  animation: rotation 20s linear infinite;
+  animation: rotation 90s linear infinite;
   width: fit-content;
   height: fit-content;
   z-index: -1;
@@ -53,7 +53,7 @@ a.btn:any-link:not([class="bg-*"])::after {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40vh;
+  height: 80vh;
   background: #3c2157;
   background: radial-gradient(
     circle,
@@ -78,6 +78,7 @@ header #logo {
   align-self: center;
   cursor: pointer;
   height: 40px;
+  font-size: ;
 }
 
 /* Media queries */
