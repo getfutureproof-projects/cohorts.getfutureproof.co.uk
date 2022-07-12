@@ -7,8 +7,6 @@ import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 dayjs.extend(advancedFormat)
 
-import { Card } from '@getfutureproof/fpsb';
-
 export default function CohortsIndex() {
     let { list, error } = useCohort();
     const navigate = useNavigate();
@@ -30,8 +28,6 @@ export default function CohortsIndex() {
                 }
             } else if(screen.width <= 1300){
                 numCols = 3;
-            // } else if (screen.width <= 1300){
-            //     numCols = 5;
             } else {
                 numCols = 4;
             }
@@ -42,29 +38,12 @@ export default function CohortsIndex() {
             }
 
             if(!screen.portrait && list) {
-                // let summWidth = 4
-                // let numRows = Math.ceil((data.students.length + summWidth) / numCols);
-    
-                // if(showAvailable){
-                //     summWidth = 6
-                // } else if (screen.width > 1300 && (data.students.length - 2) % numRows === 1) {
-                //     summWidth = 3
-                // }
-
-                // numRows = Math.ceil((data.students.length + summWidth) / numCols);
-
-                // summaryUpdates = {
-                //     gridColumn: `span ${summWidth}`,
-                //     textAlign: showAvailable ? 'center' : 'left'
-                // }
-
                 containerUpdates = {
                     gridTemplateColumns: `repeat(${numCols}, 1fr)`
                 }
             }
 
             setContainerStyles(containerUpdates)
-            // setSummaryStyles(summaryUpdates)
         }
 
         calcStyles()
@@ -91,8 +70,6 @@ export default function CohortsIndex() {
 
             { list && (
                 <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', maxWidth: '1232px', justifyContent: 'center'}}>
-                {/* <div id="container" style={containerStyles}> */}
-
                     { recent.map((c, i) => (  
                         <CohortCard
                             key={c.name}
@@ -106,54 +83,6 @@ export default function CohortsIndex() {
 
                 </div>
             )}
-
-{/* 
-            { list && (
-                <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: '1232px', justifyContent: 'center'}}>
-
-                    { previous.map((c, i) => (  
-                        <span 
-                            className='btn text-white bg-purple medium regular'
-                            onClick={
-                                () => navigate(`/${c.name}`)
-                            }>
-                                <p width='100%' className='text-display medium'>{`${c.name.toUpperCase()}\n`} </p>
-                                ({c.endDate.format("MMM Do YY")})
-                            
-                            </span>
-                    )) }
-
-                </div>
-            )} */}
-
-            {/* { list && (
-                <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: '1232px', justifyContent: 'center'}}>
-                    { list.map((c, i) => (  
-                        <Card
-                            key={c.name}
-                            colorway='lemon'
-                            // inverted
-                            hoverEffect
-                            title={c.name}
-                            variant="square"
-                            width="200px"
-                            shadow
-                            onClick={() => navigate(`/${c.name}`)}
-                        >
-                            {formatEndDate(c)}
-                        </Card>
-                    )) }
-                </div>
-            )} */}
-
         </>
     )
 }
-
-
-        // <Link to={`/${c.name}`} key={c.name}>
-                        //     <div className="cohort-preview" style={{backgroundColor: colors.purple}}>
-                        //         <span className="name">{c.name}</span>
-                        //         <span className="date italic">{formatEndDate(c)}</span>
-                        //     </div>
-                        // </Link>

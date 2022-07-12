@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
-import { colors, Button, Card, Heading, Section } from '@getfutureproof/fpsb';
-import './style.css'
+import { Heading } from '@getfutureproof/fpsb';
 import { useWindowSize } from '../../hooks/windowSize';
+import './style.css'
 
 import { S3_COHORTS } from '../../_assets';
 
@@ -88,18 +88,6 @@ export default function Modal() {
                         {'\n'}
                     </div>
                 </div>
-                // <Card
-                //     key={i}
-                //     width={`calc(100%/${featured.materials.length + 3})`}
-                //     variant='info'
-                //     colorway={opts[i]}
-                //     clickable
-                //     inverted
-                //     onClick={(e) => handleSelectMedia(e, m)}
-                //     title={m.type === "cv" ? "Profile" : m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
-                // >
-                //     {'\n'}
-                // </Card>
             ))
     )
 
@@ -143,27 +131,15 @@ export default function Modal() {
                     </div>
                 </div>
 
-                {/* <Section> */}
                 <section id="content">
                     { renderContent() }            
                 </section>
-                {/* </Section> */}
 
                 <section className="btn-group" id="modal-btns">
-                {/* <Section direction='ltr' bgColor='purple'
-                    style={{
-                        backgroundColor: colors.purple,
-                        flexWrap: 'none',
-                        padding: 0
-                    }}
-                
-                > */}
                     { featured.materials && renderMaterials() }
                     { featured.students && renderStudents() }
-                {/* </Section> */}
                 </section>
 
-                
             </section>
         </div>
     )
