@@ -1,40 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router'
 import { useCohort } from '../../contexts/cohort';
-import { Heading, Button } from '@getfutureproof/fpsb'
+import { Heading } from '@getfutureproof/fpsb'
 import * as FP from '../../_assets';
 import './style.css'
 import ContactBtn from '../../components/ContactBtn';
 import { useWindowSize } from '../../hooks/windowSize';
 
 export default function Header() {
-    const { current, available, loading, error } = useCohort()
-    const [namesake, setNamesake] = useState()   
-    const [ data, setData ] = useState()
     const [ headerText, setHeaderText ] = useState('Meet the futureproof cohorts')
     const [ summaryText, setSummaryText ] = useState('Here you can see all our cohorts and find associate profiles.')
     const [ heroImg, setHeroImg ] = useState(FP.HERO_WOMAN1)
     const [ headerStyles, setHeaderStyles ] = useState({})
-    const navigate = useNavigate()
-    const { pathname } = useLocation()
+    const { current } = useCohort()  
     const screen = useWindowSize()
+    const { pathname } = useLocation()
+    const navigate = useNavigate()
 
     useEffect(() => {
         current ?
-            setHeroImg(`${FP.S3_COHORTS}/${current.name.toLowerCase()}/avatar.jpeg`)
-            // setNamesake({
-            //     ...current.namesake,
-            //     imageUrl: `${FP.S3_COHORTS}/${current.name.toLowerCase()}/avatar.jpeg`
-            // })
-            : 
-            setHeroImg(FP.HERO_WOMAN1)
-            // setNamesake({
-            //     name: 'What our clients say',
-            //     imageUrl: FP.HERO_WOMAN1,
-            //     materials: [
-            //         { type: 'video', url: 'f5RNSRC7NP4' }
-            //     ]
-            // })
+            setHeroImg(`${FP.S3_COHORTS}/${current.name.toLowerCase()}/avatar.jpeg`) 
+            : setHeroImg(FP.HERO_WOMAN1)
     }, [current])
 
     useEffect(() => {
@@ -47,7 +33,6 @@ export default function Header() {
                 isLive: true,
                 showModal: true
             }
-            // header = "We are now available for interviews!"
             header = "Our candidates"
             summary = "We have been working hard and are excited to join a commercial team!"
         } else if (current) {
@@ -75,40 +60,10 @@ export default function Header() {
         }
         setHeaderText(header)
         setSummaryText(summary)
-        setData(data)
+        // setData(data)
     }, [current, pathname])
 
-    // const renderHeader = () => {
-    //     let header = available && "We are now available for interviews!"
-    //     header ||= data.isLive ? `We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
-    //     return header
-    // }
-
-    // const renderSummary = () => {
-    //     let summary;
-
-    //     switch(data.status){
-    //         case 'available':
-    //             summary = 'We have been working hard and are excited to join a commercial team!'
-    //             break;
-    //         case 'graduated':
-    //             summary = `We graduated on ${data.endDate.format("MMMM Do YYYY")}!`
-    //             break;
-    //         case 'current':
-    //             summary = "We're currently honing our skills on futureproof's 13 week course!"
-    //             break;
-    //         case 'preview':
-    //             summary = `We recently started our course and are working hard!`
-    //             break;
-    //         case 'upcoming':
-    //             summary = `We are excited to start our course on ${data.startDate.format("MMMM Do YYYY")}!`
-    //             break;
-    //     }
-
-    //     summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
-
-    //     return summary
-    // }
+   
     useEffect(() => {
         let styles = screen.portrait ? ({
             outer: { padding: 0, display: 'flex', justifyContent: 'center' },
@@ -176,7 +131,6 @@ export default function Header() {
                             alt={current ? current.namesake.name : 'futureproof'}
                             className={heroImg.match(/(hero|device)/g) ? 'fp-image': 'framed angles'}
                             onError={() => setHeroImg(FP.DEVICE)}
-                            // onClick={() => navigate('/')}
                             />
                         </div>
                     )}

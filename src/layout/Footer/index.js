@@ -1,6 +1,5 @@
 import React, { useState, useEffect }  from 'react'
 import './style.css'
-import { Heading } from '@getfutureproof/fpsb'
 import { ContactBtn } from '../../components'
 import { useWindowSize } from '../../hooks/windowSize';
 
@@ -44,9 +43,6 @@ export default function Footer() {
 
     return (
         <footer className={isVisible ? 'visible' : 'hidden'} style={footerStyles.outer}>
-            {/* <h3>
-                <a href="http://getfutureproof.co.uk" target="_blank" rel="noopener">getfutureproof.co.uk</a>
-            </h3> */}
             <div className="footer-container" style={{ width: '100%', maxWidth: '1500px', paddingBottom: '30px', display: 'flex', flexDirection: 'column', gap: '35px' }}>
 
                 <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '10px' }}>
