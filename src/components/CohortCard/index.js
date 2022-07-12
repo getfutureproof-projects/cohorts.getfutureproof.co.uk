@@ -41,19 +41,15 @@ export default function CohortCard({ name, timeline, action }) {
             color={randColor()}
         >
             <img
-                // width='100px'
                 style={{ objectFit: 'cover', height: '100px', width: '100px' }}
-                // className={`framed ${randFrame()}`}
                 className={`framed angles`}
                 src={`${FP.S3_COHORTS}/${name.toLowerCase()}/avatar.jpeg`}
                 onError={e => e.target.src = FP.DEVICE} />
-            {/* <Heading size='large' content={name} /> */}
-            <span className='text-display large' style={{textAlign: 'center', width: '100%'}}>{name}</span>
-            {/*  */}
-            {/* <Heading size='xsmall' content={timeline} /> */}
-            <span className='regular tiny' style={{textAlign: 'center', width: '100%', lineHeight: 1}}>{timeline}</span>
+                
+            <span className='text-display large' style={{ textAlign: 'center', width: '100%' }}>{name}</span>
+            <span className='regular tiny' style={{ textAlign: 'center', width: '100%', lineHeight: 1 }}>{timeline}</span>
 
-            <button onClick={action} style={{minHeight: 0}} className="btn bg-purple text-white"> See cohort </button>
+            <button onClick={action} style={{ minHeight: 0 }} className="btn bg-purple text-white"> See cohort </button>
         </div>
     )
 }
