@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { S3_COHORTS, PLACEHOLDER } from '../../_assets';
-import { Card, colors, Frame } from '@getfutureproof/fpsb'
 import { useLocation } from 'react-router-dom';
 
 export default function Headshot({ person, loadStudent, idx, seeMore }) {
-    const { feature, current } = useCohort()
+    const { current } = useCohort()
     const [cohort, setCohort] = useState("")
     const [showModal, setShowModal] = useState()
-    const { pathname } = useLocation()
 
     useEffect(() => {
         let cohort = person.cohort || current.name
@@ -23,12 +21,6 @@ export default function Headshot({ person, loadStudent, idx, seeMore }) {
     }
 
     const normalise = str => str.normalize("NFD").replace(/\p{Diacritic}/gu, "")
-
-    const setClassNames = () => {
-        let classNames = ["img_container"]
-        showModal && classNames.push("active")
-        return classNames.join(" ")
-    }
 
     const randColor = () => {
         let opts = ['coral', 'lime', 'lemon', 'violet'];
@@ -61,8 +53,3 @@ export default function Headshot({ person, loadStudent, idx, seeMore }) {
         </div>
     )
 }
-
-    // <div className={setClassNames()} onClick={showModal ? (e => handleSelect(e, person)) : undefined}>
-    //         <button className="select" style={{backgroundColor: colors.purple}}>{person.name}</button>
-
-    // </div>
