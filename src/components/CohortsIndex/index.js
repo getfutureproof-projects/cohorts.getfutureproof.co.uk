@@ -75,7 +75,7 @@ export default function CohortsIndex() {
                             key={c.name}
                             name={c.name}
                             timeline={formatEndDate(c)}
-                            action={() => navigate(`/${c.name}`)}
+                            action={() => navigate(`/${c.name}`, {replace: true})}
                         >
                             
                         </CohortCard>

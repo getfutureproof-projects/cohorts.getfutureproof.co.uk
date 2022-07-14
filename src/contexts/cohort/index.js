@@ -192,7 +192,7 @@ export function CohortProvider({ children }){
     const clearFeatured = () => {
         let closeTo = featured.closeTo;
         setFeatured(null)
-        navigate(`/${closeTo}`);
+        navigate(`/${closeTo}`, {replace: true});
     }
 
     const helpers = {

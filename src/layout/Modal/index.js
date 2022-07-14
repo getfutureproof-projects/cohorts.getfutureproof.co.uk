@@ -15,7 +15,6 @@ export default function Modal() {
     const [ cohort, ] = useState(() => current ? current.name : featured.cohort)
     const screen = useWindowSize()
 
-
     useEffect(() => {
         function selectInitMaterial(){
             if(featured.materials){

@@ -5,6 +5,8 @@ import * as Layout from './layout';
 import * as Pages from './pages';
 import { useCohort } from './contexts/cohort';
 
+import TesterModal from './layout/TesterModal';
+
 const App = () => {
     const { featured } = useCohort();
 
@@ -19,16 +21,14 @@ const App = () => {
                     <Route exact path="/" element={<Pages.Landing />} />
 
                     <Route path="/available" element={<Pages.Available />}>
-                        <Route path=":student" />
+                        <Route path=":student" element={<TesterModal />}/>
                     </Route>
                     <Route path="/:cohort" element={<Pages.Cohort />}>
-                        <Route path=":student" />
+                        <Route path=":student" element={<TesterModal />}/>
                     </Route>
                     <Route element={<Pages.NotFound />} />
                 </Routes>
             </main>
-
-            {featured && <Layout.Modal />}
 
             <Layout.Footer />
         </>
