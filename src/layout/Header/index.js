@@ -73,18 +73,20 @@ export default function Header() {
             heroImgCont: { display: 'none' },
             btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px' },
             bSpanClass: 'tiny',
-            titleSize: 'xlarge'
+            titleSize: 'xlarge',
+            title: { lineHeight: '64px' }
         }) : ({
-            outer: { padding: '0 10px', display: 'flex', justifyContent: 'center', overflow: 'hidden', position: ' relative', zIndex: '-1', height: '75vh' },
+            outer: { padding: '0 80px', display: 'flex', justifyContent: 'center', overflow: 'hidden', position: ' relative', zIndex: '-1', height: '75vh' },
             container: { width: '100%', maxWidth: '1500px' },
             logo: { width: '180px', padding: '16px', margin: 0 },
             logoWrapper: {},
             grid: { display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh' },
-            headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
+            headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line', margin: '20px 30px 0 0' },
             heroImgCont: { display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '0' },
             btnGroup: { display: 'flex', marginTop: '30px', marginBottom: 0 },
             bSpanClass: 'small',
-            titleSize: 'huge'
+            titleSize: 'huge',
+            title: { lineHeight: '88px' }
         })
 
         setHeaderStyles(styles)
@@ -100,11 +102,13 @@ export default function Header() {
                 </div>
                 <div style={headerStyles.grid}>
                     <div className="header-text-container" style={headerStyles.headerTextCont}>
-                        <Heading
+                        {/* <Heading
                             size={headerStyles.titleSize}
                             color="white"
                             content={headerText}
-                        />
+                        /> */}
+                        <h1 className={`text-white ${headerStyles.titleSize}`} style={headerStyles.title}>{headerText}</h1>
+
                         <span className={`${headerStyles.bSpanClass} regular`}>{summaryText}</span>
                         <div style={headerStyles.btnGroup}>
                             <span className="btn bg-lime"
