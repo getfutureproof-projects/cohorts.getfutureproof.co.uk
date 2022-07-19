@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify';
 import * as Layout from './layout';
 import * as Pages from './pages';
 import { useCohort } from './contexts/cohort';
-import { colors } from '@getfutureproof/fpsb';
 
 const App = () => {
     const { featured } = useCohort();
@@ -12,9 +11,8 @@ const App = () => {
     return (
         <>
             <ToastContainer />
-            {/* <Section bgColor='purple'> */}
+
             <Layout.Header />
-            {/* </Section> */}
 
             <main style={{paddingBottom: '175px'}}>
                 <Routes>
@@ -31,7 +29,6 @@ const App = () => {
             </main>
 
             {featured && <Layout.Modal />}
-            {/* <Layout.Contact /> */}
 
             <Layout.Footer />
         </>
