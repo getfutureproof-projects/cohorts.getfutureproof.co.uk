@@ -10,3 +10,4 @@ export const S3_COHORTS = `${S3_PUBLIC}/cohorts`;
 export const WWW = "https://getfutureproof.co.uk";
 export const PLACEHOLDER = "https://upload.wikimedia.org/wikipedia/commons/a/ad/Placeholder_no_text.svg";
 export const HERO_WOMAN1 = `${S3_PRIVATE}/brand-assets/heroes/hero-woman1.png`;
+export const HERO_MAN1 = `${S3_PRIVATE}/brand-assets/heroes/hero-man1.png`;

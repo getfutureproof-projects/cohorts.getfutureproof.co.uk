@@ -6,6 +6,19 @@ a.btn:any-link:not([class="bg-*"])::after {
   background-color: var(--purple) !important;
 }
 
+a.btn.contact.standard, span.btn.contact.standard {
+  color: var(--purple) !important;
+  background-color: var(--coral) !important;
+}
+a.btn.contact.inverted, span.btn.contact.inverted {
+  color: var(--coral) !important;
+  background-color: var(--purple) !important;
+}
+a.btn.contact.inverted::after, span.btn.contact.inverted::after {
+  background-color: var(--coral) !important;
+}
+
+
 #namesake {
   height: auto;
   max-height: 700px;
@@ -35,6 +48,13 @@ a.btn:any-link:not([class="bg-*"])::after {
   width: fit-content;
   height: fit-content;
   z-index: 0;
+}
+
+.hero-wrapper.hero.angles::before {
+  content: url("https://futureproof-protected-assets.s3.eu-west-2.amazonaws.com/brand-assets/shapes/angles-violet-555.png");
+}
+.hero-wrapper.hero.cog::before {
+  content: url("https://futureproof-protected-assets.s3.eu-west-2.amazonaws.com/brand-assets/shapes/cog-lime-555.png");
 }
 
 @keyframes rotation {
