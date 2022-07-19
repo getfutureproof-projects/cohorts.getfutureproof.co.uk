@@ -131,7 +131,7 @@ export default function Header() {
             styles = { ...styles, title: { ...styles.title, margin: '0 0 0.67em 0' }}
         }
 
-        if(screen.height < 900) {
+        if(screen.height < 900 & screen.width > 950) {
             styles = {...styles, outer: {...styles.outer, height: '650px'}}
         }
 
