@@ -8,7 +8,7 @@ import ContactBtn from '../../components/ContactBtn';
 import { useWindowSize } from '../../hooks/windowSize';
 
 export default function Header() {
-    const [headerText, setHeaderText] = useState('Meet the futureproof cohorts')
+    const [headerText, setHeaderText] = useState('Meet the\nfutureproof cohorts')
     const [summaryText, setSummaryText] = useState('Here you can see all our cohorts and find associate profiles.')
     const [heroImg, setHeroImg] = useState(FP.HERO_WOMAN1)
     const [headerStyles, setHeaderStyles] = useState({})
@@ -24,7 +24,7 @@ export default function Header() {
     }, [current])
 
     useEffect(() => {
-        let header = "Meet the futureproof cohorts"
+        let header = "Meet the\nfutureproof cohorts"
         let summary = "Here you can see all our cohorts and find associate profiles."
         let data
         if (pathname === '/available') {
@@ -63,20 +63,21 @@ export default function Header() {
 
 
     useEffect(() => {
-        let styles = screen.portrait ? ({
-            outer: { padding: 0, display: 'flex', justifyContent: 'center' },
-            container: { width: '100vw' },
-            logo: { width: '180px', padding: '0', margin: '16px 32px' },
-            logoWrapper: { marginRight: '80px' },
-            grid: { display: 'block' },
-            headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
-            heroImgCont: { display: 'none' },
-            btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px' },
-            bSpanClass: 'tiny',
-            titleSize: 'xlarge',
-            title: { lineHeight: '64px' }
-        }) : ({
-            outer: { padding: '0 80px', display: 'flex', justifyContent: 'center', overflow: 'hidden', position: ' relative', zIndex: '-1', height: '75vh' },
+        // let styles = screen.portrait ? ({
+        //     outer: { padding: 0, display: 'flex', justifyContent: 'center' },
+        //     container: { width: '100vw' },
+        //     logo: { width: '180px', padding: '0', margin: '16px 32px' },
+        //     logoWrapper: { marginRight: '80px' },
+        //     grid: { display: 'block' },
+        //     headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
+        //     heroImgCont: { display: 'none' },
+        //     btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px' },
+        //     bSpanClass: 'tiny',
+        //     titleSize: 'xlarge',
+        //     title: { lineHeight: '64px' }
+        // }) : ({
+        let styles = ({
+            outer: { padding: '0 80px', display: 'flex', justifyContent: 'center', overflow: 'hidden', position: ' relative', zIndex: '-1', height: '75vh', maxHeight: '700px' },
             container: { width: '100%', maxWidth: '1500px' },
             logo: { width: '180px', padding: '16px', margin: 0 },
             logoWrapper: {},
@@ -89,6 +90,28 @@ export default function Header() {
             title: { lineHeight: '88px' }
         })
 
+        if(screen.width < 950){
+            styles = ({
+                    outer: { padding: 0, display: 'flex', justifyContent: 'center' },
+                    container: { width: '100vw' },
+                    logo: { width: '180px', padding: '0', margin: '16px 32px' },
+                    logoWrapper: { marginRight: '80px' },
+                    grid: { display: 'block' },
+                    headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
+                    heroImgCont: { display: 'none' },
+                    btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px' },
+                    bSpanClass: 'tiny',
+                    titleSize: 'xlarge',
+                    title: { lineHeight: '64px' }
+                })
+        } else if(screen.width < 1200){
+            styles = { ...styles, titleSize: 'xlarge', title: { ...styles.title, margin: '0 0 0.67em 0', lineHeight: '64px' } }
+        } else if(screen.width < 1200){
+            styles = { ...styles, title: { ...styles.title, margin: '0 0 0 0' }}
+        } else if(screen.width < 1263){
+            styles = { ...styles, title: { ...styles.title, margin: '0 0 0.67em 0' }}
+        }
+
         setHeaderStyles(styles)
     }, [screen])
 
@@ -100,6 +123,20 @@ export default function Header() {
                         <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={headerStyles.logo} />
                     </a>
                 </div>
+
+                <div className="hero-image-container" style={{ ...headerStyles.heroImgCont }}>
+                        {heroImg && (
+                            <div className={`hero-wrapper ${heroImg.match(/(hero|device)/g) ? 'original' : 'filtered'}`}>
+                                <img
+                                    id="namesake" src={heroImg}
+                                    alt={current ? current.namesake.name : 'futureproof'}
+                                    className={heroImg.match(/(hero|device)/g) ? 'fp-image' : 'framed angles'}
+                                    onError={() => setHeroImg(FP.DEVICE)}
+                                />
+                            </div>
+                        )}
+                    </div>
+
                 <div style={headerStyles.grid}>
                     <div className="header-text-container" style={headerStyles.headerTextCont}>
                         {/* <Heading
@@ -120,7 +157,7 @@ export default function Header() {
                             <ContactBtn mini />
                         </div>
                     </div>
-                    <div className="hero-image-container" style={{ ...headerStyles.heroImgCont }}>
+                    {/* <div className="hero-image-container" style={{ ...headerStyles.heroImgCont }}>
                         {heroImg && (
                             <div className={`hero-wrapper ${heroImg.match(/(hero|device)/g) ? 'original' : 'filtered'}`}>
                                 <img
@@ -131,7 +168,7 @@ export default function Header() {
                                 />
                             </div>
                         )}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

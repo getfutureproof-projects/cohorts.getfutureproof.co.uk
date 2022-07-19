@@ -7,10 +7,9 @@ a.btn:any-link:not([class="bg-*"])::after {
 }
 
 #namesake {
-  height: 70vh;
-  max-height: 50vw;
+  height: auto;
+  max-height: 700px;
   width: auto;
-  cursor: pointer;
   right: 0;
   position: relative;
 }
