@@ -26,9 +26,9 @@ a.btn:any-link:not([class="bg-*"])::after {
 .hero-wrapper.original::before {
   content: url("https://futureproof-protected-assets.s3.eu-west-2.amazonaws.com/brand-assets/shapes/angles-violet-555.png");
   position: absolute;
-  top: -80px;
+  top: 0;
   bottom: 0;
-  left: 80px;
+  left: 25%;
   right: 0;
   animation: rotation 90s linear infinite;
   width: fit-content;
