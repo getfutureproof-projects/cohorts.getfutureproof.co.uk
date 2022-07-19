@@ -119,6 +119,7 @@ export default function CohortsIndex() {
 
                 </div>
                 
+                <div style={{width: "100vw", display:  'flex', justifyContent: 'center'}}>
                 <span className="btn bg-lime"
                         onClick={() => setShowPrevious(p => !p)}
                         style={{ width: 'fit-content', margin: '20px' }}
@@ -126,6 +127,7 @@ export default function CohortsIndex() {
                         {showPrevious ? "Hide previous cohorts" : "See all previous cohorts" }
                     </span>
                     
+                    </div>
                 
                     <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', maxWidth: '1232px', justifyContent: 'center'}}>
 

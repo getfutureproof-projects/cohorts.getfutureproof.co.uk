@@ -11,6 +11,9 @@ export default function Header() {
     const [headerText, setHeaderText] = useState('Meet the\nfutureproof cohorts')
     const [summaryText, setSummaryText] = useState('Here you can see all our cohorts and find associate profiles.')
     const [heroImg, setHeroImg] = useState(FP.HERO_WOMAN1)
+    const [heroShape, setHeroShape] = useState('angles')
+    const [heroColour, setHeroColour] = useState('purple')
+    const [textColour, setTextColour] = useState('white')
     const [headerStyles, setHeaderStyles] = useState({})
     const { current } = useCohort()
     const screen = useWindowSize()
@@ -18,10 +21,25 @@ export default function Header() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        current ?
-            setHeroImg(`${FP.S3_COHORTS}/${current.name.toLowerCase()}/avatar.jpeg`)
-            : setHeroImg(FP.HERO_WOMAN1)
-    }, [current])
+        let hero = FP.HERO_WOMAN1
+        let shape = 'angles'
+        let colour = 'purple'
+        let text = 'white'
+
+        if(current){
+            hero = `${FP.S3_COHORTS}/${current.name.toLowerCase()}/avatar.jpeg`
+        } else if (pathname === '/available' ) {
+            hero = FP.HERO_MAN1
+            shape = 'cog'
+            colour = 'coral'
+            text = 'purple'
+        }
+
+        setHeroImg(hero)
+        setHeroShape(shape)
+        setHeroColour(colour)
+        setTextColour(text)
+    }, [current, pathname])
 
     useEffect(() => {
         let header = "Meet the\nfutureproof cohorts"
@@ -116,17 +134,20 @@ export default function Header() {
     }, [screen])
 
     return (
-        <div className="bg-purple header-wrapper" style={{ ...headerStyles.outer }}>
+        <div className={`bg-${heroColour} header-wrapper`} style={{ ...headerStyles.outer }}>
             <div className="header-container" style={headerStyles.container}>
                 <div style={headerStyles.logoWrapper}>
                     <a href={FP.WWW} target="_blank" rel="noopener">
-                        <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={headerStyles.logo} />
+                        <img id="logo" src={heroColour === 'purple' ? FP.LOGO_WHITE : FP.LOGO_250} alt="futureproof logo" style={headerStyles.logo} />
+                        {/* <img id="logo" src={FP.LOGO_WHITE} alt="futureproof logo" style={headerStyles.logo} /> */}
                     </a>
                 </div>
 
                 <div className="hero-image-container" style={{ ...headerStyles.heroImgCont }}>
                         {heroImg && (
-                            <div className={`hero-wrapper ${heroImg.match(/(hero|device)/g) ? `original ${heroImg.match(/(hero)/g) ? 'hero' : ''}` : 'filtered'}`}>
+                            <div className={`hero-wrapper ${heroShape}
+                                    ${heroImg.match(/(hero|device)/g) ? `original ${heroImg.match(/(hero)/g) ? 'hero' : ''}` : 'filtered'
+                                }`}>
                                 <img
                                     id="namesake" src={heroImg}
                                     alt={current ? current.namesake.name : 'futureproof'}
@@ -144,17 +165,17 @@ export default function Header() {
                             color="white"
                             content={headerText}
                         /> */}
-                        <h1 className={`text-white ${headerStyles.titleSize}`} style={headerStyles.title}>{headerText}</h1>
+                        <h1 className={`text-${textColour} ${headerStyles.titleSize}`} style={headerStyles.title}>{headerText}</h1>
 
                         <span className={`${headerStyles.bSpanClass} regular`}>{summaryText}</span>
                         <div style={headerStyles.btnGroup}>
-                            <span className="btn bg-lime"
+                            <span className={`btn ${heroColour === 'coral' ? 'contact inverted' : 'bg-lime'}`}
                                 onClick={() => pathname === '/available' ? navigate('/') : navigate('/available')}
                                 style={{ width: 'fit-content', marginRight: '20px' }}
                             >
-                                {pathname === '/available' ? "See all cohorts" : "Find talent"}
+                                {pathname === '/available' ? "See all cohorts" : "See all candidates"}
                             </span>
-                            <ContactBtn mini />
+                            <ContactBtn mini inverted={heroColour === 'coral'} />
                         </div>
                     </div>
                     {/* <div className="hero-image-container" style={{ ...headerStyles.heroImgCont }}>
