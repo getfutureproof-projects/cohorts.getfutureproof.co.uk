@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useCohort } from '../../contexts/cohort'
 import { BackBtn, HeadshotsIndex } from '../../components'
 import { Section } from '@getfutureproof/fpsb'
+import { Outlet } from 'react-router-dom'
 import SEO from '../SEO'
 
 export default function Cohort() {
@@ -28,6 +29,7 @@ export default function Cohort() {
             { dError && <span className='medium text-display'><BackBtn path="/" /> {dError}</span> }
             { current && <HeadshotsIndex />}
         </Section>
+        <Outlet />
         </>
     )
 }
