@@ -18,7 +18,7 @@ export default function ContactBtn({mini}) {
     return (
         <a
             className="btn contact bg-coral text-purple"
-            href={`mailto:krikor@getfutureproof.co.uk,claudia@getfutureproof.co.uk?subject=${subject}`}
+            href={`mailto:helloa@getfutureproof.co.uk?subject=${subject}`}
             // onClick={() => navigate('/contact')}
             style={{ width: 'fit-content' }}
         >
