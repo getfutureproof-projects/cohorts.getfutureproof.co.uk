@@ -15,6 +15,7 @@ export default function CohortsIndex() {
     const [cardShapes, setCardShapes] = useState(['angles', 'cog', 'star', 'shield'])
     const [cardColors, setCardColors] = useState(['coral', 'violet', 'lime', 'lemon'])
     const [previous, setPrevious] = useState([]);
+    const [showPrevious, setShowPrevious] = useState(false);
     const [ containerStyles, setContainerStyles ] = useState({ 
         gridTemplateColumns: "repeat(2, auto)",
         gridTemplateRows: "repeat(2, auto)"
@@ -101,7 +102,8 @@ export default function CohortsIndex() {
             { error && <h2 className="error">{error}</h2> }
 
             { list && (
-                <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', maxWidth: '1232px', justifyContent: 'center'}}>
+                <>
+                <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', maxWidth: '1232px', justifyContent: 'center', marginBottom: '20px'}}>
                     { recent.map((c, i) => (  
                         <CohortCard
                             key={c.name}
@@ -114,7 +116,35 @@ export default function CohortsIndex() {
                         </CohortCard>
                     )) }
 
+
                 </div>
+                
+                <span className="btn bg-lime"
+                        onClick={() => setShowPrevious(p => !p)}
+                        style={{ width: 'fit-content', margin: '20px' }}
+                    >
+                        {showPrevious ? "Hide previous cohorts" : "See all previous cohorts" }
+                    </span>
+                    
+                
+                    <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', maxWidth: '1232px', justifyContent: 'center'}}>
+
+
+                    { showPrevious && previous.map((c, i) => (  
+                        <CohortCard
+                            key={c.name}
+                            name={c.name}
+                            timeline={formatEndDate(c)}
+                            action={() => navigate(`/${c.name}`, {replace: true})}
+                            frame={cardShapes[i % cardShapes.length]} colour={cardColors[i % cardColors.length]} 
+                        >
+                            
+                        </CohortCard>
+                    )) }
+
+                </div>
+
+                </>
             )}
         </>
     )
