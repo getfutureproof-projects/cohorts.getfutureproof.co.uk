@@ -180,7 +180,7 @@ export function CohortProvider({ children }){
                 let students = entryPoint === 'available' ? available : current.students;
                 student = toFeature.name ? toFeature : students.find(s => slugify(s.name) === slugify(toFeature));
                 studentSlug = slugify(student.name);
-                !params.student && navigate(`/${entryPoint}/${studentSlug}`)
+                !params.student && navigate(`/${entryPoint}/${studentSlug}`, { replace: true })
                 setFeatured({ ...student, closeTo: entryPoint })
             } catch (err) {
                 console.warn(err);

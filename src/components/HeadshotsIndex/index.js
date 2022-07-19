@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useCohort } from '../../contexts/cohort'
 import { useWindowSize } from '../../hooks/windowSize'
 import { Headshot } from '../'
