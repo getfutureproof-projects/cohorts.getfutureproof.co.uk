@@ -12,6 +12,8 @@ export default function CohortsIndex() {
     const navigate = useNavigate();
     const screen = useWindowSize();
     const [recent, setRecent] = useState([]);
+    const [cardShapes, setCardShapes] = useState(['angles', 'cog', 'star', 'shield'])
+    const [cardColors, setCardColors] = useState(['coral', 'violet', 'lime', 'lemon'])
     const [previous, setPrevious] = useState([]);
     const [ containerStyles, setContainerStyles ] = useState({ 
         gridTemplateColumns: "repeat(2, auto)",
@@ -56,6 +58,36 @@ export default function CohortsIndex() {
         setPrevious(previous)
     }, [list])
 
+    useEffect(() => {
+        let rand = shuffle(cardColors)
+        if([rand[0], rand[rand.length-1]].includes("violet")){
+            rand = [...rand.slice(0, rand.length/2), 'violet', ...rand.slice(rand.length/2 - 1)]
+        } else {
+            rand = [...rand, 'violet']
+        }
+        setCardColors(rand)
+    }, [])
+
+    useEffect(() => {
+        let rand = shuffle(cardShapes)
+        if([rand[0], rand[rand.length-1]].includes("star")){
+            rand = [...rand.slice(0, rand.length/2), 'star', ...rand.slice(rand.length/2 - 1)]
+        } else {
+            rand = [...rand, 'star']
+        }
+        setCardShapes(rand)
+    }, [])
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+
+        return array
+      }
+      
+
     const formatEndDate = cohort => {
         let formatted = cohort.endDate.format("MMMM Do YYYY")
         formatted = cohort.status === 'graduated' ? 
@@ -76,6 +108,7 @@ export default function CohortsIndex() {
                             name={c.name}
                             timeline={formatEndDate(c)}
                             action={() => navigate(`/${c.name}`, {replace: true})}
+                            frame={cardShapes[i % cardShapes.length]} colour={cardColors[i % cardColors.length]} 
                         >
                             
                         </CohortCard>
