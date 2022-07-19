@@ -83,7 +83,7 @@ export default function Header() {
             logoWrapper: {},
             grid: { display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh' },
             headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line', margin: '20px 30px 0 0' },
-            heroImgCont: { display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '0' },
+            heroImgCont: { display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '0', height: '100%' },
             btnGroup: { display: 'flex', marginTop: '30px', marginBottom: 0 },
             bSpanClass: 'small',
             titleSize: 'huge',
@@ -126,7 +126,7 @@ export default function Header() {
 
                 <div className="hero-image-container" style={{ ...headerStyles.heroImgCont }}>
                         {heroImg && (
-                            <div className={`hero-wrapper ${heroImg.match(/(hero|device)/g) ? 'original' : 'filtered'}`}>
+                            <div className={`hero-wrapper ${heroImg.match(/(hero|device)/g) ? `original ${heroImg.match(/(hero)/g) ? 'hero' : ''}` : 'filtered'}`}>
                                 <img
                                     id="namesake" src={heroImg}
                                     alt={current ? current.namesake.name : 'futureproof'}
