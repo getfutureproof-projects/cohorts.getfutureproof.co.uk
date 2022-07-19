@@ -10,8 +10,8 @@ export default function HeadshotsIndex({ showAvailable }) {
     const { student } = useParams();
     const { current, available, feature } = useCohort()
     const [ data, setData ] = useState()
-    const [cardShapes, setCardShapes] = useState(['angles', 'cog', 'star', 'shield', 'star'])
-    const [cardColors, setCardColors] = useState(['coral', 'violet', 'lime', 'lemon', 'violet'])
+    const [cardShapes, setCardShapes] = useState(['angles', 'cog', 'star', 'shield'])
+    const [cardColors, setCardColors] = useState(['coral', 'violet', 'lime', 'lemon'])
 
     const screen = useWindowSize()
     const [ containerStyles, setContainerStyles ] = useState({ 
@@ -69,11 +69,21 @@ export default function HeadshotsIndex({ showAvailable }) {
 
     useEffect(() => {
         let rand = shuffle(cardColors)
+        if([rand[0], rand[rand.length-1]].includes("violet")){
+            rand = [...rand.slice(0, rand.length/2), 'violet', ...rand.slice(rand.length/2 - 1)]
+        } else {
+            rand = [...rand, 'violet']
+        }
         setCardColors(rand)
     }, [current])
 
     useEffect(() => {
         let rand = shuffle(cardShapes)
+        if([rand[0], rand[rand.length-1]].includes("star")){
+            rand = [...rand.slice(0, rand.length/2), 'star', ...rand.slice(rand.length/2 - 1)]
+        } else {
+            rand = [...rand, 'star']
+        }
         setCardShapes(rand)
     }, [current])
 
