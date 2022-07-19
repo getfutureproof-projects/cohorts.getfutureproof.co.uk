@@ -77,14 +77,14 @@ export default function Header() {
         //     title: { lineHeight: '64px' }
         // }) : ({
         let styles = ({
-            outer: { padding: '0 80px', display: 'flex', justifyContent: 'center', overflow: 'hidden', position: ' relative', zIndex: '-1', height: '75vh', maxHeight: '700px' },
+            outer: { padding: '0 80px', display: 'flex', justifyContent: 'center', overflow: 'hidden', position: ' relative', height: '75vh', maxHeight: '700px' },
             container: { width: '100%', maxWidth: '1500px' },
             logo: { width: '180px', padding: '16px', margin: 0 },
             logoWrapper: {},
             grid: { display: 'grid', gridTemplateColumns: '1fr 40vh', height: '40vh' },
             headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line', margin: '20px 30px 0 0' },
             heroImgCont: { display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '0', height: '100%' },
-            btnGroup: { display: 'flex', marginTop: '30px', marginBottom: 0 },
+            btnGroup: { display: 'flex', marginTop: '30px', marginBottom: 0, zIndex: 1 },
             bSpanClass: 'small',
             titleSize: 'huge',
             title: { lineHeight: '88px' }
@@ -99,7 +99,7 @@ export default function Header() {
                     grid: { display: 'block' },
                     headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', alignContent: 'center', whiteSpace: 'pre-line' },
                     heroImgCont: { display: 'none' },
-                    btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px' },
+                    btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px', zIndex: 1 },
                     bSpanClass: 'tiny',
                     titleSize: 'xlarge',
                     title: { lineHeight: '64px' }

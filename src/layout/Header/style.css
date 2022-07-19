@@ -33,7 +33,7 @@ a.btn:any-link:not([class="bg-*"])::after {
   animation: rotation 90s linear infinite;
   width: fit-content;
   height: fit-content;
-  z-index: -1;
+  z-index: 0;
 }
 
 @keyframes rotation {
