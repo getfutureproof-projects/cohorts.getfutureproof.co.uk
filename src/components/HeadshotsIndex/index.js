@@ -10,7 +10,9 @@ export default function HeadshotsIndex({ showAvailable }) {
     const { student } = useParams();
     const { current, available, feature } = useCohort()
     const [ data, setData ] = useState()
-    
+    const [cardShapes, setCardShapes] = useState(['angles', 'cog', 'star', 'shield'])
+    const [cardColors, setCardColors] = useState(['coral', 'violet', 'lime', 'lemon'])
+
     const screen = useWindowSize()
     const [ containerStyles, setContainerStyles ] = useState({ 
         gridTemplateColumns: "repeat(2, auto)",
@@ -65,13 +67,43 @@ export default function HeadshotsIndex({ showAvailable }) {
         calcStyles()
     }, [screen, data])
 
+    useEffect(() => {
+        let rand = shuffle(cardColors)
+        if([rand[0], rand[rand.length-1]].includes("violet")){
+            rand = [...rand.slice(0, rand.length/2), 'violet', ...rand.slice(rand.length/2 - 1)]
+        } else {
+            rand = [...rand, 'violet']
+        }
+        setCardColors(rand)
+    }, [current])
+
+    useEffect(() => {
+        let rand = shuffle(cardShapes)
+        if([rand[0], rand[rand.length-1]].includes("star")){
+            rand = [...rand.slice(0, rand.length/2), 'star', ...rand.slice(rand.length/2 - 1)]
+        } else {
+            rand = [...rand, 'star']
+        }
+        setCardShapes(rand)
+    }, [current])
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+
+        return array
+      }
+      
+
     function loadStudent(toFeature){
         let entryPoint = showAvailable ? 'available' : (toFeature.cohort || current.name)
         feature(toFeature, entryPoint)
     }
 
 
-    const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} idx={i} person={s} seeMore={data.showModal} loadStudent={loadStudent}/>)
+    const renderHeadshots = () => data.students.map((s, i) => <Headshot key={i} idx={i} person={s} seeMore={data.showModal} frame={cardShapes[i % cardShapes.length]} colour={cardColors[i % cardColors.length]} loadStudent={loadStudent}/>)
 
 
 
