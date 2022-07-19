@@ -108,6 +108,7 @@ export default function Header() {
             title: { lineHeight: '88px' }
         })
 
+        
         if(screen.width < 950){
             styles = ({
                     outer: { padding: 0, display: 'flex', justifyContent: 'center' },
@@ -129,6 +130,11 @@ export default function Header() {
         } else if(screen.width < 1263){
             styles = { ...styles, title: { ...styles.title, margin: '0 0 0.67em 0' }}
         }
+
+        if(screen.height < 900 & screen.width > 950) {
+            styles = {...styles, outer: {...styles.outer, height: '650px'}}
+        }
+
 
         setHeaderStyles(styles)
     }, [screen])
