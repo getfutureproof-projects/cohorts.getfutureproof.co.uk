@@ -39,11 +39,13 @@ export default function HeadshotsIndex({ showAvailable }) {
     useEffect(() => {
         const calcStyles = () => {
             let containerUpdates, summaryUpdates, numCols;
-            if(screen.portrait){
+            if(screen.width < 650){
                 containerUpdates = { 
                     gridTemplateColumns: "repeat(1, auto)",
                     gridTemplateRows: "repeat(1, auto)"
                 }
+            } else if(screen.width <= 1000){
+                numCols = 2;
             } else if(screen.width <= 1300){
                 numCols = 3;
             } else {
@@ -55,17 +57,17 @@ export default function HeadshotsIndex({ showAvailable }) {
                 gridTemplateRows: "repeat(2, auto)"
             }
 
-            if(!screen.portrait && data) {
-                containerUpdates = {
-                    gridTemplateColumns: `repeat(${numCols}, 1fr)`
-                }
-            }
+            // if(!screen.portrait && data) {
+            //     containerUpdates = {
+            //         gridTemplateColumns: `repeat(${numCols}, 1fr)`
+            //     }
+            // }
 
             setContainerStyles(containerUpdates)
         }
 
         calcStyles()
-    }, [screen, data])
+    }, [screen])
 
     useEffect(() => {
         let rand = shuffle(cardColors)
