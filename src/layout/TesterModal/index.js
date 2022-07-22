@@ -13,7 +13,7 @@ const YT_OPTS = "controls=1&autoplay=1"
 export default function TesterModal() {
     const { featured, clearFeatured, current, feature } = useCohort()
     const [ media, setMedia ] = useState({ type: '', content: ''})
-    // const [ cohort, ] = useState(() => current ? current.name : featured.cohort)
+    const [ cohort, ] = useState(() => current ? current.name : featured.cohort)
     const screen = useWindowSize()
     const { pathname } = useLocation()
     const navigate = useNavigate()
