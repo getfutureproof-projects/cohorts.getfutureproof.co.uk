@@ -21,7 +21,7 @@ export default function ContactBtn({mini, inverted}) {
       
             // className={`btn contact bg-${inverted ? 'purple' : 'coral'} text-${inverted ? 'white' : 'purple'}`}
             className={`btn contact ${inverted ? 'inverted' : 'standard'}`}
-            href={`mailto:helloa@getfutureproof.co.uk?subject=${subject}`}
+            href={`mailto:hello@getfutureproof.co.uk?subject=${subject}`}
             // onClick={() => navigate('/contact')}
             style={{ 
                 width: 'fit-content',
