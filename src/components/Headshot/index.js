@@ -6,12 +6,6 @@ export default function Headshot({ person, loadStudent, seeMore, frame, colour }
     const { current } = useCohort()
     const [cohort, setCohort] = useState("")
     const [showModal, setShowModal] = useState()
-<<<<<<< HEAD
-    const [cardShape, setCardShape] = useState('')
-    const [cardColor, setCardColor] = useState('')
-    const { pathname } = useLocation()
-=======
->>>>>>> staging
 
 
     useEffect(() => {
@@ -21,76 +15,6 @@ export default function Headshot({ person, loadStudent, seeMore, frame, colour }
         setShowModal(modal)
     }, [person])
 
-<<<<<<< HEAD
-    useLayoutEffect(() => {
-            let colors = []
-            for (let i = -1; i < idx; i++) {
-                let opts = ['coral', 'lime', 'lemon', 'violet', 'lime', 'lemon', 'violet', 'coral', 'lemon', 'violet', 'lime', 'coral',  'lemon', 'violet', 
-                'coral', 'lime', 'lemon', 'violet', 'lime', 'lemon', 'violet', 'coral', 'lemon', 'violet', 'lime', 'coral',  'lemon', 'violet']
-                colors.push(opts[idx])
-            }
-            setCardColor(colors)
-        }, [person])
-
-        useLayoutEffect(() => {
-            let shapes = []
-            for (let i = -1; i < idx; i++) {
-                let opts = ['angles', 'cog', 'star', 'shield', 'star', 'shield', 'angles', 'cog', 'angles', 'cog', 'star', 'shield', 'star', 'shield', 'angles', 'cog', 
-                'angles', 'cog', 'star', 'shield', 'star', 'shield', 'angles', 'cog', 'angles', 'cog', 'star', 'shield', 'star', 'shield', 'angles', 'cog', ]
-                shapes.push(opts[idx])
-            }
-            setCardShape(shapes)
-        }, [person])
-
-    // * Random versions of above
-    // **********************************
-    // useLayoutEffect(() => {
-    //     let colors = []
-    //     for (let i = -1; i < idx; i++) {
-    //         let opts = ['coral', 'lime', 'lemon', 'violet'];
-    //         let rand = Math.floor(Math.random() * opts.length);
-    //         colors.push(opts[rand])
-    //     }
-    //     setCardColor(colors)
-    // }, [person])
-
-    //  useLayoutEffect(() => {
-    //     let shapes = []
-    //     for (let i = -1; i < idx; i++) {
-    //         let frames = ['angles', 'cog', 'star', 'shield'];
-    //         let rand = Math.floor(Math.random() * frames.length);
-    //         shapes.push(frames[rand])
-    //     }
-    //     setCardShape(shapes)
-    // }, [person])
-    // *********************************
-
-
-    // Code snippet to use for ensuring no repetition - will also work for color with some changes
-    // ***************************************
-    //     let shapes = []
-    //     for (let i = -1; i < 10; i++) {
-    //         let frames = ['angles', 'cog', 'star', 'shield'];
-    //         let rand = Math.floor(Math.random() * frames.length);
-    //         let newFrame = frames[rand]
-    //         let lastFrame = shapes[shapes.length - 1]
-    //         if (newFrame === lastFrame && newFrame !== frames[0]) {
-    //             newFrame = frames[0]
-    //         } else if (newFrame === lastFrame && newFrame === frames[0]) {
-    //             newFrame = frames[2]
-    //         } else {
-    //             newFrame
-    //         }
-    //         shapes.push(newFrame)
-    //     }
-    //     console.log(shapes)
-    //     setCardShape(shapes)
-    // ******************************************
-
-   
-
-=======
->>>>>>> staging
     const handleSelect = (e, toFeature) => {
         e.stopPropagation()
         loadStudent(toFeature)
@@ -98,24 +22,6 @@ export default function Headshot({ person, loadStudent, seeMore, frame, colour }
 
     const normalise = str => str.normalize("NFD").replace(/\p{Diacritic}/gu, "")
 
-<<<<<<< HEAD
-    // Think that this can be deleted has been commented our for a while
-
-    // const setClassNames = () => {
-    //     let classNames = ["img_container"]
-    //     showModal && classNames.push("active")
-    //     return classNames.join(" ")
-    // }
-
-    const chooseColorShape = (arr) => {
-        for (let i = 0; i < arr.length; i++) {
-            return arr[arr.length - 1]
-        }
-    }
-
-
-=======
->>>>>>> staging
 
 
     return (
