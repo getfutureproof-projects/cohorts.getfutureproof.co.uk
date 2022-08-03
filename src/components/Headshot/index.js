@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { S3_COHORTS, PLACEHOLDER } from '../../_assets';
-import { useLocation } from 'react-router-dom';
 
-export default function Headshot({ person, loadStudent, idx, seeMore }) {
+export default function Headshot({ person, loadStudent, seeMore, frame, colour }) {
     const { current } = useCohort()
     const [cohort, setCohort] = useState("")
     const [showModal, setShowModal] = useState()
+<<<<<<< HEAD
     const [cardShape, setCardShape] = useState('')
     const [cardColor, setCardColor] = useState('')
     const { pathname } = useLocation()
+=======
+>>>>>>> staging
 
 
     useEffect(() => {
@@ -19,6 +21,7 @@ export default function Headshot({ person, loadStudent, idx, seeMore }) {
         setShowModal(modal)
     }, [person])
 
+<<<<<<< HEAD
     useLayoutEffect(() => {
             let colors = []
             for (let i = -1; i < idx; i++) {
@@ -86,6 +89,8 @@ export default function Headshot({ person, loadStudent, idx, seeMore }) {
 
    
 
+=======
+>>>>>>> staging
     const handleSelect = (e, toFeature) => {
         e.stopPropagation()
         loadStudent(toFeature)
@@ -93,6 +98,7 @@ export default function Headshot({ person, loadStudent, idx, seeMore }) {
 
     const normalise = str => str.normalize("NFD").replace(/\p{Diacritic}/gu, "")
 
+<<<<<<< HEAD
     // Think that this can be deleted has been commented our for a while
 
     // const setClassNames = () => {
@@ -108,21 +114,23 @@ export default function Headshot({ person, loadStudent, idx, seeMore }) {
     }
 
 
+=======
+>>>>>>> staging
 
 
     return (
 
         <div
-            className={`bg-${chooseColorShape(cardColor)}`}
+            className={`bg-${colour}`}
             style={
                 { display: 'flex', flexWrap: 'wrap', maxWidth: '275px', justifyContent: 'center', height: '325px', padding: '10px 0 20px 0' }
             }
-            color={chooseColorShape(cardColor)}
+            color={colour}
         >
             <img
                 width='200px'
                 style={{ objectFit: 'cover' }}
-                className={`framed ${chooseColorShape(cardShape)}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
+                className={`framed ${frame}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
             <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
 
             {seeMore && <button className="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button>}

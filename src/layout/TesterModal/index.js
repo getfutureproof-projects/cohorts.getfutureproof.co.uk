@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { Heading } from '@getfutureproof/fpsb';
 import { useWindowSize } from '../../hooks/windowSize';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import './style.css'
 
 import { S3_COHORTS } from '../../_assets';
@@ -9,11 +10,15 @@ import { S3_COHORTS } from '../../_assets';
 const YOUTUBE = "https://www.youtube-nocookie.com/embed"
 const YT_OPTS = "controls=1&autoplay=1"
 
-export default function Modal() {
+export default function TesterModal() {
     const { featured, clearFeatured, current, feature } = useCohort()
     const [ media, setMedia ] = useState({ type: '', content: ''})
     const [ cohort, ] = useState(() => current ? current.name : featured.cohort)
     const screen = useWindowSize()
+    const { pathname } = useLocation()
+    const navigate = useNavigate()
+
+    
 
     useEffect(() => {
         function selectInitMaterial(){
@@ -32,7 +37,7 @@ export default function Modal() {
             }
             return {type: "github", content: "github" }
         }
-        let media = selectInitMaterial()
+        let media = featured ? selectInitMaterial() : { type: '', content: ''}
         setMedia(media)
     }, [ featured ])
     
@@ -64,11 +69,11 @@ export default function Modal() {
         setMedia({ type: m.type, content })
     }
 
-    const handleSelectStudent = (e, st) => {
-        e.stopPropagation()
-        let student = current.students.find(s => s.name === st)
-        feature(student, current.name)
-    }
+    // const handleSelectStudent = (e, st) => {
+    //     e.stopPropagation()
+    //     let student = current.students.find(s => s.name === st)
+    //     feature(student, current.name)
+    // }
 
     const renderMaterials = (opts = ['violet', 'lime', 'lemon', 'coral']) => (
         [ ...featured.materials, featured.github && { type: "github" }]
@@ -76,6 +81,7 @@ export default function Modal() {
             .sort((a, b) => a.type.localeCompare(b.type))
             .map((m, i)=> (
                 <div 
+                    key={i}
                     className="modal-btn card bg-purple" 
                     onClick={(e) => handleSelectMedia(e, m)}
                     style={{width: `calc(100%/${featured.materials.length + 3})`, margin: 0, cursor: 'pointer'}}
@@ -92,8 +98,7 @@ export default function Modal() {
 
     const renderContent = () => {
         if (media.type ==="github") return renderGitHubStats()
-        return renderIframe()
-        
+        return renderIframe() 
     }
 
     const renderIframe = () => (
@@ -109,24 +114,26 @@ export default function Modal() {
         <img src={`https://github-readme-stats.vercel.app/api?username=${featured.github}&show_icons=true&locale=en`} alt="Github stats" style={{maxWidth: '80vw'}}/>
     </div>)
 
-    const renderStudents = () => featured.students.map((s, i)=> (
-        <button key={i} className="linkout" onClick={(e) => handleSelectStudent(e, s)}>
-            {s}
-        </button>
-    ))
+    // const renderStudents = () => featured.students.map((s, i)=> (
+    //     <button key={i} className="linkout" onClick={(e) => handleSelectStudent(e, s)}>
+    //         {s}
+    //     </button>
+    // ))
 
     return (
-        <div id="overlay" onClick={clearFeatured}>
+        // <div id="overlay" onClick={clearFeatured}>
+        <div id="overlay" onClick={() => navigate("..", { replace: true })}>
             <section
                 id="modal" 
                 className='bg-purple'
                 >
+                { featured && <>
                 <div>
                     <div style={{paddingTop: '10px'}}>
                         <Heading color='white' size={screen.portrait ? 'h3' : 'h2'} content={featured.name} />
                     </div>
                     <div id="icons">
-                        <span onClick={clearFeatured} style={{ cursor: "pointer" }}>✖</span>
+                        <span onClick={() => navigate('..', { replace: true })} style={{ cursor: "pointer" }}>✖</span>
                     </div>
                 </div>
 
@@ -138,7 +145,7 @@ export default function Modal() {
                     { featured.materials && renderMaterials() }
                     { featured.students && renderStudents() }
                 </section>
-
+                </>}
             </section>
         </div>
     )
