@@ -13,10 +13,15 @@ const YT_OPTS = "controls=1&autoplay=1"
 export default function TesterModal() {
     const { featured, clearFeatured, current, feature } = useCohort()
     const [ media, setMedia ] = useState({ type: '', content: ''})
-    const [ cohort, ] = useState(() => current ? current.name : featured.cohort)
+    const [ cohort, setCohort ] = useState(() => current ? current.name : (featured ? featured.cohort : null))
     const screen = useWindowSize()
     const { pathname } = useLocation()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        current && setCohort(current.name)
+        featured && setCohort(featured.cohort)
+    }, [current, featured])
 
     
 
@@ -39,7 +44,7 @@ export default function TesterModal() {
         }
         let media = featured ? selectInitMaterial() : { type: '', content: ''}
         setMedia(media)
-    }, [ featured ])
+    }, [ cohort ])
     
     const normalise = str => str.normalize("NFD").replace(/\p{Diacritic}/gu, "")
     
