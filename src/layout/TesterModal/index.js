@@ -13,15 +13,14 @@ const YT_OPTS = "controls=1&autoplay=1"
 export default function TesterModal() {
     const { featured, clearFeatured, current, feature } = useCohort()
     const [ media, setMedia ] = useState({ type: '', content: ''})
-    const [ cohort, setCohort ] = useState(() => current ? current.name : (featured ? featured.cohort : null))
-    const screen = useWindowSize()
-    const { pathname } = useLocation()
-    const navigate = useNavigate()
+    const [ cohort, setCohort ] = useState()
 
+    const screen = useWindowSize()
+    const navigate = useNavigate()
+    
     useEffect(() => {
-        current && setCohort(current.name)
         featured && setCohort(featured.cohort)
-    }, [current, featured])
+    }, [featured])
 
     
 
@@ -42,7 +41,7 @@ export default function TesterModal() {
             }
             return {type: "github", content: "github" }
         }
-        let media = featured ? selectInitMaterial() : { type: '', content: ''}
+        let media = featured && cohort ? selectInitMaterial() : { type: '', content: ''}
         setMedia(media)
     }, [ cohort ])
     
