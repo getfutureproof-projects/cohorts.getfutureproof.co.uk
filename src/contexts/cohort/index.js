@@ -129,7 +129,8 @@ export function CohortProvider({ children }){
                 setLoading(true)
                 set(null)
                 let cohortData = await fetchStudents(cohort)
-                set(cohortData)
+                const studentsWithCohort = {...cohortData, students: cohortData.students.map(st => ({...st, cohort })) }
+                set(studentsWithCohort)
             } catch (e) {
                 setError(`Oops, we can't find a cohort called ${capitalise(cohort)}!`)
                 console.error(e);
