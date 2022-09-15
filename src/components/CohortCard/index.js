@@ -26,6 +26,7 @@ export default function CohortCard({ name, timeline, action, frame, colour }) {
                 style={{ objectFit: 'cover', height: '100px', width: '100px' }}
                 className={`framed angles`}
                 src={`${FP.S3_COHORTS}/${name.toLowerCase()}/avatar.jpeg`}
+                alt={`Image representing ${name}`}
                 onError={e => e.target.src = FP.DEVICE} />
                 
             <span className='text-display large' style={{ textAlign: 'center', width: '100%' }}>{name}</span>
