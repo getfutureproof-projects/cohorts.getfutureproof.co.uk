@@ -36,7 +36,8 @@ export default function Headshot({ person, loadStudent, seeMore, frame, colour }
             <img
                 width='200px'
                 style={{ objectFit: 'cover' }}
-                className={`framed ${frame}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
+                className={`framed ${frame}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
+                alt={`${person.name}`}></img>
             <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
 
             {seeMore && <button className="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button>}
