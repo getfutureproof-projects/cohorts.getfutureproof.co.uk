@@ -54,7 +54,7 @@ export function CohortProvider({ children }){
                     previewEndDate: startDate.add(1, 'weeks'),
                     addMaterialsDate: startDate.add(4, "weeks"),
                     startInterviewsDate: endDate.subtract(6, "weeks"),
-                    bondEndDate: endDate.add(8, 'weeks')
+                    bondEndDate: c.bondOffset ? endDate.add(8 + c.bondOffset, 'weeks') : endDate.add(8, 'weeks')
                 }
                 
                 let descriptors = {
