@@ -1,0 +1,10 @@
+#contact-btn {
+    width: 25%;
+    height: 2em;
+    font-size: 15px;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px 0 15px;
+}

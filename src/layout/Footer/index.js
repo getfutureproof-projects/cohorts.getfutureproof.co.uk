@@ -15,7 +15,7 @@ export default function Footer() {
       }, [])
 
       const listenToScroll = () => {
-        let showPoint = (window.innerHeight/100)*20;
+        let showPoint = (window.innerHeight/20)*20;
         const winScroll = document.body.scrollTop || 
             document.documentElement.scrollTop;
            
@@ -29,11 +29,11 @@ export default function Footer() {
 
       useEffect(() => {
         let styles = screen.portrait ? ({
-            outer: { padding: '60px 16px 0', display: 'flex', justifyContent: 'center' },
+            outer: { padding: '50px 16px 0', display: 'flex', justifyContent: 'center' },
             tSpanClass: 'small',
             bSpanClass: 'tiny'
         }) : ({
-            outer: { padding: '60px 80px 0', display: 'flex', justifyContent: 'center' },
+            outer: { padding: '50px 60px 0', display: 'flex', justifyContent: 'center' },
             tSpanClass: 'medium',
             bSpanClass: 'small'
         }) 
@@ -43,7 +43,7 @@ export default function Footer() {
 
     return (
         <footer className={isVisible ? 'visible' : 'hidden'} style={footerStyles.outer}>
-            <div className="footer-container" style={{ width: '100%', maxWidth: '1500px', paddingBottom: '30px', display: 'flex', flexDirection: 'column', gap: '35px' }}>
+            <div className="footer-container" style={{ width: '100%', maxWidth: '1500px', paddingBottom: '20px', display: 'flex', flexDirection: 'column', gap: '35px' }}>
 
                 <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <span className={`${footerStyles.tSpanClass} text-body`}>Still looking for the right candidate?</span>

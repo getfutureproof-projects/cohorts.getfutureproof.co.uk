@@ -1,0 +1,24 @@
+#student-box {
+    /* margin-top: 10px; */
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 275px;
+    justify-content: center;
+    height: 325px;
+    padding: 10px 0 20px 0;
+    white-space: pre-line;
+    border-radius: 20px;
+    box-shadow: 7px 7px 10px 3px rgba(0, 0, 0, 0.2);
+}
+
+.see-student {
+    width: 62%;
+    height: 10%;
+    font-size: 15px;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px 0 15px;
+    padding-bottom: -15px !important;
+}

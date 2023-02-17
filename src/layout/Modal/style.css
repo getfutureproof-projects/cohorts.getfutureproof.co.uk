@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap');
+
+h1, h2, h3 {
+  font-family: 'Work Sans', sans-serif !important;
+  font-size: 1.5em !important;
+}
+
 #modal,
 #overlay {
   z-index: 30;
@@ -10,12 +17,12 @@
   position: absolute;
 }
 
-
 #overlay,
 iframe,
 #github-stats {
   height: 100%;
 }
+
 #overlay,
 #st-name,
 .btn-group,
@@ -23,6 +30,7 @@ iframe,
 iframe {
   width: 100%;
 }
+
 #overlay {
   background-color: rgba(255, 255, 255, 0.4);
 }
@@ -64,11 +72,6 @@ iframe {
   border: none;
   top: 0;
   margin: 0;
-  text-transform: uppercase;
-}
-
-#st-profile {
-  text-transform: uppercase;
 }
 
 #content {
@@ -110,8 +113,9 @@ iframe {
   letter-spacing: 1px;
   outline: none;
   background-color: inherit;
-  font-family: "FK Screamer Legacy";
+  font-family: "Work Sans";
 }
+
 .linkout:hover {
   background-color: var(--fp-accent-plum);
 }
@@ -125,12 +129,15 @@ iframe {
   justify-content: space-between;
   width: calc(100% - 20px);
 }
+
 #pop-out:hover {
   font-style: italic;
 }
+
 .fa-external-link-alt {
   padding-left: 5px;
 }
+
 i,
 #pop-out,
 .linkout {
@@ -159,7 +166,7 @@ i,
 
 @media only screen and (orientation: portrait) {
   #modal {
-    font-size: 0.6rem;
+    font-size: 1rem;
   }
   #st-name {
     font-size: 4em;
