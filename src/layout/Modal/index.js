@@ -70,7 +70,7 @@ export default function Modal() {
         feature(student, current.name)
     }
 
-    const renderMaterials = (opts = ['violet', 'lime', 'lemon', 'coral']) => (
+    const renderMaterials = (opts = ['lime', 'lemon', 'coral']) => (
         [ ...featured.materials, featured.github && { type: "github" }]
             .filter(x => !!x)
             .sort((a, b) => a.type.localeCompare(b.type))
@@ -80,7 +80,7 @@ export default function Modal() {
                     onClick={(e) => handleSelectMedia(e, m)}
                     style={{width: `calc(100%/${featured.materials.length + 3})`, margin: 0, cursor: 'pointer'}}
                     >
-                    <div className={`title bg-purple`} style={{border: 'none'}}>
+                    <div className={`bg-purple`} style={{border: 'none'}}>
                         {m.type === "cv" ? "Profile" : m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
                     </div>
                     <div className={`content bg-${media && (media.type === m.type) ? 'lime' : 'violet'}`}>

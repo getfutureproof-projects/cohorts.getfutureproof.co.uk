@@ -29,12 +29,12 @@ export default function SEO({topic}) {
 
     return (
         <Helmet>
-            <meta property="og:site_name" content={`futureproof ✱ ${data.title}`} />
-            <title>{`futureproof ✱ ${data.title}`}</title>
+            <meta property="og:site_name" content={`La Fosse Academy ✱ ${data.title}`} />
+            <title>{`La Fosse Academy ✱ ${data.title}`}</title>
             <meta name="description" content={data.description} />
 
             <meta property="twitter:description" content={data.description} />
-            <meta property="twitter:title" content={`futureproof ✱ ${data.title}`} />
+            <meta property="twitter:title" content={`La Fosse Academy ✱ ${data.title}`} />
 
             <meta property="twitter:site" content="@get_futureproof" />
             <meta property="twitter:creator" content="@get_futureproof" />
@@ -49,20 +49,20 @@ export default function SEO({topic}) {
             />
             <meta
                 property="og:image"
-                content="https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/brand-assets/logo_250x60.png"
+                content="https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/brand-assets/academy-logo-purple-pink.png"
             />
             <meta
                 property="og:image:secure_url"
-                content="https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/brand-assets/logo_250x60.png"
+                content="https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/brand-assets/academy-logo-purple-pink.png"
             />
 
             <meta
                 property="twitter:image"
-                content="https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/brand-assets/logo_250x60.png"
+                content="https://futureproof-public-documents.s3.eu-west-2.amazonaws.com/brand-assets/academy-logo-purple-pink.png"
             />
             <meta
                 property="twitter:image:alt"
-                content="futureproof logo"
+                content="La Fosse Academy logo"
             />
 
         </Helmet>
