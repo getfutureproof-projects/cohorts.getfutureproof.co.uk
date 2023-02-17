@@ -10,6 +10,7 @@ import { useWindowSize } from '../../hooks/windowSize';
 export default function Header() {
     const [headerText, setHeaderText] = useState('Meet our cohorts')
     const [summaryText, setSummaryText] = useState('Here you can see all our cohorts and find associate profiles.')
+    const [infoText, setInfoText] =  useState('We find, train, and place the tech superstars of tomorrow bringing high-quality, diverse talent to your workplace with a retention plan for the long term.')
     const [heroImg, setHeroImg] = useState(FP.HERO_STAR)
     const [headerStyles, setHeaderStyles] = useState({})
     const { current } = useCohort()
@@ -114,7 +115,7 @@ export default function Header() {
                 <div style={headerStyles.grid}>
                     <div className="header-text-container" style={headerStyles.headerTextCont}>
                         <p className='header-p text white'>{headerText}</p>
-                        {/* <span id='new-info'>We find, train, and place the tech superstars of tomorrow bringing high-quality, diverse talent to your workplace with a retention plan for the long term.</span> */}
+                        {/* <span id='new-info'></span> */}
                         <br />
                         <span className={`${headerStyles.bSpanClass} regular`}>{summaryText}</span>
                         <div style={headerStyles.btnGroup}>
