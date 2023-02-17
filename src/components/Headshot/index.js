@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { useCohort } from '../../contexts/cohort'
 import { S3_COHORTS, PLACEHOLDER } from '../../_assets';
+import './style.css'
 
 export default function Headshot({ person, loadStudent, seeMore, frame, colour }) {
     const { current } = useCohort()
@@ -27,19 +28,18 @@ export default function Headshot({ person, loadStudent, seeMore, frame, colour }
     return (
 
         <div
+            id='student-box'
             className={`bg-${colour}`}
-            style={
-                { display: 'flex', flexWrap: 'wrap', maxWidth: '275px', justifyContent: 'center', height: '325px', padding: '10px 0 20px 0' }
-            }
             color={colour}
         >
             <img
                 width='200px'
                 style={{ objectFit: 'cover' }}
-                className={`framed ${frame}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}></img>
+                className={`framed ${frame}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
+                alt={`${person.name}`}></img>
             <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
 
-            {seeMore && <button className="btn bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more </button>}
+            {seeMore && <button className="see-student bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more <span>&#10230;</span> </button>}
         </div>
     )
 }
