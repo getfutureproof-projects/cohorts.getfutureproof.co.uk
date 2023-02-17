@@ -41,11 +41,12 @@ export function CohortProvider({ children }){
             }
             let today = dayjs().add(weeksOffset, 'weeks')
             const { data } = await axios.get('https://raw.githubusercontent.com/getfutureproof-admin/cohorts/main/db.json')
-            let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBetween(today.subtract(6, 'months'), today.add(3, 'months')))
+            // let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBetween(today.subtract(6, 'months'), today.add(3, 'months')))
+            let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBefore(today.add(3, 'months')))
             let sorted = filtered.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
             let cohorts = sorted.map(c => {
                 let startDate = dayjs(c.startDate)
-                let endDate = c.endDate ? dayjs(c.endDate) : dayjs(c.startDate).add(13, 'weeks').subtract(3, 'days')
+                let endDate = c.endDate ? dayjs(c.endDate) : dayjs(c.startDate).add(12, 'weeks').subtract(3, 'days')
 
                 let keyDates = {
                     startDate,
@@ -128,7 +129,8 @@ export function CohortProvider({ children }){
                 setLoading(true)
                 set(null)
                 let cohortData = await fetchStudents(cohort)
-                set(cohortData)
+                const studentsWithCohort = {...cohortData, students: cohortData.students.map(st => ({...st, cohort })) }
+                set(studentsWithCohort)
             } catch (e) {
                 setError(`Oops, we can't find a cohort called ${capitalise(cohort)}!`)
                 console.error(e);
@@ -180,7 +182,7 @@ export function CohortProvider({ children }){
                 let students = entryPoint === 'available' ? available : current.students;
                 student = toFeature.name ? toFeature : students.find(s => slugify(s.name) === slugify(toFeature));
                 studentSlug = slugify(student.name);
-                !params.student && navigate(`/${entryPoint}/${studentSlug}`)
+                !params.student && navigate(`/${entryPoint}/${studentSlug}`, { replace: true })
                 setFeatured({ ...student, closeTo: entryPoint })
             } catch (err) {
                 console.warn(err);
@@ -192,7 +194,7 @@ export function CohortProvider({ children }){
     const clearFeatured = () => {
         let closeTo = featured.closeTo;
         setFeatured(null)
-        navigate(`/${closeTo}`);
+        navigate(`/${closeTo}`, {replace: true});
     }
 
     const helpers = {

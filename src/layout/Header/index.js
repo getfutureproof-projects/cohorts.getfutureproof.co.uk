@@ -78,6 +78,7 @@ export default function Header() {
             title: { lineHeight: '88px' }
         })
 
+        
         if(screen.width < 950){
             styles = ({
                     outer: { padding: 0, display: 'flex', justifyContent: 'center' },
@@ -100,11 +101,16 @@ export default function Header() {
             styles = { ...styles, title: { ...styles.title, margin: '0 0 0.67em 0' }}
         }
 
+        if(screen.height < 900 & screen.width > 950) {
+            styles = {...styles, outer: {...styles.outer, height: '650px'}}
+        }
+
+
         setHeaderStyles(styles)
     }, [screen])
 
     return (
-        <div className="bg-purple header-wrapper" style={{ ...headerStyles.outer }}>
+        <div className={`bg-purple header-wrapper`} style={{ ...headerStyles.outer }}>
             <div className="header-container" style={headerStyles.container}>
                 <div style={headerStyles.logoWrapper}>
                     <a href={FP.WWW} target="_blank" rel="noopener">

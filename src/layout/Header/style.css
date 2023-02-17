@@ -6,6 +6,19 @@ a.btn:any-link:not([class="bg-*"])::after {
   background-color: var(--purple) !important;
 }
 
+a.btn.contact.standard, span.btn.contact.standard {
+  color: var(--purple) !important;
+  background-color: var(--coral) !important;
+}
+a.btn.contact.inverted, span.btn.contact.inverted {
+  color: var(--coral) !important;
+  background-color: var(--purple) !important;
+}
+a.btn.contact.inverted::after, span.btn.contact.inverted::after {
+  background-color: var(--coral) !important;
+}
+
+
 #namesake {
   position: relative;
   right: 0;
@@ -30,6 +43,7 @@ a.btn:any-link:not([class="bg-*"])::after {
 
 .header-text-container .btn {
   margin: 5px 0;
+
 }
 
 header #logo {
