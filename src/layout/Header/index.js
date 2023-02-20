@@ -114,7 +114,7 @@ export default function Header() {
             <div className="header-container" style={headerStyles.container}>
                 <div style={headerStyles.logoWrapper}>
                     <a href={FP.WWW} target="_blank" rel="noopener">
-                        <img id="logo" src={FP.ACADEMY_LOGO_2} alt="La Fosse Academy logo" style={headerStyles.logo} />
+                        <img id="logo" src={FP.ACADEMY_LOGO_2} alt="La Fosse Academy logo" />
                     </a>
                 </div>
 
@@ -123,7 +123,7 @@ export default function Header() {
                         <p className='header-p text white'>{headerText}</p>
                         {/* <span id='new-info'></span> */}
                         <br />
-                        <span className={`${headerStyles.bSpanClass} regular`}>{summaryText}</span>
+                        <span id='summary' className={`${headerStyles.bSpanClass} regular`}>{summaryText}</span>
                         <div style={headerStyles.btnGroup}>
                             <button id='all-button' className="bg-lemon text-purple"
                                 onClick={() => pathname === '/available' ? navigate('/') : navigate('/available')}

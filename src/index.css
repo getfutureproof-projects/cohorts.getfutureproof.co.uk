@@ -1,10 +1,3 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400&family=Work+Sans:wght@300&display=swap"); */
-/* font-family: 'Quicksand', sans-serif; */
-/* @font-face {
-  font-family: "ScreamerS3";
-  font-weight: 1 1000;
-  src: url("https://futureproof-protected-assets.s3.eu-west-2.amazonaws.com/brand-assets/fonts/FKScreamerLegacy-Upright.ttf");
-} */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap');
 
 @font-face {
@@ -71,10 +64,6 @@ code {
 .italic {
   transform: var(--fp-custom-italic);
   -webkit-transform: var(--fp-custom-italic);
-}
-
-.name {
-  /* text-transform: capitalize; */
 }
 
 .btn {

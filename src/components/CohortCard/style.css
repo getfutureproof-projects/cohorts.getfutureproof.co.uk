@@ -27,3 +27,7 @@
     padding: 0 15px 0 15px;
     padding-bottom: -15px !important;
 }
+
+.see-cohort:hover {
+    box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 1px;
+  }
