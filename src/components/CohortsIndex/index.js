@@ -13,7 +13,7 @@ export default function CohortsIndex() {
     const screen = useWindowSize();
     const [recent, setRecent] = useState([]);
     const [cardShapes, setCardShapes] = useState(['angles', 'cog', 'star', 'shield'])
-    const [cardColors, setCardColors] = useState(['coral', 'violet', 'lime', 'lemon'])
+    const [cardColors, setCardColors] = useState(['coral', 'lime', 'lemon'])
     const [previous, setPrevious] = useState([]);
     const [showPrevious, setShowPrevious] = useState(false);
     const [ containerStyles, setContainerStyles ] = useState({ 
@@ -34,21 +34,17 @@ export default function CohortsIndex() {
             } else {
                 numCols = 4;
             }
-
             containerUpdates ||= { 
                 gridTemplateColumns: `repeat(${numCols}, 1fr)`,
                 gridTemplateRows: "repeat(2, auto)"
             }
-
             if(!screen.portrait && list) {
                 containerUpdates = {
                     gridTemplateColumns: `repeat(${numCols}, 1fr)`
                 }
             }
-
             setContainerStyles(containerUpdates)
         }
-
         calcStyles()
     }, [screen, list])
 
@@ -61,10 +57,10 @@ export default function CohortsIndex() {
 
     useEffect(() => {
         let rand = shuffle(cardColors)
-        if([rand[0], rand[rand.length-1]].includes("violet")){
-            rand = [...rand.slice(0, rand.length/2), 'violet', ...rand.slice(rand.length/2 - 1)]
+        if([rand[0], rand[rand.length-1]].includes("coral")){
+            rand = [...rand.slice(0, rand.length/2), 'lime', ...rand.slice(rand.length/2 - 1)]
         } else {
-            rand = [...rand, 'violet']
+            rand = [...rand, 'lemon']
         }
         setCardColors(rand)
     }, [])
@@ -84,10 +80,8 @@ export default function CohortsIndex() {
           let j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
         }
-
         return array
       }
-      
 
     const formatEndDate = cohort => {
         let formatted = cohort.endDate.format("MMMM Do YYYY")
@@ -100,7 +94,6 @@ export default function CohortsIndex() {
     return (
         <>
             { error && <h2 className="error">{error}</h2> }
-
             { list && (
                 <>
                 <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', maxWidth: '1232px', justifyContent: 'center', marginBottom: '20px'}}>
@@ -112,26 +105,17 @@ export default function CohortsIndex() {
                             action={() => navigate(`/${c.name}`, {replace: true})}
                             frame={cardShapes[i % cardShapes.length]} colour={cardColors[i % cardColors.length]} 
                         >
-                            
                         </CohortCard>
                     )) }
-
-
                 </div>
-                
-                <div style={{width: "100vw", display:  'flex', justifyContent: 'center'}}>
-                <span className="btn bg-lime"
-                        onClick={() => setShowPrevious(p => !p)}
-                        style={{ width: 'fit-content', margin: '20px' }}
-                    >
-                        {showPrevious ? "Hide previous cohorts" : "See all previous cohorts" }
+                <div style={{width: "100vw", display:  'flex', justifyContent: 'center', cursor: 'pointer'}}>
+                    <span id='all-button' className="bg-lime"
+                            onClick={() => setShowPrevious(p => !p)}
+                        >
+                            {showPrevious ? "Hide previous cohorts" : "See all previous cohorts" } <span>&#10230;</span>
                     </span>
-                    
-                    </div>
-                
-                    <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', maxWidth: '1232px', justifyContent: 'center'}}>
-
-
+                </div>
+                <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', maxWidth: '1232px', justifyContent: 'center'}}>
                     { showPrevious && previous.map((c, i) => (  
                         <CohortCard
                             key={c.name}
@@ -140,12 +124,9 @@ export default function CohortsIndex() {
                             action={() => navigate(`/${c.name}`, {replace: true})}
                             frame={cardShapes[i % cardShapes.length]} colour={cardColors[i % cardColors.length]} 
                         >
-                            
                         </CohortCard>
                     )) }
-
                 </div>
-
                 </>
             )}
         </>

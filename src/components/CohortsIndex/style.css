@@ -38,7 +38,6 @@ h1, h2, h3 {
 }
 
 .cohort-preview span.name {
-  /* font-family: " Screamer Legacy"; */
   font-family: "Work Sans" !important;
   font-size: 1.3em;
 }
@@ -47,6 +46,23 @@ h1, h2, h3 {
   display: block;
   margin: 10px 0;
   white-space: pre-line;
+}
+
+#all-button {
+  width: 50% !important;
+  height: 4em !important;
+  font-size: 15px;
+  border-radius: 15px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px 0 15px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+#all-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 1px;
 }
 
 @media only screen and (orientation: portrait) {
