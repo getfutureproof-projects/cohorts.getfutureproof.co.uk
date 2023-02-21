@@ -75,7 +75,7 @@ header #logo {
 @media only screen and (max-width: 1300px) {
   .header-wrapper {
     padding: 0 calc((100vw - 1024px) / 2);
-    height: 67vh !important;
+    height: 70vh !important;
   }
   #summary {
     margin-right: 12em !important;
@@ -93,15 +93,16 @@ header #logo {
     margin-bottom: -5px !important;
   }
   .header-p {
-    margin-right: 3.5em;
+    margin-right: 4em !important;
     margin-left: 10px;
+    margin-top: 2px !important;
   }
 }
 
 @media only screen and (max-width: 948px) {
   .header-wrapper {
     padding: 0 calc((100vw - 610px) / 2);
-    height: 65vh !important;
+    height: 60vh !important;
     padding-left: 50px !important;
   }
   #all-button {
@@ -112,20 +113,53 @@ header #logo {
   }
   .header-p{
     margin-left: 10px;
+    margin-top: 2px !important;
   }
-  
   #summary {
     margin-left: 10px;
     margin-bottom: 20px !important;
+    margin-top: -40px !important;
   }
 }
 
 @media only screen and (max-width: 650px) {
   .header-wrapper {
     padding: 0 calc((100vw - 336px) / 2);
-    height: 90vh !important;
+    height: 55vh !important;
   }
   .header-p, #summary {
-    margin-left: 10px;
+    margin-left: -10px;
+    margin-right: 20px !important;
+    margin-top: 2px !important;
+  }
+  #summary {
+    margin-top: -25px !important;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .header-wrapper {
+    padding: 0 calc((100vw - 336px) / 2);
+    height: 60vh !important;
+  }
+  .header-p, #summary {
+    margin-left: -10px;
+    margin-right: 20px !important;
+    margin-top: 2px !important;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  .header-wrapper {
+    padding: 0 calc((100vw - 336px) / 2);
+    height: 60vh !important;
+  }
+  .header-p, #summary {
+    margin-left: -10px;
+    margin-right: 20px !important;
+    margin-top: 2px !important;
+  }
+  #summary {
+    margin-top: -45px !important;
   }
 }
