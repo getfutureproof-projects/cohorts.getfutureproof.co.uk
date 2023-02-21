@@ -34,7 +34,7 @@ header #logo {
 .header-p {
   font-size: 2.5em;
   line-height: 1;
-  margin-right: 2em !important;
+  margin-right: 5em !important;
 }
 
 .header-wrapper {
@@ -48,6 +48,7 @@ header #logo {
 
 #summary {
   margin-bottom: 20px;
+  margin-right:  10em !important;
 }
 
 #all-button {
@@ -75,22 +76,27 @@ header #logo {
 @media only screen and (max-width: 1300px) {
   .header-wrapper {
     padding: 0 calc((100vw - 1024px) / 2);
-    height: 70vh !important;
+    height: 78vh !important;
   }
   #summary {
     margin-right: 12em !important;
+    margin-top: -30px !important;
+  }
+  .header-p {
+    margin-right: 5em !important;
   }
 }
 
 @media only screen and (max-width: 1090px) {
   .header-wrapper {
     padding: 0 calc((100vw - 816px) / 2);
-    height: 70vh !important;
+    height: 75vh !important;
   }
   #summary {
     margin-right: 39px;
     margin-left: 10px;
     margin-bottom: -5px !important;
+    margin-top: -20px !important;
   }
   .header-p {
     margin-right: 4em !important;
@@ -125,7 +131,7 @@ header #logo {
 @media only screen and (max-width: 650px) {
   .header-wrapper {
     padding: 0 calc((100vw - 336px) / 2);
-    height: 55vh !important;
+    height: 60vh !important;
   }
   .header-p, #summary {
     margin-left: -10px;
