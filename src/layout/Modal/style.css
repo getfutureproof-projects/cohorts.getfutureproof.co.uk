@@ -5,6 +5,10 @@ h1, h2, h3 {
   font-size: 1.5em !important;
 }
 
+div {
+  font-family: 'Work Sans', sans-serif !important;
+}
+
 #modal,
 #overlay {
   z-index: 30;

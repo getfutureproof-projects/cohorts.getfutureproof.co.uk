@@ -83,7 +83,7 @@ export default function Modal() {
                     <div className={`bg-purple`} style={{border: 'none'}}>
                         {m.type === "cv" ? "Profile" : m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
                     </div>
-                    <div className={`content bg-${media && (media.type === m.type) ? 'lime' : 'violet'}`}>
+                    <div className={`content bg-${media && (media.type === m.type) ? 'lime' : 'coral'}`}>
                         {'\n'}
                     </div>
                 </div>
@@ -119,7 +119,7 @@ export default function Modal() {
         <div id="overlay" onClick={clearFeatured}>
             <section
                 id="modal" 
-                className='bg-purple'
+                // className='bg-purple'
                 >
                 <div>
                     <div style={{paddingTop: '10px'}}>
