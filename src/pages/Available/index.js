@@ -17,7 +17,7 @@ export function Available() {
         <>
         <SEO topic="available"/>
         <Section direction='ltr'>
-            { loading && <span className='medium text-display'>Finding futureproofers available for consultation...</span> }
+            { loading && <span className='medium text-display'>Finding La Fosse Academy students available for consultation...</span> }
             { error && <span className='medium text-display'><BackBtn path="/" /> {error}</span> }
             { available && <HeadshotsIndex showAvailable /> }
         </Section>
