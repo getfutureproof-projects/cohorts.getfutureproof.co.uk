@@ -97,6 +97,10 @@ iframe {
   font-style: italic;
 }
 
+a {
+  font-family: 'Work Sans', sans-serif !important;
+}
+
 .btn-group {
   display: flex;
   flex-direction: row;
