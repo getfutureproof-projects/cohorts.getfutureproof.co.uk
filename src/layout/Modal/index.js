@@ -83,7 +83,7 @@ export default function Modal() {
                     <div className={`bg-purple`} style={{border: 'none'}}>
                         {m.type === "cv" ? "Profile" : m.type[0].toUpperCase() + m.type.slice(1).toLowerCase()}
                     </div>
-                    <div className={`content bg-${media && (media.type === m.type) ? 'lime' : 'violet'}`}>
+                    <div className={`content bg-${media && (media.type === m.type) ? 'lime' : 'coral'}`}>
                         {'\n'}
                     </div>
                 </div>
@@ -105,7 +105,7 @@ export default function Modal() {
         </iframe>)
     
     const renderGitHubStats = () => (<div id="github-stats">
-        <a className='btn bg-lemon' href={`https://github.com/${featured.github}`} target="_blank" rel="noreferrer">Visit GitHub profile</a>
+        <a id='a-btn' className='btn bg-lemon' href={`https://github.com/${featured.github}`} target="_blank" rel="noreferrer">Visit GitHub profile</a>
         <img src={`https://github-readme-stats.vercel.app/api?username=${featured.github}&show_icons=true&locale=en`} alt="Github stats" style={{maxWidth: '80vw'}}/>
     </div>)
 
@@ -119,7 +119,7 @@ export default function Modal() {
         <div id="overlay" onClick={clearFeatured}>
             <section
                 id="modal" 
-                className='bg-purple'
+                // className='bg-purple'
                 >
                 <div>
                     <div style={{paddingTop: '10px'}}>
