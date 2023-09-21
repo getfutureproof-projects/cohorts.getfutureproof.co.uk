@@ -24,6 +24,7 @@ export default function Header() {
             : setHeroImg(FP.HERO_STAR)
     }, [current])
 
+    
     useEffect(() => {
         let header = "Meet our cohorts"
         let summary = "Here you can see all our cohorts and find associate profiles."
@@ -38,7 +39,16 @@ export default function Header() {
             summary = "We have been working hard and are excited to join a commercial team!"
         } else if (current) {
             data = current
-            header = data.isLive ? `We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
+            if (data.name == 'La fosse academy presents'){
+                let words = data.name.split(' ')
+                for (let i = 0; i < words.length; i++){
+                    words[i] = words[i][0].toUpperCase() + words[i].substr(1)
+                }
+                let newHeader = words.join(' ')
+                header = `${newHeader}`
+            } else {
+                header = data.isLive ? `We are the ${data.name} cohort.` : `The ${data.name} cohort is coming soon!`
+            }
             switch (data.status) {
                 case 'graduated':
                     summary = `We graduated on ${data.endDate.format("MMMM Do YYYY")}!`
@@ -52,6 +62,9 @@ export default function Header() {
                 case 'upcoming':
                     summary = `We are excited to start our course on ${data.startDate.format("MMMM Do YYYY")}!`
                     break;
+                case 'event':
+                    summary = `We are excited to present our amazing students that make part of the Event`
+                    break;
             }
         }
         if (data) {
@@ -61,7 +74,6 @@ export default function Header() {
         setSummaryText(summary)
         // setData(data)
     }, [current, pathname])
-
 
     useEffect(() => {
         let styles = ({
@@ -117,7 +129,6 @@ export default function Header() {
                         <img id="logo" src={FP.ACADEMY_LOGO_2} alt="La Fosse Academy logo" />
                     </a>
                 </div>
-
                 <div style={headerStyles.grid}>
                     <div className="header-text-container" style={headerStyles.headerTextCont}>
                         <p className='header-p text white'>

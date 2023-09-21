@@ -15,82 +15,83 @@ export function useCohort() {
   return useContext(CohortContext)
 }
 
-export function CohortProvider({ children }) {
-  const [list, setList] = useState();
-  const [current, setCurrent] = useState();
-  const [featured, setFeatured] = useState();
-  const [available, setAvailable] = useState();
-  const [loading, setLoading] = useState();
-  const [error, setError] = useState();
+export function CohortProvider({ children }){
+    const [ list, setList ] = useState();
+    const [ current, setCurrent ] = useState();
+    const [ featured, setFeatured ] = useState();
+    const [ available, setAvailable ] = useState();
+    const [ loading, setLoading ] = useState();
+    const [ error, setError ] = useState();
 
-  const navigate = useNavigate();
-  const params = useParams();
-  const options = new URLSearchParams(useLocation().search);
+    const navigate = useNavigate();
+    const params = useParams();
+    const options = new URLSearchParams(useLocation().search);
 
-  useEffect(() => {
-    fetchCohorts()
-  }, [])
+    useEffect(() => {
+        fetchCohorts()
+    }, [])
 
-  async function fetchCohorts() {
-    try {
-      setLoading(true)
-      setError(false)
-      let weeksOffset = 0;
-      if (PREVIEW && options.get("offset")) {
-        weeksOffset = options.get("offset")
-      }
-      let today = dayjs().add(weeksOffset, 'weeks')
-      const { data } = await axios.get('https://raw.githubusercontent.com/getfutureproof-admin/cohorts/main/db.json')
-      // let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBetween(today.subtract(6, 'months'), today.add(3, 'months')))
-      let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBefore(today.add(3, 'months')))
-      let sorted = filtered.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
-      let cohorts = sorted.map(c => {
-        let startDate = dayjs(c.startDate)
-        let endDate = c.endDate ? dayjs(c.endDate) : dayjs(c.startDate).add(12, 'weeks').subtract(3, 'days')
+    async function fetchCohorts(){
+        try {
+            setLoading(true)
+            setError(false)
+            let weeksOffset = 0;
+            if(PREVIEW && options.get("offset")){
+                weeksOffset = options.get("offset")
+            }
+            let today = dayjs().add(weeksOffset, 'weeks')
+            const { data } = await axios.get('https://raw.githubusercontent.com/getfutureproof-admin/cohorts/main/db.json')
+            // let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBetween(today.subtract(6, 'months'), today.add(3, 'months')))
+            let filtered = data.cohorts.filter(c => dayjs(c.startDate).isBefore(today.add(3, 'months')))
+            let sorted = filtered.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
+            let cohorts = sorted.map(c => {
+                let startDate = dayjs(c.startDate)
+                let endDate = c.endDate ? dayjs(c.endDate) : dayjs(c.startDate).add(12, 'weeks').subtract(3, 'days')
 
-        let keyDates = {
-          startDate,
-          endDate,
-          previewEndDate: startDate.add(1, 'weeks'),
-          addMaterialsDate: startDate.add(4, "weeks"),
-          startInterviewsDate: endDate.subtract(6, "weeks"),
-          bondEndDate: endDate.add(8, 'weeks')
-        }
+                let keyDates = {
+                    startDate,
+                    endDate,
+                    previewEndDate: startDate.add(1, 'weeks'),
+                    addMaterialsDate: startDate.add(4, "weeks"),
+                    startInterviewsDate: endDate.subtract(6, "weeks"),
+                    bondEndDate: endDate.add(8, 'weeks')
+                }
+                
+                let descriptors = {
+                    status: 'preview',
+                    isLive: false,
+                    showModal: false,
+                    isInterviewEligible: false
+                }
 
-        let descriptors = {
-          status: 'preview',
-          isLive: false,
-          showModal: false,
-          isInterviewEligible: false
-        }
+                if (c.name == 'la fosse academy presents') {
+                    descriptors.status = 'event'
+                } else if (startDate.isAfter(today)){
+                    descriptors.status = 'upcoming'
+                } else if (keyDates.endDate.isBefore(today)) {
+                    descriptors.status = 'graduated'
+                    descriptors.isLive = true
+                    descriptors.showModal = true
+                } else if (keyDates.addMaterialsDate.isBefore(today)) {
+                    descriptors.status = 'current'
+                    descriptors.isLive = true
+                    descriptors.showModal = true
+                } else if (keyDates.previewEndDate.isBefore(today)) {
+                    descriptors.status = 'current'
+                    descriptors.isLive = true
+                }
 
+                if(today.isBetween(keyDates.startInterviewsDate, keyDates.bondEndDate, null, '[]')) {
+                    descriptors.isInterviewEligible = true
+                }
+                
+                return { ...c, ...keyDates, ...descriptors }
+            })
 
-        if (startDate.isAfter(today)) {
-          descriptors.status = 'upcoming'
-        } else if (keyDates.endDate.isBefore(today)) {
-          descriptors.status = 'graduated'
-          descriptors.isLive = true
-          descriptors.showModal = true
-        } else if (keyDates.addMaterialsDate.isBefore(today)) {
-          descriptors.status = 'current'
-          descriptors.isLive = true
-          descriptors.showModal = true
-        } else if (keyDates.previewEndDate.isBefore(today)) {
-          descriptors.status = 'current'
-          descriptors.isLive = true
-        }
-
-        if (today.isBetween(keyDates.startInterviewsDate, keyDates.bondEndDate, null, '[]')) {
-          descriptors.isInterviewEligible = true
-        }
-
-        return { ...c, ...keyDates, ...descriptors }
-      })
-
-      setList(cohorts)
-    } catch (e) {
-      setError("Oops! There's been a problem fetching our cohorts, please try again later!")
-      console.error(e);
+            setList(cohorts)
+        } catch (e) {
+            setError("Oops! There's been a problem fetching our cohorts, please try again later!")
+            console.error(e);
     }
   }
 
