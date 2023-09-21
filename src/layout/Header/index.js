@@ -4,13 +4,13 @@ import { useCohort } from '../../contexts/cohort';
 // import { Heading } from '@getfutureproof/fpsb'
 import * as FP from '../../_assets';
 import './style.css'
-import ContactBtn from '../../components/ContactBtn';
+import { ContactBtn, BackHomeBtn } from '../../components'
 import { useWindowSize } from '../../hooks/windowSize';
 
 export default function Header() {
     const [headerText, setHeaderText] = useState('Meet our cohorts')
     const [summaryText, setSummaryText] = useState('Here you can see all our cohorts and find associate profiles.')
-    const [infoText, setInfoText] =  useState('We find, train, and place the tech superstars of tomorrow bringing high-quality, diverse talent to your workplace with a retention plan for the long term.')
+    const [infoText, setInfoText] = useState('We find, train, and place the tech superstars of tomorrow bringing high-quality, diverse talent to your workplace with a retention plan for the long term.')
     const [heroImg, setHeroImg] = useState(FP.HERO_STAR)
     const [headerStyles, setHeaderStyles] = useState({})
     const { current } = useCohort()
@@ -90,31 +90,31 @@ export default function Header() {
             title: { lineHeight: '88px' }
         })
 
-        
-        if(screen.width < 950){
+
+        if (screen.width < 950) {
             styles = ({
-                    outer: { padding: 0, display: 'flex', justifyContent: 'center' },
-                    container: { width: '100vw' },
-                    logo: { width: '180px', padding: '0', margin: '16px 32px' },
-                    logoWrapper: { marginRight: '80px' },
-                    grid: { display: 'block' },
-                    headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', zIndex: 1, alignContent: 'center', whiteSpace: 'pre-line' },
-                    heroImgCont: { display: 'none' },
-                    btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px', zIndex: 1 },
-                    bSpanClass: 'tiny',
-                    titleSize: 'xlarge',
-                    title: { lineHeight: '64px' }
-                })
-        } else if(screen.width < 1200){
+                outer: { padding: 0, display: 'flex', justifyContent: 'center' },
+                container: { width: '100vw' },
+                logo: { width: '180px', padding: '0', margin: '16px 32px' },
+                logoWrapper: { marginRight: '80px' },
+                grid: { display: 'block' },
+                headerTextCont: { padding: '30px 0 0 16px', display: 'flex', flexDirection: 'column', zIndex: 1, alignContent: 'center', whiteSpace: 'pre-line' },
+                heroImgCont: { display: 'none' },
+                btnGroup: { display: 'flex', marginTop: '15px', marginBottom: '10px', zIndex: 1 },
+                bSpanClass: 'tiny',
+                titleSize: 'xlarge',
+                title: { lineHeight: '64px' }
+            })
+        } else if (screen.width < 1200) {
             styles = { ...styles, titleSize: 'xlarge', title: { ...styles.title, margin: '0 0 0.67em 0', lineHeight: '64px' } }
-        } else if(screen.width < 1200){
-            styles = { ...styles, title: { ...styles.title, margin: '0 0 0 0' }}
-        } else if(screen.width < 1263){
-            styles = { ...styles, title: { ...styles.title, margin: '0 0 0.67em 0' }}
+        } else if (screen.width < 1200) {
+            styles = { ...styles, title: { ...styles.title, margin: '0 0 0 0' } }
+        } else if (screen.width < 1263) {
+            styles = { ...styles, title: { ...styles.title, margin: '0 0 0.67em 0' } }
         }
 
-        if(screen.height < 900 & screen.width > 950) {
-            styles = {...styles, outer: {...styles.outer, height: '650px'}}
+        if (screen.height < 900 & screen.width > 950) {
+            styles = { ...styles, outer: { ...styles.outer, height: '650px' } }
         }
 
 
@@ -131,7 +131,10 @@ export default function Header() {
                 </div>
                 <div style={headerStyles.grid}>
                     <div className="header-text-container" style={headerStyles.headerTextCont}>
-                        <p className='header-p text white'>{headerText}</p>
+                        <p className='header-p text white'>
+                            {pathname === "/" ? "" : <BackHomeBtn />}
+                            {headerText}
+                        </p>
                         {/* <span id='new-info'></span> */}
                         <br />
                         <span id='summary' className={`${headerStyles.bSpanClass} regular`}>{summaryText}</span>
@@ -143,18 +146,18 @@ export default function Header() {
                             </button>
                             <ContactBtn mini />
                         </div>
-                <div className="hero-image-container" style={{ ...headerStyles.heroImgCont }}>
-                        {heroImg && (
-                            <div className={`hero-wrapper ${heroImg.match(/(hero|device)/g) ? `original ${heroImg.match(/(hero)/g) ? 'hero' : ''}` : 'filtered'}`}>
-                                <img
-                                    id="namesake" src={heroImg}
-                                    alt={current ? current.namesake.name : 'La Fosse Academy'}
-                                    className={heroImg.match(/(hero|device)/g) ? 'image' : 'framed angles'}
-                                    onError={() => setHeroImg(FP.HERO_STAR)}
-                                />
-                            </div>
-                        )}
-                </div>
+                        <div className="hero-image-container" style={{ ...headerStyles.heroImgCont }}>
+                            {heroImg && (
+                                <div className={`hero-wrapper ${heroImg.match(/(hero|device)/g) ? `original ${heroImg.match(/(hero)/g) ? 'hero' : ''}` : 'filtered'}`}>
+                                    <img
+                                        id="namesake" src={heroImg}
+                                        alt={current ? current.namesake.name : 'La Fosse Academy'}
+                                        className={heroImg.match(/(hero|device)/g) ? 'image' : 'framed angles'}
+                                        onError={() => setHeroImg(FP.HERO_STAR)}
+                                    />
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

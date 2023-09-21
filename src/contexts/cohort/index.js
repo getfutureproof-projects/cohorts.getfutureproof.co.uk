@@ -11,8 +11,8 @@ const PREVIEW = process.env.CONTEXT !== 'production';
 
 const CohortContext = React.createContext();
 
-export function useCohort(){
-    return useContext(CohortContext)
+export function useCohort() {
+  return useContext(CohortContext)
 }
 
 export function CohortProvider({ children }){
@@ -92,124 +92,124 @@ export function CohortProvider({ children }){
         } catch (e) {
             setError("Oops! There's been a problem fetching our cohorts, please try again later!")
             console.error(e);
+    }
+  }
+
+  function fetchStudents(cohortName) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let { data } = await axios.get(`https://raw.githubusercontent.com/LaFosseAcademy/lfa-hello-github/main/${cohortName.toLowerCase()}/roster.json`)
+        if (data.projects) {
+          for (let student of data.students) {
+            let project = data.projects[student.project]
+            student.project = project
+          }
         }
-    }
+        resolve({
+          name: capitalise(cohortName),
+          ...data
+        })
+      } catch (e) {
+        reject(e)
+      }
+    });
+  }
 
-    function fetchStudents(cohortName){
-        return new Promise(async (resolve, reject) => {
-            try {
-                let { data } = await axios.get(`https://raw.githubusercontent.com/getfutureproof/fp_study_notes_hello_github/main/${cohortName.toLowerCase()}/roster.json`)
-                if(data.projects){
-                    for(let student of data.students) {
-                        let project = data.projects[student.project]
-                        student.project = project
-                    }
-                }
-                resolve ({
-                    name: capitalise(cohortName),
-                    ...data
-                })
-            } catch (e) {
-                reject(e)
-            }
-        });
-    }
+  function slugify(name) {
+    return name.toLowerCase().replace(/[^a-zA-Z-]/g, "")
+  }
 
-    function slugify(name){
-        return name.toLowerCase().replace(/[^a-zA-Z-]/g,"")
-    }
+  function capitalise(name) {
+    return name[0].toUpperCase() + name.slice(1).toLowerCase()
+  }
 
-    function capitalise(name){
-        return name[0].toUpperCase() + name.slice(1).toLowerCase()
+  async function loadCohort(cohort) {
+    if (list) {
+      try {
+        setError(false)
+        setLoading(true)
+        set(null)
+        let cohortData = await fetchStudents(cohort)
+        const studentsWithCohort = { ...cohortData, students: cohortData.students.map(st => ({ ...st, cohort })) }
+        set(studentsWithCohort)
+      } catch (e) {
+        setError(`Oops, we can't find a cohort called ${capitalise(cohort)}!`)
+        console.error(e);
+      } finally {
+        setLoading(false)
+      }
     }
+  }
 
-    async function loadCohort(cohort){
-        if(list){
-            try {
-                setError(false)
-                setLoading(true)
-                set(null)
-                let cohortData = await fetchStudents(cohort)
-                const studentsWithCohort = {...cohortData, students: cohortData.students.map(st => ({...st, cohort })) }
-                set(studentsWithCohort)
-            } catch (e) {
-                setError(`Oops, we can't find a cohort called ${capitalise(cohort)}!`)
-                console.error(e);
-            } finally {
-                setLoading(false)
-            }
-        }    
-    }
-
-    async function loadAvailable() {
-        if(list){
-            try {
-                let interviewEligible = []
-                let eligibleCohorts = list.filter(c => c.isInterviewEligible);
-                let sorted = eligibleCohorts.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
-                setError(false)
-                setLoading(true)
-                set(null)
-                for (let cohort of sorted){
-                    let { students } = await fetchStudents(cohort.name)
-                    let unplaced = students.filter(s => !s.placement).map(s => ({ ...s, cohort: cohort.name }))
-                    interviewEligible.push(...unplaced)
-                }
-                setAvailable(interviewEligible)
-            } catch (e) {
-                setError(`Oops, there has been an error finding our students who are ready to interview!`)
-                console.error(e);
-            } finally {
-                setLoading(false)
-            }
+  async function loadAvailable() {
+    if (list) {
+      try {
+        let interviewEligible = []
+        let eligibleCohorts = list.filter(c => c.isInterviewEligible);
+        let sorted = eligibleCohorts.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
+        setError(false)
+        setLoading(true)
+        set(null)
+        for (let cohort of sorted) {
+          let { students } = await fetchStudents(cohort.name)
+          let unplaced = students.filter(s => !s.placement).map(s => ({ ...s, cohort: cohort.name }))
+          interviewEligible.push(...unplaced)
         }
+        setAvailable(interviewEligible)
+      } catch (e) {
+        setError(`Oops, there has been an error finding our students who are ready to interview!`)
+        console.error(e);
+      } finally {
+        setLoading(false)
+      }
     }
+  }
 
-    const set = async (cohort) => {
-        if(cohort){
-            let dates = list.find(c => c.name.toLowerCase() === cohort.name.toLowerCase())
-            setCurrent({ ...dates, ...cohort })
-        } else {
-            setCurrent(null)
-        }
-    };
-
-    const feature = (toFeature, entry) => {
-        if(current || available){
-            let entryPoint = slugify(entry);
-    
-            try {
-                let student, studentSlug;
-                let students = entryPoint === 'available' ? available : current.students;
-                student = toFeature.name ? toFeature : students.find(s => slugify(s.name) === slugify(toFeature));
-                studentSlug = slugify(student.name);
-                !params.student && navigate(`/${entryPoint}/${studentSlug}`, { replace: true })
-                setFeatured({ ...student, closeTo: entryPoint })
-            } catch (err) {
-                console.warn(err);
-                navigate(`/${entryPoint}`);
-            }
-        }
+  const set = async (cohort) => {
+    if (cohort) {
+      let dates = list.find(c => c.name.toLowerCase() === cohort.name.toLowerCase())
+      setCurrent({ ...dates, ...cohort })
+    } else {
+      setCurrent(null)
     }
+  };
 
-    const clearFeatured = () => {
-        let closeTo = featured.closeTo;
-        setFeatured(null)
-        navigate(`/${closeTo}`, {replace: true});
+  const feature = (toFeature, entry) => {
+    if (current || available) {
+      let entryPoint = slugify(entry);
+
+      try {
+        let student, studentSlug;
+        let students = entryPoint === 'available' ? available : current.students;
+        student = toFeature.name ? toFeature : students.find(s => slugify(s.name) === slugify(toFeature));
+        studentSlug = slugify(student.name);
+        !params.student && navigate(`/${entryPoint}/${studentSlug}`, { replace: true })
+        setFeatured({ ...student, closeTo: entryPoint })
+      } catch (err) {
+        console.warn(err);
+        navigate(`/${entryPoint}`);
+      }
     }
+  }
 
-    const helpers = {
-        list, set, current,
-        available,
-        feature, featured, clearFeatured,
-        loadCohort, loadAvailable,
-        error, setError,
-        loading
-    }
+  const clearFeatured = () => {
+    let closeTo = featured.closeTo;
+    setFeatured(null)
+    navigate(`/${closeTo}`, { replace: true });
+  }
 
-    return (
-        <CohortContext.Provider value={helpers}>
-            { children }
-        </CohortContext.Provider>
-    )
+  const helpers = {
+    list, set, current,
+    available,
+    feature, featured, clearFeatured,
+    loadCohort, loadAvailable,
+    error, setError,
+    loading
+  }
+
+  return (
+    <CohortContext.Provider value={helpers}>
+      {children}
+    </CohortContext.Provider>
+  )
 }
