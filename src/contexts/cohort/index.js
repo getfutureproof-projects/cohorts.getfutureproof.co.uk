@@ -66,6 +66,8 @@ export function CohortProvider({ children }){
 
                 if (c.name == 'la fosse academy presents') {
                     descriptors.status = 'event'
+                    descriptors.isLive = true
+                    descriptors.showModal = true
                 } else if (startDate.isAfter(today)){
                     descriptors.status = 'upcoming'
                 } else if (keyDates.endDate.isBefore(today)) {
