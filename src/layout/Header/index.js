@@ -146,7 +146,7 @@ export default function Header() {
                             <button id='all-button' className="bg-lemon text-purple"
                                 onClick={() => pathname === '/available' ? navigate('/') : navigate('/available')}
                             >
-                                {pathname === '/available' ? "See all cohorts" : "Find talent"} <span>&#10230;</span>
+                                {pathname === '/available' ? "See all cohorts" : "Our available Associates"} <span>&#10230;</span>
                             </button>
                             <ContactBtn mini />
                         </div>
