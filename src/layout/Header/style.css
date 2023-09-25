@@ -52,14 +52,14 @@ header #logo {
 }
 
 #all-button {
-  width: 25%;
-  height: 2em;
+  width: 30%;
+  height: 2.5em;
   font-size: 15px;
   border-radius: 15px;
   border: none;
   display: flex;
   justify-content: space-between;
-  padding: 0 15px 0 15px;
+  padding: 5px 15px 0 15px;
   margin-right: 20px;
 }
 
