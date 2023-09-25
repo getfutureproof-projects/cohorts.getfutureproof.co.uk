@@ -91,7 +91,7 @@ export default function CohortsIndex() {
                 formatted = `Presented on\n${formatted}`
                 return formatted
             }
-            formatted = `Presenting ${cohort.endDate.fromNow()} \non ${formatted}`
+            formatted = `Presenting on \n${formatted}`
             return formatted
         } else{
             formatted = cohort.status === 'graduated' ? 
