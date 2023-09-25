@@ -63,12 +63,16 @@ export default function Header() {
                     summary = `We are excited to start our course on ${data.startDate.format("MMMM Do YYYY")}!`
                     break;
                 case 'event':
-                    summary = `We are excited to present our amazing students that make part of the Event`
+                    summary = `Our event showcases some of the best up-and-coming tech talent from the La Fosse Academy.`
                     break;
             }
         }
         if (data) {
-            summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
+            if (data.status === 'event'){
+                summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nYou can get in touch to find out more about how our Academy can reshape team building and futureproof your workforce.`
+            } else {   
+                summary += data.showModal ? '\nClick on our picture to find out more about us.' : `\nOur profiles will be available from ${data.addMaterialsDate.format("MMMM Do")}.`
+            }
         }
         setHeaderText(header)
         setSummaryText(summary)

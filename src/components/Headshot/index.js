@@ -24,7 +24,6 @@ export default function Headshot({ person, loadStudent, seeMore, frame, colour }
     const normalise = str => str.normalize("NFD").replace(/\p{Diacritic}/gu, "")
 
 
-
     return (
 
         <div
@@ -38,6 +37,7 @@ export default function Headshot({ person, loadStudent, seeMore, frame, colour }
                 className={`framed ${frame}`} src={`${S3_COHORTS}/${cohort.toLowerCase()}/headshots/${normalise(person.name).replace(/\s/gu, '_')}.png`}
                 alt={`${person.name}`}></img>
             <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.name}</span>
+            <span style={{ textAlign: 'center', width: '100%', padding: '5px 0' }}>{person.team}</span>
 
             {seeMore && <button className="see-student bg-purple text-white" onClick={showModal ? (e => handleSelect(e, person)) : undefined}> See more <span>&#10230;</span> </button>}
         </div>

@@ -21,7 +21,7 @@ export default function ContactBtn({mini, inverted}) {
             <a
                 id='contact-btn'
                 className="contact bg-coral text-purple"
-                href={`mailto:krikor@getfutureproof.co.uk,claudia@getfutureproof.co.uk?subject=${subject}`}
+                href={`mailto:jessica.deane@lafosse.com?subject=${subject}`}
                 // onClick={() => navigate('/contact')}
                 >
                 {mini ? "Speak to us" : "Get in touch with La Fosse Academy,\nwe can't wait to get started!"}
