@@ -88,8 +88,8 @@ export default function CohortsIndex() {
         const date = new Date()
         if (cohort.status === 'event') {
             if (cohort.endDate != cohort.endDate['$D'] && cohort.endDate != cohort.endDate['$M'] && cohort.endDate != cohort.endDate['$y']) {
-                // formatted = `Presented on\n${formatted}` for after is presented
-                formatted = `Presenting on\n${formatted}`
+                formatted = `Presented on\n${formatted}`
+                // formatted = `Presenting on\n${formatted}`
                 return formatted
             }
             formatted = `Presenting on \n${formatted}`
